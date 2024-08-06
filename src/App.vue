@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import ToolSelector from './character-management/new/pages/index.vue'; // Update the path if necessary
+import IndexPage from './character-management/new/pages/index.vue'; // Update the path if necessary
 </script>
 
 <template>
   <div id="app">
-    <ToolSelector />
+    <IndexPage />
   </div>
 </template>
 

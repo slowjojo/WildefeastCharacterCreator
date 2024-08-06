@@ -1,0 +1,36 @@
+/* src/styles/variables.css */
+:root {
+    --background: #999999;
+    --border: #ff9933;
+    --headerText: #0000ff;
+    --primaryText: #333333;
+    --secondaryText: #666666;
+    --accentColor: #007bff;
+  }
+
+/* Apply a global reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+  }
+  
+  html, body {
+    height: 100%; /* Ensure the body takes up the full viewport height */
+  }
+  
+  body {
+    background-color: #ffffff; /* Set a default background color if needed */
+    font-family: Arial, sans-serif; /* Optional: Set a default font */
+  }
+  
+  .container {
+    display: flex;
+  flex-direction: column; /* Stack children vertically */
+  align-items: center;    /* Center children horizontally */
+  justify-content: flex-start;/* Center children vertically */
+  height: 700px;          
+  text-align: center;     /* Center text inside children */
+  padding: 1em;           /* Optional: Padding around the content */
+  background-color:white; /* Background color from theme */
+  }
