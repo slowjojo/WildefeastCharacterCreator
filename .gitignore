@@ -1,0 +1,42 @@
+# Node modules
+node_modules/
+
+# Build output
+dist/
+build/
+
+# Local environment files
+.env
+.env.local
+.env.*.local
+
+# IDE and editor folders
+.idea/
+.vscode/
+
+# Logs
+*.log
+
+# Dependency directories
+jspm_packages/
+
+# System files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+.directory
+
+# Editor temporary files
+*.swp
+*.swo
+*.swn
+*.sublime-workspace
+*.sublime-project
+
+# Vue CLI generated files
+.nuxt/
+.cache/
+*.tgz
+
+# TypeScript
+*.tsbuildinfo

@@ -1,0 +1,43 @@
+{
+    "specialties": [
+        {
+            "name": "Baker",
+            "traits": ["Polinator", "Sturdy", "Swarming"],
+            "importantMonster": ["Sweetloaf", "Huir", "Curly", "Pua Li", "Mother-Mother"]
+        },
+        {
+            "name": "Butcher",
+            "traits": ["Precision Cuts", "Meat Connoisseur", "Heavy Lifter"]
+        },
+        {
+            "name": "Fisher",
+            "traits": ["Echolocation", "Electric Shock", "Swimming"],
+            "importantMonster": ["A Nu", "Longboy", "Pichi-Chi", "Big Cheeks", "Melody"]
+        },
+        {
+            "name": "Gardener",
+            "traits": ["Charge", "Haste", "Slow Metabolism"],
+            "importantMonster": ["White Heart", "Shu Shu", "Booger", "Mhen Tan", "Reaper"]
+        },  
+        {
+            "name": "Roaster",
+            "traits": ["Burning Body", "Fire Breath", "Threaten"],
+            "importantMonster": ["Red Cape", "Smokechaser", "Cinder", "Chan Tuai Sao", "Little Ting"]
+        },
+        {
+            "name": "Roundman",
+            "traits": ["Camouflage", "Metamorphosis", "Regenerator"],
+            "importantMonster": ["Shin", "Giantkiller", "Young Duke", "Gravedigger", "Zoujo"]
+        },
+        {
+            "name": "Saucier",
+            "traits": ["Disorienting", "Slippery", "Venom"],
+            "importantMonster": ["Ghan the Shadow", "Sya Mai", "Halfoak", "Fearnaught", "Mudbutt"]
+        },
+        {
+            "name": "Stockeeper",
+            "traits": ["Hibernation", "Nest Builder", "Swallow Whole"],
+            "importantMonster": ["Lady Zida", "Crumbs", "Bandit", "Dustwing", "Happy Cho"]
+        }
+    ]
+}
