@@ -29,8 +29,13 @@
   flex-direction: column; /* Stack children vertically */
   align-items: center;    /* Center children horizontally */
   justify-content: flex-start;/* Center children vertically */
-  height: 700px;          
+  height: 700px;
+  width: 300px;         
   text-align: center;     /* Center text inside children */
-  padding: 1em;           /* Optional: Padding around the content */
   background-color:white; /* Background color from theme */
+  border: 5px solid black;
+  }
+  
+  .tool-button:hover {
+    background-color: #0056b3;
   }

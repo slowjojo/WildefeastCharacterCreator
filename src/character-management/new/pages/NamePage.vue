@@ -20,33 +20,5 @@
   
   <style scoped>
 
-
-  div {
-    color: var(--primaryText);
-    padding: 1em;
-    border: 1px solid var(--border);
-    border-radius: 4px;
-  }
-  
-  label {
-    display: block;
-    margin-bottom: 0.5em;
-    color: var(--headerText);
-  }
-  
-  input {
-    padding: 0.5em;
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    font-size: 1em;
-    width: 100%;
-    max-width: 300px;
-    color: var(--primaryText);
-  }
-  
-  p {
-    font-size: 1em;
-    color: var(--secondaryText);
-  }
   </style>
   
