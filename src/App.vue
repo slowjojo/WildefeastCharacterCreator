@@ -11,10 +11,6 @@ import IndexPage from './character-management/new/pages/index.vue'; // Update th
 <style>
 #app {
   display: flex;
-  justify-content: center;
-  align-items: center; /* Center items vertically */
-  height: 100vh; /* Full viewport height */
-  margin: 0; /* Remove default margin */
-  background-color: var(--background); /* Use theme variable */
+justify-content: center;
 }
 </style>

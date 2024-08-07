@@ -7,7 +7,6 @@ export interface Tool {
     beginnerTechniques: string[];
     intermediateTechniques: string[];
     advancedTechniques: string[];
-    styleSpread?: StyleSpread; // Optional, computed property
     flavorText: string
 }
 export type Style = 'mighty' | 'precise' | 'swift' | 'tricky';

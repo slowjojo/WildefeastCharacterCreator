@@ -1,39 +1,51 @@
 <template>
   <div class="index-page">
-    <div class="name-page-container">
-      <NamePage />
-    </div>
-    <div class="tool-page-container">
-      <ToolPage />
-    </div>
-    <!-- Display the NamePage component -->
-    <div>
-      <SpecialtyPage />
+    <div class="main-content">
+      <div class="name-page-container container">
+        <NamePage />
+      </div>
+      <div class="tool-page-container container">
+        <ToolPage />
+      </div>
+      <div class="specialty-page-container container">
+        <SpecialtyPage />
+      </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import ToolPage from './ToolPage.vue'; // Ensure this path is correct
 import NamePage from './NamePage.vue';
+import ToolPage from './ToolPage.vue';
 import SpecialtyPage from './SpecialtyPage.vue';
 
 export default defineComponent({
   name: 'IndexPage',
   components: {
-    ToolPage, // Register ToolPage component
-    NamePage, // Register NamePage component
+    NamePage,
+    ToolPage,
     SpecialtyPage
-  },
-  setup() {
-    // Component logic goes here
   }
 });
 </script>
 
 <style scoped>
-  .index-page {
-    display: flex;
-  }
+.index-page {
+  display: flex;
+  justify-content: center; /* Center the main content horizontally */
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--background);
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px; /* Space between components */
+  width: 100%;
+  max-width: 1200px; /* Ensure it does not stretch too wide */
+  position: relative;
+}
 </style>

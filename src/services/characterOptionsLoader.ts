@@ -13,7 +13,8 @@ class CharacterOptionsLoader {
       const data = await fetchTools();
       this.tools = data.tools.map(tool => ({
         ...tool,
-        id: tool.name  // Using name as ID
+        id: tool.name,
+        baseStyles: this.mapBaseStyles(tool.baseStyles) // Use the mapping function
       }));
       console.log('Tools loaded:', this.tools);
     } catch (error) {
@@ -68,6 +69,29 @@ class CharacterOptionsLoader {
 
   getFlavorTextForTool(toolName: string): string {
     return this.flavourTexts[toolName] || 'No flavor text available.';
+  }
+
+  // The mapping function included within the class
+  private mapBaseStyles(baseStyles: string[]): string[] {
+    const styleMapping: { [key: string]: string } = {
+      "1": "1", // Just using the number as-is for points
+      "2": "2",
+      "3": "3",
+      "4": "4"
+    };
+
+    return baseStyles.map(style => {
+      // Split the style string into individual numbers
+      const pointsDistribution = style.split('').map(num => styleMapping[num] || '0');
+
+      // Map the points to the respective styles
+      return [
+        `${pointsDistribution[0] || '0'} Mighty`,
+        `${pointsDistribution[1] || '0'} Precise`,
+        `${pointsDistribution[2] || '0'} Swift`,
+        `${pointsDistribution[3] || '0'} Tricky`
+      ].filter(part => !part.startsWith('0')).join(' ');
+    });
   }
 }
 

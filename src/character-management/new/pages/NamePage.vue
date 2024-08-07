@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="page">
       <label for="nameInput">Enter your name:</label>
       <input id="nameInput" v-model="name" type="text" placeholder="Type your name here" />
       <p>Your name: {{ name }}</p>
@@ -19,6 +19,11 @@
   </script>
   
   <style scoped>
-
+   .page {
+    display: flex;          /* Establishes a flex container */
+  flex-direction: column; /* Align items in a column */
+  justify-content: center; /* Center items vertically */
+  align-items: center;     /* Center items horizontally */     
+   }
   </style>
   

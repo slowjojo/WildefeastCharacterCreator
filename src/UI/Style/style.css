@@ -1,41 +1,38 @@
-/* src/styles/variables.css */
 :root {
-    --background: #999999;
-    --border: #ff9933;
-    --headerText: #0000ff;
-    --primaryText: #333333;
-    --secondaryText: #666666;
-    --accentColor: #007bff;
-  }
+  --background: #999999;
+  --border:#f08721;
+  --header-text: #4d4b4d;
+  --primary-text: #333333;
+  --secondary-text: #666666;
+  --accent-color: #007bff;
+}
 
-/* Apply a global reset */
+/* Global reset */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box; /* Include padding and border in the element's total width and height */
-  }
-  
-  html, body {
-    height: 100%; /* Ensure the body takes up the full viewport height */
-  }
-  
-  body {
-    background-color: #ffffff; /* Set a default background color if needed */
-    font-family: Arial, sans-serif; /* Optional: Set a default font */
-  }
-  
-  .container {
-    display: flex;
-  flex-direction: column; /* Stack children vertically */
-  align-items: center;    /* Center children horizontally */
-  justify-content: flex-start;/* Center children vertically */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* Ensures padding and border are included in element's total width and height */
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
   height: 700px;
-  width: 300px;         
-  text-align: center;     /* Center text inside children */
-  background-color:white; /* Background color from theme */
-  border: 5px solid black;
-  }
-  
-  .tool-button:hover {
-    background-color: #0056b3;
-  }
+  width: 300px;
+  background-color: white;
+  border: 4px solid #f08721;
+}
+
+.button {
+  width: 100%;           
+  height: 50px;           
+  padding: 0;        
+  margin: 0;         
+  border: 1px solid #ccc; 
+  border-radius: 4px;   
+  background-color: orange; 
+  cursor: pointer;      
+  display: flex;         
+  align-items: center;   
+  justify-content: center; 
+}

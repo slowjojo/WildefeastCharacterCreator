@@ -1,74 +1,121 @@
 <template>
-    <div class="container">
-      <h1>Tool List</h1>
-      <div v-if="tools.length === 0">Loading tools...</div>
-      <div v-else class="tool-buttons">
-        <button 
-          v-for="tool in tools" 
-          :key="tool.name" 
-          class="tool-button" 
-          @click="handleButtonClick(tool)"
-        >
-          {{ tool.name }}
-        </button>
+  <div class="tool-page">
+    <article class="tool-list">
+      <div class="page">
+        <h1>Tool List</h1>
+        <div v-if="tools.length === 0">Loading tools...</div>
+        <div v-else class="tool-buttons">
+          <button 
+            v-for="tool in tools" 
+            :key="tool.name" 
+            class="button" 
+            @click="selectTool(tool)"
+          >
+            {{ tool.name }}
+          </button>
+        </div>
       </div>
-    </div>
-  </template>
-  
-  <script lang="ts">
-  import { defineComponent, ref, onMounted } from 'vue';
-  import CharacterOptionsLoader from '@/services/characterOptionsLoader';
-  import { Tool } from '@/types/characterTypes';
-  
-  export default defineComponent({
-    name: 'ToolPage',
-    setup() {
-      const tools = ref<Tool[]>([]);
-      const characterOptionsLoader = new CharacterOptionsLoader();
-  
-      // Load tools when component is mounted
-      onMounted(async () => {
-        await characterOptionsLoader.loadTools();
-        tools.value = characterOptionsLoader.getTools();
-      });
-  
-      function handleButtonClick(tool: Tool) {
-        alert(`You clicked on ${tool.name}`);
-        // Implement further actions here, e.g., navigating to a detail page
-      }
-  
-      return {
-        tools,
-        handleButtonClick
-      };
+    </article>
+    
+    <article v-if="selectedTool" class="tool-details container">
+      <div class="page">
+        <h2>{{ selectedTool.name }}</h2>
+        <div>
+          <h3>Base Technique</h3>
+          <p>{{ selectedTool.baseTechnique }}</p>
+        </div>
+        <div>
+          <h3>Beginner Techniques</h3>
+          <div class="technique-buttons">
+            <button 
+              v-for="technique in selectedTool.beginnerTechniques" 
+              :key="technique" 
+              class="button" 
+              @click="handleTechniqueClick(technique)"
+            >
+              {{ technique }}
+            </button>
+          </div>
+        </div>
+        <div v-if="selectedTool.baseStyles.length > 0" class="section">
+          <h3>Base Styles</h3>
+          <div class="style-spread-buttons">
+            <button 
+              v-for="(style, index) in selectedTool.baseStyles" 
+              :key="index" 
+              class="button" 
+              @click="handleStyleSpreadClick(style)"
+            >
+              {{ style }}
+            </button>
+          </div>
+          <div>
+            <button class="button" @click="selectTool(null)">
+              Choose different tool
+            </button>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+</template>
+
+<script lang="ts">
+import { defineComponent, ref, onMounted } from 'vue';
+import CharacterOptionsLoader from '@/services/characterOptionsLoader';
+import { Tool } from '@/types/characterTypes';
+
+export default defineComponent({
+  name: 'ToolPage',
+  setup() {
+    const tools = ref<Tool[]>([]);
+    const selectedTool = ref<Tool | null>(null);
+    const characterOptionsLoader = new CharacterOptionsLoader();
+
+    onMounted(async () => {
+      await characterOptionsLoader.loadTools();
+      tools.value = characterOptionsLoader.getTools();
+    });
+
+    function selectTool(tool: Tool | null) {
+      selectedTool.value = tool;
     }
-  });
-  </script>
-  
-  <style scoped>
 
-.tool-buttons {
+    function handleTechniqueClick(technique: string) {
+      alert(`You selected the beginner technique: ${technique}`);
+    }
+
+    function handleStyleSpreadClick(option: string) {
+      alert(`You selected the style spread option: ${option}`);
+    }
+
+    return {
+      tools,
+      selectedTool,
+      selectTool,
+      handleTechniqueClick,
+      handleStyleSpreadClick
+    };
+  }
+});
+</script>
+
+<style scoped>
+.tool-page {
   display: flex;
-  flex-direction: column;
-  width: 100%; /* Allow the container to take up full width */
+  position: relative;
 }
 
-  .tool-button {
-  width: 100%;           
-  height: 50px;           
-  padding: 0;        
-  margin: 0;         
-  border: 1px solid #ccc; 
-  border-radius: 4px;   
-  background-color: orange; 
-  cursor: pointer;      
-  display: flex;         
-  align-items: center;   
-  justify-content: center; 
+.tool-list {
+  flex: 1;
 }
 
-.tool-button:hover {
-  background-color: #e0e0e0; /* Darker background on hover */
+.tool-details {
+  position: absolute;
+  right: -300px;
+  top: 0;
+  width: 300px; /* Adjust width as needed */
+  height: 100%; /* Full height of the parent container */
+  background-color: white;
 }
-  </style>
-  
+</style>
