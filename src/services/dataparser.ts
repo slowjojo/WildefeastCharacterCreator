@@ -1,3 +1,5 @@
+//src/services/dataparser
+
 import { Tool, Specialty, Trait } from '../types/characterTypes';
 
 const apiUrl = '/data/tools.json'; // Update this path according to where your JSON file is served

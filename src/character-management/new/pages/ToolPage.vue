@@ -1,15 +1,16 @@
 <template>
-  <div class="tool-page">
+  <div class="tool-page page">
+    <!-- Tool List Section -->
     <article class="tool-list">
-      <div class="page">
+      <div>
         <h1>Tool List</h1>
         <div v-if="tools.length === 0">Loading tools...</div>
-        <div v-else class="tool-buttons">
+        <div class="tool-buttons">
           <button 
             v-for="tool in tools" 
             :key="tool.name" 
-            class="button" 
-            @click="selectTool(tool)"
+            :class="{ 'button': true, 'selected': isSelected(tool), 'hidden': isToolHidden(tool) }"
+            @click="toggleToolSelection(tool)"
           >
             {{ tool.name }}
           </button>
@@ -17,8 +18,10 @@
       </div>
     </article>
     
-    <article v-if="selectedTool" class="tool-details container">
-      <div class="page">
+    <!-- Tool Details Section -->
+    <article v-if="selectedTool" class="tool-details">
+      <div>
+        <button class="back-button" @click="deselectTool">Back</button>
         <h2>{{ selectedTool.name }}</h2>
         <div>
           <h3>Base Technique</h3>
@@ -49,11 +52,6 @@
               {{ style }}
             </button>
           </div>
-          <div>
-            <button class="button" @click="selectTool(null)">
-              Choose different tool
-            </button>
-          </div>
         </div>
       </div>
     </article>
@@ -73,12 +71,21 @@ export default defineComponent({
     const characterOptionsLoader = new CharacterOptionsLoader();
 
     onMounted(async () => {
-      await characterOptionsLoader.loadTools();
-      tools.value = characterOptionsLoader.getTools();
+      try {
+        await characterOptionsLoader.loadTools();
+        tools.value = characterOptionsLoader.getTools();
+        console.log('Tools loaded:', tools.value); // Debug statement
+      } catch (error) {
+        console.error('Error loading tools:', error);
+      }
     });
 
-    function selectTool(tool: Tool | null) {
-      selectedTool.value = tool;
+    function toggleToolSelection(tool: Tool) {
+      selectedTool.value = selectedTool.value === tool ? null : tool;
+    }
+
+    function deselectTool() {
+      selectedTool.value = null;
     }
 
     function handleTechniqueClick(technique: string) {
@@ -89,12 +96,23 @@ export default defineComponent({
       alert(`You selected the style spread option: ${option}`);
     }
 
+    function isSelected(tool: Tool) {
+      return selectedTool.value?.name === tool.name;
+    }
+
+    function isToolHidden(tool: Tool) {
+      return selectedTool.value && !isSelected(tool);
+    }
+
     return {
       tools,
       selectedTool,
-      selectTool,
+      toggleToolSelection,
+      deselectTool,
       handleTechniqueClick,
-      handleStyleSpreadClick
+      handleStyleSpreadClick,
+      isSelected,
+      isToolHidden
     };
   }
 });
@@ -103,19 +121,35 @@ export default defineComponent({
 <style scoped>
 .tool-page {
   display: flex;
-  position: relative;
+  flex-direction: column;
 }
 
 .tool-list {
-  flex: 1;
+  margin: 0;
+  padding: 0;
+}
+
+.tool-buttons {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.button {
+  margin: 5px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.button.selected {
+  background-color: #007BFF;
+  color: white;
+}
+
+.button.hidden {
+  display: none;
 }
 
 .tool-details {
-  position: absolute;
-  right: -300px;
-  top: 0;
-  width: 300px; /* Adjust width as needed */
-  height: 100%; /* Full height of the parent container */
-  background-color: white;
+  margin-top: 20px;
 }
 </style>
