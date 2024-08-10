@@ -3,7 +3,6 @@
     <!-- Tool List Section -->
     <article class="tool-list">
       <div>
-        <h1>Tool List</h1>
         <div v-if="tools.length === 0">Loading tools...</div>
         <div class="tool-buttons">
           <div 
@@ -30,55 +29,31 @@
     </article>
     
     <!-- Tool Details Section -->
-    <article v-if="selectedTool" class="tool-details">
-      <div>
-        <button class="back-button" @click="deselectTool">Back</button>
-        <h2>{{ selectedTool.name }}</h2>
-        <div>
-          <h3>Base Technique</h3>
-          <p>{{ selectedTool.baseTechnique }}</p>
-        </div>
-        <div>
-          <h3>Beginner Techniques</h3>
-          <div class="technique-buttons">
-            <button 
-              v-for="technique in selectedTool.beginnerTechniques" 
-              :key="technique" 
-              class="button" 
-              @click="handleTechniqueClick(technique)"
-            >
-              {{ technique }}
-            </button>
-          </div>
-        </div>
-        <div v-if="selectedTool.baseStyles.length > 0" class="section">
-          <h3>Base Styles</h3>
-          <div class="style-spread-buttons">
-            <button 
-              v-for="(style, index) in selectedTool.baseStyles" 
-              :key="index" 
-              class="button" 
-              @click="handleStyleSpreadClick(style)"
-            >
-              {{ style }}
-            </button>
-          </div>
-        </div>
-      </div>
-    </article>
+    <ToolDetails 
+      v-if="showDetails"
+      :tool="selectedTool" 
+      @deselect="deselectTool"
+      @techniqueClick="handleTechniqueClick"
+      @styleSpreadClick="handleStyleSpreadClick"
+    />
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, onMounted } from 'vue';
-import CharacterOptionsLoader from '@/services/characterOptionsLoader';
-import { Tool } from '@/types/characterTypes';
+import { defineComponent, ref, onMounted, nextTick } from 'vue';
+import CharacterOptionsLoader from '@/services/characterOptionsLoader'; // Adjust if necessary
+import { Tool } from '@/types/characterTypes'; // Adjust if necessary
+import ToolDetails from './ToolDetails.vue'; // Adjust path since they're in the same directory
 
 export default defineComponent({
   name: 'ToolPage',
+  components: {
+    ToolDetails
+  },
   setup() {
     const tools = ref<Tool[]>([]);
     const selectedTool = ref<Tool | null>(null);
+    const showDetails = ref<boolean>(false);
     const characterOptionsLoader = new CharacterOptionsLoader();
 
     onMounted(async () => {
@@ -92,10 +67,23 @@ export default defineComponent({
     });
 
     function toggleToolSelection(tool: Tool) {
-      selectedTool.value = selectedTool.value === tool ? null : tool;
+      if (selectedTool.value === tool) {
+        deselectTool();
+        return;
+      }
+      
+      selectedTool.value = tool;
+      showDetails.value = false;
+
+      nextTick(() => {
+        setTimeout(() => {
+          showDetails.value = true;
+        }, 500); // Delay in milliseconds
+      });
     }
 
     function deselectTool() {
+      showDetails.value = false;
       selectedTool.value = null;
     }
 
@@ -124,7 +112,7 @@ export default defineComponent({
       }
       const index = tools.value.indexOf(tool);
       return { 
-        top: `${index * 50 + 50}px`, // Adjust for header height
+        top: `${index * 50 + 50}px`, 
         zIndex: 1 
       };
     }
@@ -132,6 +120,7 @@ export default defineComponent({
     return {
       tools,
       selectedTool,
+      showDetails,
       toggleToolSelection,
       deselectTool,
       handleTechniqueClick,
@@ -159,7 +148,7 @@ export default defineComponent({
   background-color: white;
   border: 4px solid #f08721;
   position: relative;
-  overflow: hidden; /* Prevent scrollbars from appearing */
+  overflow: hidden;
 }
 
 .tool-page {
@@ -179,7 +168,7 @@ export default defineComponent({
   left: 0;
   display: flex;
   flex-direction: column;
-  z-index: 1; /* Ensure buttons are below tool-details */
+  z-index: 1;
 }
 
 .header {
@@ -189,7 +178,7 @@ export default defineComponent({
   margin: 0;
   border: 1px solid #ccc;
   border-radius: 4px;
-  background-color: #f0f0f0; /* Header background color */
+  background-color: #f0f0f0;
   display: flex;
   align-items: center;
   justify-content: center;
