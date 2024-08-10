@@ -6,11 +6,22 @@
         <h1>Tool List</h1>
         <div v-if="tools.length === 0">Loading tools...</div>
         <div class="tool-buttons">
+          <div 
+            v-if="!selectedTool" 
+            class="header"
+          >
+            Tools Header
+          </div>
           <button 
             v-for="tool in tools" 
             :key="tool.name" 
-            :class="{ 'button': true, 'selected': isSelected(tool), 'hidden': isToolHidden(tool) }"
+            :class="{ 
+              'button': true, 
+              'selected': isSelected(tool), 
+              'hidden': isToolHidden(tool) 
+            }"
             @click="toggleToolSelection(tool)"
+            :style="getButtonStyle(tool)"
           >
             {{ tool.name }}
           </button>
@@ -104,6 +115,20 @@ export default defineComponent({
       return selectedTool.value && !isSelected(tool);
     }
 
+    function getButtonStyle(tool: Tool) {
+      if (isSelected(tool)) {
+        return { 
+          top: '0px', 
+          zIndex: 2 
+        };
+      }
+      const index = tools.value.indexOf(tool);
+      return { 
+        top: `${index * 50 + 50}px`, // Adjust for header height
+        zIndex: 1 
+      };
+    }
+
     return {
       tools,
       selectedTool,
@@ -112,32 +137,83 @@ export default defineComponent({
       handleTechniqueClick,
       handleStyleSpreadClick,
       isSelected,
-      isToolHidden
+      isToolHidden,
+      getButtonStyle
     };
   }
 });
 </script>
 
 <style scoped>
-.tool-page {
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.page {
   display: flex;
   flex-direction: column;
+  height: 700px;
+  width: 300px;
+  background-color: white;
+  border: 4px solid #f08721;
+  position: relative;
+  overflow: hidden; /* Prevent scrollbars from appearing */
+}
+
+.tool-page {
+  position: relative;
 }
 
 .tool-list {
-  margin: 0;
-  padding: 0;
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
 .tool-buttons {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  z-index: 1; /* Ensure buttons are below tool-details */
+}
+
+.header {
+  width: 100%;
+  height: 50px;
+  padding: 0;
+  margin: 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f0f0f0; /* Header background color */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: top 0.5s ease, background-color 0.3s ease;
 }
 
 .button {
-  margin: 5px;
-  padding: 10px;
+  width: 100%;
+  height: 50px;
+  padding: 0;
+  margin: 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: orange;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  transition: top 0.5s ease, background-color 0.3s ease;
 }
 
 .button.selected {
@@ -147,9 +223,5 @@ export default defineComponent({
 
 .button.hidden {
   display: none;
-}
-
-.tool-details {
-  margin-top: 20px;
 }
 </style>
