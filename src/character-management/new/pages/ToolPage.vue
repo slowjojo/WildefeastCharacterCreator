@@ -21,6 +21,10 @@
       >
         {{ tool.name }}
       </button>
+      
+      <button @click="handleToolDeselection" class="back-button">
+        Back
+      </button>
     </div>
   </main>
 </template>
@@ -77,6 +81,20 @@ export default defineComponent({
       }, 500); // Adjust time to match the transition duration
     }
 
+    function handleToolDeselection() {
+      // Remove the header tool immediately
+      headerTool.value = null;
+
+      // Trigger slide-in effect and deselection after a delay
+     
+
+      // Reset the selected tool after the sliding effect is complete
+      setTimeout(() => {
+        slideOut.value = false;
+        selectedTool.value = null;
+      }, 500); // Adjust time to match the transition duration
+    }
+
     function getButtonStyle(index: number) {
       const baseHeight = 50; 
       const translateY = isHeader(tools.value[index]) ? -baseHeight * index - baseHeight : 0;
@@ -96,6 +114,7 @@ export default defineComponent({
       isHeader,
       getButtonStatus,
       handleToolSelection,
+      handleToolDeselection,
       getButtonStyle
     };
   }
@@ -114,11 +133,11 @@ export default defineComponent({
 }
 
 .tool-list {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: auto 1fr; /* Adjust to accommodate header and buttons */
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* Ensure the list takes up full height */
   width: 100%;
-  position: relative; /* Ensure grid is positioned relative to parent */
+  position: relative; /* Ensure the list is positioned relative to the container */
 }
 
 .header {
@@ -137,6 +156,22 @@ export default defineComponent({
   top: 0;
   left: 0;
   transition: transform 0.5s ease; /* Add transition for sliding effect */
+}
+
+/* Back button styles */
+.back-button {
+  margin: 10px;
+  padding: 5px 10px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  align-self: center; /* Center the button horizontally */
+  position: absolute; /* Position it at the bottom */
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 /* Base button styles */
