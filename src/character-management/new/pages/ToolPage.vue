@@ -1,59 +1,40 @@
 <template>
-  <div class="tool-page page">
-    <!-- Tool List Section -->
-    <article class="tool-list">
-      <div>
-        <div v-if="tools.length === 0">Loading tools...</div>
-        <div class="tool-buttons">
-          <div 
-            v-if="!selectedTool" 
-            class="header"
-          >
-            Tools Header
-          </div>
-          <button 
-            v-for="tool in tools" 
-            :key="tool.name" 
-            :class="{ 
-              'button': true, 
-              'selected': isSelected(tool), 
-              'hidden': isToolHidden(tool) 
-            }"
-            @click="toggleToolSelection(tool)"
-            :style="getButtonStyle(tool)"
-          >
-            {{ tool.name }}
-          </button>
-        </div>
+  <main class="tool-page">
+    <div class="tool-list">
+      <div class="header">
+        TOOL HEADER
       </div>
-    </article>
-    
-    <!-- Tool Details Section -->
-    <ToolDetails 
-      v-if="showDetails"
-      :tool="selectedTool" 
-      @deselect="deselectTool"
-      @techniqueClick="handleTechniqueClick"
-      @styleSpreadClick="handleStyleSpreadClick"
-    />
-  </div>
+
+      <div v-if="tools.length === 0">Loading tools...</div>
+      
+      <button 
+        v-for="(tool, index) in tools" 
+        :key="tool.name"
+        class="tool-button"
+        @click="handleToolSelection(tool, index)"
+        :data-status="isSelected(tool) ? 'active' : 'inactive'"
+        :data-header="isHeader(tool) ? 'active' : 'inactive'"
+        :class="{ slide: !isSelected(tool) && slideOut }"
+        :style="getButtonStyle(index)"
+      >
+        {{ tool.name }}
+      </button>
+    </div>
+  </main>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, onMounted, nextTick } from 'vue';
-import CharacterOptionsLoader from '@/services/characterOptionsLoader'; // Adjust if necessary
-import { Tool } from '@/types/characterTypes'; // Adjust if necessary
-import ToolDetails from './ToolDetails.vue'; // Adjust path since they're in the same directory
+import { defineComponent, ref, onMounted } from 'vue';
+import CharacterOptionsLoader from '@/services/characterOptionsLoader';
+import { Tool } from '@/types/characterTypes';
 
 export default defineComponent({
   name: 'ToolPage',
-  components: {
-    ToolDetails
-  },
   setup() {
     const tools = ref<Tool[]>([]);
     const selectedTool = ref<Tool | null>(null);
-    const showDetails = ref<boolean>(false);
+    const headerTool = ref<Tool | null>(null); // To keep track of the header tool
+    const slideOut = ref(false); // State to handle sliding effect
     const characterOptionsLoader = new CharacterOptionsLoader();
 
     onMounted(async () => {
@@ -66,67 +47,45 @@ export default defineComponent({
       }
     });
 
-    function toggleToolSelection(tool: Tool) {
-      if (selectedTool.value === tool) {
-        deselectTool();
-        return;
-      }
-      
-      selectedTool.value = tool;
-      showDetails.value = false;
-
-      nextTick(() => {
-        setTimeout(() => {
-          showDetails.value = true;
-        }, 500); // Delay in milliseconds
-      });
-    }
-
-    function deselectTool() {
-      showDetails.value = false;
-      selectedTool.value = null;
-    }
-
-    function handleTechniqueClick(technique: string) {
-      alert(`You selected the beginner technique: ${technique}`);
-    }
-
-    function handleStyleSpreadClick(option: string) {
-      alert(`You selected the style spread option: ${option}`);
-    }
-
     function isSelected(tool: Tool) {
       return selectedTool.value?.name === tool.name;
     }
 
-    function isToolHidden(tool: Tool) {
-      return selectedTool.value && !isSelected(tool);
+    function isHeader(tool: Tool) {
+      return headerTool.value?.name === tool.name;
     }
 
-    function getButtonStyle(tool: Tool) {
-      if (isSelected(tool)) {
-        return { 
-          top: '0px', 
-          zIndex: 2 
-        };
-      }
-      const index = tools.value.indexOf(tool);
-      return { 
-        top: `${index * 50 + 50}px`, 
-        zIndex: 1 
+    function handleToolSelection(tool: Tool, index: number) {
+      // Set the selected tool immediately
+      selectedTool.value = tool;
+      
+      // Trigger slide-out effect
+      slideOut.value = true;
+
+      // Add a delay before setting the header tool
+      setTimeout(() => {
+        headerTool.value = tool; 
+        slideOut.value = false; // Reset slide effect after header tool update
+      }, 1000); // 1000 milliseconds = 1 second delay for header tool update
+    }
+
+    function getButtonStyle(index: number) {
+      const baseHeight = 50; 
+      const translateY = isHeader(tools.value[index]) ? -baseHeight * index - baseHeight : 0;
+      return {
+        transform: `translateY(${translateY}px)`,
+        transition: 'transform 0.5s ease'
       };
     }
 
     return {
       tools,
       selectedTool,
-      showDetails,
-      toggleToolSelection,
-      deselectTool,
-      handleTechniqueClick,
-      handleStyleSpreadClick,
+      headerTool,
+      slideOut,
       isSelected,
-      isToolHidden,
+      isHeader,
+      handleToolSelection,
       getButtonStyle
     };
   }
@@ -134,41 +93,22 @@ export default defineComponent({
 </script>
 
 <style scoped>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-.page {
+.tool-page {
+  background-color: white;
   display: flex;
   flex-direction: column;
   height: 700px;
   width: 300px;
-  background-color: white;
-  border: 4px solid #f08721;
-  position: relative;
+  margin: 0;
   overflow: hidden;
 }
 
-.tool-page {
-  position: relative;
-}
-
 .tool-list {
-  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(auto-fill, 50px); /* Create rows based on the number of tools */
   width: 100%;
-  height: 100%;
-}
-
-.tool-buttons {
-  position: absolute;
-  width: 100%;
-  top: 0;
-  left: 0;
-  display: flex;
-  flex-direction: column;
-  z-index: 1;
+  position: relative; /* Ensure grid is positioned relative to parent */
 }
 
 .header {
@@ -183,34 +123,52 @@ export default defineComponent({
   align-items: center;
   justify-content: center;
   font-weight: bold;
-  position: absolute;
+  position: relative;
   top: 0;
   left: 0;
   transition: top 0.5s ease, background-color 0.3s ease;
 }
 
-.button {
+/* Base button styles */
+.tool-button {
   width: 100%;
   height: 50px;
   padding: 0;
   margin: 0;
-  border: 1px solid #ccc;
-  border-radius: 4px;
   background-color: orange;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: absolute;
-  transition: top 0.5s ease, background-color 0.3s ease;
+  position: relative;
+  transition: transform 0.5s ease, background-color 0.3s ease, color 0.3s ease; /* Smooth transitions for multiple properties */
 }
 
-.button.selected {
+/* Active button styles for selection */
+.tool-button[data-status="active"] {
   background-color: #007BFF;
   color: white;
+  border: 2px solid #0056b3;
 }
 
-.button.hidden {
-  display: none;
+/* Inactive button styles for selection */
+.tool-button[data-status="inactive"] {
+  background-color: orange;
+}
+
+/* Active button styles for header */
+.tool-button[data-header="active"] {
+  transform: translateY(0); /* Move to top position */
+}
+
+/* Inactive button styles for header */
+.tool-button[data-header="inactive"] {
+  transform: translateY(calc(var(--index) * 50px)); /* Default position */
+}
+
+/* Styles for sliding effect */
+.tool-button.slide {
+  transform: translateX(-100%); /* Slide out to the left */
+  transition: transform 0.5s ease; /* Ensure smooth transition for sliding */
 }
 </style>
