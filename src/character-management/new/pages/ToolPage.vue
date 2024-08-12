@@ -1,7 +1,10 @@
 <template>
   <main class="tool-page">
     <div class="tool-list">
-      <div class="header">
+      <div 
+        class="header" 
+        :class="{ slide: slideOut }"
+      >
         TOOL HEADER
       </div>
 
@@ -12,9 +15,8 @@
         :key="tool.name"
         class="tool-button"
         @click="handleToolSelection(tool, index)"
-        :data-status="isSelected(tool) ? 'active' : 'inactive'"
+        :data-status="getButtonStatus(tool)"
         :data-header="isHeader(tool) ? 'active' : 'inactive'"
-        :class="{ slide: !isSelected(tool) && slideOut }"
         :style="getButtonStyle(index)"
       >
         {{ tool.name }}
@@ -55,25 +57,32 @@ export default defineComponent({
       return headerTool.value?.name === tool.name;
     }
 
+    function getButtonStatus(tool: Tool) {
+      return isSelected(tool) ? 'active' : 'inactive';
+    }
+
     function handleToolSelection(tool: Tool, index: number) {
       // Set the selected tool immediately
       selectedTool.value = tool;
-      
-      // Trigger slide-out effect
-      slideOut.value = true;
+
+      // Trigger slide-out effect if not already active
+      if (!slideOut.value) {
+        slideOut.value = true;
+      }
 
       // Add a delay before setting the header tool
       setTimeout(() => {
         headerTool.value = tool; 
-        slideOut.value = false; // Reset slide effect after header tool update
-      }, 1000); // 1000 milliseconds = 1 second delay for header tool update
+        // Slide effect should remain in place
+      }, 500); // Adjust time to match the transition duration
     }
 
     function getButtonStyle(index: number) {
       const baseHeight = 50; 
       const translateY = isHeader(tools.value[index]) ? -baseHeight * index - baseHeight : 0;
+      const translateX = slideOut.value && !isSelected(tools.value[index]) ? '-100%' : '0'; // Move non-selected buttons to the left if slideOut is true
       return {
-        transform: `translateY(${translateY}px)`,
+        transform: `translateY(${translateY}px) translateX(${translateX})`,
         transition: 'transform 0.5s ease'
       };
     }
@@ -85,6 +94,7 @@ export default defineComponent({
       slideOut,
       isSelected,
       isHeader,
+      getButtonStatus,
       handleToolSelection,
       getButtonStyle
     };
@@ -106,7 +116,7 @@ export default defineComponent({
 .tool-list {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: repeat(auto-fill, 50px); /* Create rows based on the number of tools */
+  grid-template-rows: auto 1fr; /* Adjust to accommodate header and buttons */
   width: 100%;
   position: relative; /* Ensure grid is positioned relative to parent */
 }
@@ -126,7 +136,7 @@ export default defineComponent({
   position: relative;
   top: 0;
   left: 0;
-  transition: top 0.5s ease, background-color 0.3s ease;
+  transition: transform 0.5s ease; /* Add transition for sliding effect */
 }
 
 /* Base button styles */
@@ -167,7 +177,7 @@ export default defineComponent({
 }
 
 /* Styles for sliding effect */
-.tool-button.slide {
+.header.slide, .tool-button.slide {
   transform: translateX(-100%); /* Slide out to the left */
   transition: transform 0.5s ease; /* Ensure smooth transition for sliding */
 }
