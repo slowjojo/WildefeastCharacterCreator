@@ -1,3 +1,4 @@
+<!-- ToolDetails.vue -->
 <template>
   <article 
     class="tool-details"

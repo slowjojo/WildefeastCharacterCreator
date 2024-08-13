@@ -35,6 +35,7 @@ import { defineComponent, ref, onMounted } from 'vue';
 import CharacterOptionsLoader from '@/services/characterOptionsLoader';
 import { Tool } from '@/types/characterTypes';
 import ToolDetails from './ToolDetails.vue';
+import { characterState } from './index.vue';
 
 export default defineComponent({
   name: 'ToolPage',
@@ -73,7 +74,8 @@ export default defineComponent({
 
     function handleToolSelection(tool: Tool, index: number) {
       selectedTool.value = tool;
-
+      characterState.selectedTool = tool;
+      
       if (!slideOut.value) {
         slideOut.value = true;
       }
@@ -99,6 +101,7 @@ export default defineComponent({
       }, 1000);
       setTimeout(() => {
         selectedTool.value = null;
+        characterState.selectedTool = null;
       }, 1500);
     }
 
