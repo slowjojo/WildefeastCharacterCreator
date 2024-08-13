@@ -1,5 +1,5 @@
 <template>
-  <main class="tool-page">
+  <main class="page">
     <div class="tool-list">
       <div 
         class="header" 
@@ -7,7 +7,6 @@
       >
         TOOL HEADER
       </div>
-
       <div v-if="tools.length === 0">Loading tools...</div>
       
       <button 
@@ -21,11 +20,13 @@
       >
         {{ tool.name }}
       </button>
-      
-      <button @click="handleToolDeselection" class="back-button">
-        Back
-      </button>
     </div>
+
+    <ToolDetails 
+      :tool="selectedTool"
+      :isVisible="showDetails"
+      @deselect="handleToolDeselection"
+    />
   </main>
 </template>
 
@@ -33,21 +34,26 @@
 import { defineComponent, ref, onMounted } from 'vue';
 import CharacterOptionsLoader from '@/services/characterOptionsLoader';
 import { Tool } from '@/types/characterTypes';
+import ToolDetails from './ToolDetails.vue';
 
 export default defineComponent({
   name: 'ToolPage',
+  components: {
+    ToolDetails
+  },
   setup() {
     const tools = ref<Tool[]>([]);
     const selectedTool = ref<Tool | null>(null);
-    const headerTool = ref<Tool | null>(null); // To keep track of the header tool
-    const slideOut = ref(false); // State to handle sliding effect
+    const headerTool = ref<Tool | null>(null);
+    const slideOut = ref(false);
+    const showDetails = ref(false);
     const characterOptionsLoader = new CharacterOptionsLoader();
 
     onMounted(async () => {
       try {
         await characterOptionsLoader.loadTools();
         tools.value = characterOptionsLoader.getTools();
-        console.log('Tools loaded:', tools.value); // Debug statement
+        console.log('Tools loaded:', tools.value);
       } catch (error) {
         console.error('Error loading tools:', error);
       }
@@ -66,39 +72,41 @@ export default defineComponent({
     }
 
     function handleToolSelection(tool: Tool, index: number) {
-      // Set the selected tool immediately
       selectedTool.value = tool;
 
-      // Trigger slide-out effect if not already active
       if (!slideOut.value) {
         slideOut.value = true;
       }
 
-      // Add a delay before setting the header tool
       setTimeout(() => {
         headerTool.value = tool; 
-        // Slide effect should remain in place
-      }, 500); // Adjust time to match the transition duration
+      }, 500);
+
+      setTimeout(() => {
+        showDetails.value = true;
+      }, 1000);
     }
 
     function handleToolDeselection() {
-      // Remove the header tool immediately
-      headerTool.value = null;
+      showDetails.value = false;
 
-      // Trigger slide-in effect and deselection after a delay
-     
+      setTimeout(() => {
+        headerTool.value = null;
+      }, 500);
 
-      // Reset the selected tool after the sliding effect is complete
       setTimeout(() => {
         slideOut.value = false;
+      }, 1000);
+      setTimeout(() => {
         selectedTool.value = null;
-      }, 500); // Adjust time to match the transition duration
+      }, 1500);
     }
 
     function getButtonStyle(index: number) {
-      const baseHeight = 50; 
-      const translateY = isHeader(tools.value[index]) ? -baseHeight * index - baseHeight : 0;
-      const translateX = slideOut.value && !isSelected(tools.value[index]) ? '-100%' : '0'; // Move non-selected buttons to the left if slideOut is true
+      const buttonHeight = 50; 
+      const headerHeight = 50;
+      const translateY = isHeader(tools.value[index]) ? 0 : (buttonHeight * index) + headerHeight;
+      const translateX = slideOut.value && !isSelected(tools.value[index]) ? '-100%' : '0';
       return {
         transform: `translateY(${translateY}px) translateX(${translateX})`,
         transition: 'transform 0.5s ease'
@@ -110,6 +118,7 @@ export default defineComponent({
       selectedTool,
       headerTool,
       slideOut,
+      showDetails,
       isSelected,
       isHeader,
       getButtonStatus,
@@ -122,22 +131,13 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.tool-page {
-  background-color: white;
-  display: flex;
-  flex-direction: column;
-  height: 700px;
-  width: 300px;
-  margin: 0;
-  overflow: hidden;
-}
-
 .tool-list {
   display: flex;
   flex-direction: column;
-  height: 100%; /* Ensure the list takes up full height */
+  height: 100%;
   width: 100%;
-  position: relative; /* Ensure the list is positioned relative to the container */
+  position: relative;
+  overflow: hidden;
 }
 
 .header {
@@ -152,29 +152,13 @@ export default defineComponent({
   align-items: center;
   justify-content: center;
   font-weight: bold;
-  position: relative;
+  position: absolute;
   top: 0;
   left: 0;
-  transition: transform 0.5s ease; /* Add transition for sliding effect */
+  z-index: 1;
+  transition: transform 0.5s ease;
 }
 
-/* Back button styles */
-.back-button {
-  margin: 10px;
-  padding: 5px 10px;
-  background-color: #007BFF;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  align-self: center; /* Center the button horizontally */
-  position: absolute; /* Position it at the bottom */
-  bottom: 0;
-  left: 0;
-  right: 0;
-}
-
-/* Base button styles */
 .tool-button {
   width: 100%;
   height: 50px;
@@ -185,35 +169,30 @@ export default defineComponent({
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
-  transition: transform 0.5s ease, background-color 0.3s ease, color 0.3s ease; /* Smooth transitions for multiple properties */
+  position: absolute;
+  transition: transform 0.5s ease, background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Active button styles for selection */
 .tool-button[data-status="active"] {
   background-color: #007BFF;
   color: white;
   border: 2px solid #0056b3;
 }
 
-/* Inactive button styles for selection */
 .tool-button[data-status="inactive"] {
   background-color: orange;
 }
 
-/* Active button styles for header */
 .tool-button[data-header="active"] {
-  transform: translateY(0); /* Move to top position */
+  transform: translateY(0);
 }
 
-/* Inactive button styles for header */
 .tool-button[data-header="inactive"] {
-  transform: translateY(calc(var(--index) * 50px)); /* Default position */
+  transform: translateY(calc(var(--index) * 50px + 50px));
 }
 
-/* Styles for sliding effect */
 .header.slide, .tool-button.slide {
-  transform: translateX(-100%); /* Slide out to the left */
-  transition: transform 0.5s ease; /* Ensure smooth transition for sliding */
+  transform: translateX(-100%);
+  transition: transform 0.5s ease;
 }
 </style>

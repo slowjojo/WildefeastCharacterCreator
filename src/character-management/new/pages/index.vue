@@ -1,8 +1,7 @@
 <template>
   <div class="index-page">
     <div class="main-content">
-      <div class="name-page-container container">
-        <NamePage />
+      
       </div>
       <div class="tool-page-container container">
         <ToolPage />
@@ -10,6 +9,11 @@
       <div class="specialty-page-container container">
         <SpecialtyPage />
       </div>
+      <div class="background-page-container container">
+        <BackgroundPage />
+      </div>
+      <div class="name-page-container container">
+        <NamePage />
     </div>
   </div>
 </template>
@@ -19,13 +23,15 @@ import { defineComponent } from 'vue';
 import NamePage from './NamePage.vue';
 import ToolPage from './ToolPage.vue';
 import SpecialtyPage from './SpecialtyPage.vue';
+import BackgroundPage from './BackgroundPage.vue';
 
 export default defineComponent({
   name: 'IndexPage',
   components: {
     NamePage,
     ToolPage,
-    SpecialtyPage
+    SpecialtyPage,
+    BackgroundPage
   }
 });
 </script>

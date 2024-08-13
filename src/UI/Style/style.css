@@ -15,10 +15,14 @@
 }
 
 .page {
+  background-color: white;
   display: flex;
   flex-direction: column;
-  height: 700px;
+  height: 600px;
   width: 300px;
+  margin: 0;
+  overflow: hidden;
+  position: relative;
   background-color: white;
   border: 4px solid #f08721;
 }
