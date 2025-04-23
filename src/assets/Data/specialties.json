@@ -1,0 +1,225 @@
+[
+    {
+    "id": "baker",
+    "name": "Baker",
+    "description": "The Baker’s Line are characterized by their centuries-long life spans. Most are pollinators, feeding on sugar solutions like honey, nectar, or sap. The greenkings bred others to provide milk and eggs, honoring the baker’s craft. An example from this lineage is the mammudo, a shy, thick-scaled monster that uses its long tongue to sip nectar from flute-shaped flowers. Baker-wilders are known for their patience, and whether or not they follow the Anathiren pastry tradition, they tend to specialize in desserts.",
+    "example_monsters": ["Mammudo"],
+    "traits": ["pollinator", "sturdy", "swarming"],
+    "important_monsters": [
+        {
+            "name": "Sweetloaf",
+            "description": "A gentle mammudo (p. 220) or other armored monster, who you accompany most days on long, rambling walks."
+        },
+        {
+            "name": "Huir",
+            "description": "A moody chamig (p. 194) or other village-bearing monster, upon whose back you were born and raised."
+        },
+        {
+            "name": "Curly",
+            "description": "An ornery myotak (p. 224) or other goat-like monster, who once headbutted you off a mountain because you wouldn’t share your treats."
+        },
+        {
+            "name": "Pua Li",
+            "description": "An easy-going pitangwa (p. 228) or other talkative monster, the bemused subject of several decades of experiments on monster cognition."
+        },
+        {
+            "name": "Mother-Mother",
+            "description": "A venerated votra swarm (p. 256) or other collective monster, whose iterations your family has tended for generations."
+        }]
+    },
+    {
+    "id": "butcher",
+    "name": "Butcher",
+    "description": "The Butcher’s Line have metal or mineral growths. They’re mostly scavengers and detritivores, with strong stomachs adapted to digesting food in various stages of decay. An example from this lineage is the kakwari, a heavyset, flightless bird with a long train of metal feathers, which rattle and flare when it becomes agitated. Butcher-wilders are comfortable with death, often shouldering the burden of the final blow so their companions can keep their hands clean.",
+    "example_monsters": ["Kakwari"],
+    "traits": ["blood_scent", "natural_armor", "scavenger"],
+    "important_monsters": [
+        {
+            "name": "Sunset Glory",
+            "description": "A haughty kakwari (p. 210) or other flashy monster, who struts around the gardens when not training for shows."
+        },
+        {
+            "name": "Shattertooth",
+            "description": "A bold crownwolf (p. 198) or other canine monster, who you feed the bones left over from butchering livestock."
+        },
+        {
+            "name": "Onion",
+            "description": "An affectionate lapu-lapu (p. 216) or other wooly monster, whose enthusiastic cuddles can accidentally rub naked skin raw."
+        },
+        {
+            "name": "Maharla",
+            "description": "A wary asewa (p. 188) or other molting monster, who you rarely see but who constantly leaves coils of rusting, shed skin around his territory."
+        },
+        {
+            "name": "Quiet Ko",
+            "description": "An inscrutable shulu xie (p. 240) or other crystalline monster, whose frenzy you caught early and manage to this day."
+        }]    
+    },
+    {
+        "id": "fisher",
+        "name": "Fisher",
+        "description": "The Fisher’s Line live in seas, lakes, and rivers. By far the largest lineage in terms of both diversity and population, it includes the mysterious leviathans that surround the One Land’s coasts. An example from this lineage is the uopang, a regenerating crustacean who rips off its own claws to regrow them in different forms. Fisher-wilders stand on the precipice of the unknown, their mutations giving them access to distant and uncharted aquatic worlds.",
+        "example_monsters": ["Uopang"],
+        "traits": ["echolocation", "electric_shock", "swimming"],
+        "important_monsters": [
+            {
+                "name": "A Nu",
+                "description": "A lonely uopang (p. 252) or other shellfish monster, who you’ve kept secret and safe from hunters in a hidden inlet."
+            },
+            {
+                "name": "Longboy",
+                "description": "A playful varithan (p. 254) or other sinuous monster, who won’t eat anything unless you make a game of it."
+            },
+            {
+                "name": "Pichi-Chi",
+                "description": "An indecisive zaili (p. 260) or other pinniped monster, an orphan pup you raised after finding her stranded on the beach."
+            },
+            {
+                "name": "Big Cheeks",
+                "description": "A judgmental yudoubu (p. 258) or other piscine monster, who has a surprising ability to read the hidden intentions of strangers."
+            },
+            {
+                "name": "Melody",
+                "description": "A clever shakoi (p. 238) or other ocean-going monster, who brings you treasures and junk scavenged from ancient shipwrecks."
+            }]     
+    },
+    {
+        "id": "gardener",
+        "name": "Gardener",
+        "description": "The Gardener’s Line are grazing animals who manage the One Land’s flora. Most are fleet-footed, relying on speed to evade predation, but others are stubborn and fierce, using horns and tusks to defend themselves. An example from this lineage is the golyak, a nimble ruminant with splayed horns that leaves shadow images of itself behind when it runs, confusing its pursuers. Gardener-wilders sometimes use wilderfruits and mushi (p. 269) to maintain vegetarian diets, and even those who eat meat try to minimize the blood they shed.",
+        "traits": ["charge", "haste", "slow_metabolism"],
+        "important_monsters": [
+            {
+                "name": "White Heart",
+                "description": "An otherworldly golyak (p. 202) or other hoofed monster, who you’ve chased for years, just hoping to get a closer look."
+            },
+            {
+                "name": "Shu Shu",
+                "description": "An oblivious zimmudo (p. 264) or other clawed monster, whose bamboo grove you’ve saved many times from destruction without her even realizing."
+            },
+            {
+                "name": "Booger",
+                "description": "A confident jama-jama (p. 208) or other frugivorous monster, who has free reign to pillage the farmers’ fields so long as you keep paying for the damages."
+            },
+            {
+                "name": "Mhen Tan",
+                "description": "A placid cloudcollar (p. 196) or other long-necked monster, a therapy monster whose low song puts nervous hearts at ease."
+            },
+            {
+                "name": "Reaper",
+                "description": "A fussy ko-ketak (p. 214) or other bladed monster, who is particular about the placement of every toy and food item in its lair."
+            }]
+    },
+    {
+        "id": "roaster",
+        "name": "Roaster",
+        "description": "The Roaster’s Line play with fire. Some use it to hunt or defend themselves, while others need heat to gestate or breed. Despite the wide berth other monsters give them, they play a key role in many ecosystems. An example from this lineage is the flintknuckle, a shaggy ape which pounds its fists together to create sparks and ignite its greasy outer coat of hair. Roaster-wilders have a reputation for cooking indulgent food, prioritizing rich, fatty deliciousness over any considerations for health or restraint.",
+        "example_monsters": ["Flintknuckle"],
+        "traits": ["burning_body", "fire_breath", "threaten"],
+        "important_monsters": [
+          {
+            "name": "Red Cape",
+            "description": "A lethargic flintknuckle (p. 200) or other primate monster, a former circus act enjoying a quiet retirement."
+          },
+          {
+            "name": "Smokechaser",
+            "description": "A shrewd hutangwa (p. 206) or other fire-spreading monster, whose capacity for arson you’ve used for selfish means."
+          },
+          {
+            "name": "Cinder",
+            "description": "An independent hagsechu (p. 204) or other scuttling monster, who constantly gets into trouble when you’re not looking."
+          },
+          {
+            "name": "Chan Tuai Sao",
+            "description": "A voracious tsian xie (p. 250) or other floating monster, to whom the village sacrifices a freshly slaughtered wooda every full moon."
+          },
+          {
+            "name": "Little Ting",
+            "description": "A fearless sposu (p. 242) or other spined monster, who has claimed the best territory from older and larger monsters through sheer audacity."
+          }]
+    },
+    {
+        "id": "roundsman",
+        "name": "Roundsman",
+        "description": "The Roundsman’s Line are defined by change. Many can undergo a metamorphosis in response to environmental pressures, and others have highly adaptable forms of camouflage and mimicry. An example from this lineage is the zaswang, an arboreal cephalopod with a wily reputation, which has learned to forage leftovers in urban environments. Roundsman-wilders are also known as swing-wilders, helping wherever hands are short rather than specializing in a single discipline.",
+        "example_monsters": ["Zaswang"],
+        "traits": ["camouflage", "metamorphosis", "regeneration"],
+        "important_monsters": [
+          {
+            "name": "Shim",
+            "description": "A curious zaswang (p. 262) or other tentacled monster, who you always leave a new puzzle box to play with when you cross paths."
+          },
+          {
+            "name": "Giantkiller",
+            "description": "A hurt tatangwa (p. 248) or other color-changing monster, a survivor of trophy hunts whose trust you’ve earned with patience and effort."
+          },
+          {
+            "name": "Young Duke",
+            "description": "A pampered kala-kala (p. 212) or other vocal monster, who was raised in captivity and can yowl (or squawk, or roar, or shriek) for hours until he gets his way."
+          },
+          {
+            "name": "Gravedigger",
+            "description": "A frightening botabo (p. 192) or other urban monster, whose taste for human corpses gives it uncanny flashes of intelligence."
+          },
+          {
+            "name": "Zoujo",
+            "description": "A loyal rakuzar (p. 232) or other metamorphosing monster, the only creature who still recognized you after your first dramatic transformation."
+          }]
+      },
+      {
+        "id": "saucier",
+        "name": "Saucier",
+        "description": "The Saucier’s Line exude secretions, from the toxic to the medicinal to the recreational. This lineage contains the greenkings’ most esoteric experiments, such as oozes with no discernable organs and symbiotes that fuse with plants. An example from this lineage is the ziziwen, a gangly flying insect that copies mutations from other monsters by drinking their blood. Saucier-wilders have a reputation for being finicky and mercurial, seasoning everything to their inexplicable but unerring taste.",
+        "example_monsters": ["Ziziwen"],
+        "traits": ["disorienting", "slippery", "venom"],
+        "important_monsters": [
+          {
+            "name": "Ghan the Shadow",
+            "description": "An opportunistic ziziwen (p. 266) or other blood-sucking monster, who the locals believe is a harbinger of doom."
+          },
+          {
+            "name": "Sya Mai",
+            "description": "A particular onagung (p. 226) or other amorphous monster, who has a habit of suddenly deciding it hates its once-favorite food."
+          },
+          {
+            "name": "Halfoak",
+            "description": "A patient rootcrab (p. 234) or other plant monster, who took up residence in an inconvenient location and hasn’t budged since."
+          },
+          {
+            "name": "Fearnaught",
+            "description": "A timid satra (p. 236) or other bioluminescent monster, a pet you’ve sworn to one day free from an irresponsible magistrate’s ownership."
+          },
+          {
+            "name": "Mudbutt",
+            "description": "A belligerent mongpo (p. 222) or other slimy monster, who sneezes thick mucus on you every time he sees you. But in an affectionate way. Probably."
+          }]
+      },
+      {
+        "id": "stockkeeper",
+        "name": "Stockkeeper",
+        "description": "The Stockkeeper’s Line hoard their food, either in hidden stashes, fat stores on their bodies, or elaborate nests and lairs. Many live in colder climates, where they rely on their stores to survive harsh winters. An example from this lineage is the Asig icespider, a spindle-limbed arachnid which weaves tripwires of taut silk throughout its frozen forests. Stockkeeper-wilders use both mundane tools, like salt and fermentation, and extraordinary ones, like arksteel coolers, to make their supplies last, and their careful preparations provide the foundation for every hunt’s success.",
+        "example_monsters": ["Asig Icespider"],
+        "traits": ["hibernator", "nest_builder", "swallow_whole"],
+        "important_monsters": [
+          {
+            "name": "Lady Zida",
+            "description": "An aloof Asig icespider (p. 190) or other web-weaving monster, who cares little for you, but whose glittering tapestries always leave you awestruck."
+          },
+          {
+            "name": "Crumbs",
+            "description": "A lazy pondon (p. 230) or other burrowing monster, who needs hours of brushing every day to get the tangles out of its fur."
+          },
+          {
+            "name": "Bandit",
+            "description": "A rude syowari (p. 244) or other magpie-like monster, whose obsession with shiny objects has led to it stealing your arksteel tool many times over."
+          },
+          {
+            "name": "Dustwing",
+            "description": "A devoted lotangwa (p. 218) or other nesting monster, whose pair-bond with another female was so strong that you gave them an egg to raise together."
+          },
+          {
+            "name": "Happy Cho",
+            "description": "A gregarious tanpo (p. 246) or other blubbery monster, whose preference for long soaks has made it the mascot for the local bathhouse."
+          }]
+      }
+]

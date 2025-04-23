@@ -1,0 +1,33 @@
+[
+  {
+    "id": "clean_cut",
+    "name": "CLEAN CUT",
+    "tier": "beginner",
+    "tool": "cleaver",
+    "cost": "4 Actions",
+    "type": "STRIKE",
+    "description": "Make a MIGHTY STRIKE or PRECISE STRIKE against a creature within 1 Stride. If you succeed, deal [A] × 2 Part Damage. If you fail, you become Exposed."
+    
+  },
+  {
+    "id": "big_sword",
+    "name": "BIG F***ING SWORD",
+    "tier": "beginner",
+    "tool": "cleaver",
+    "cost": "3 Stamina",
+    "type": "utility",
+    "description": "A human of your choice becomes Frightened."
+    
+  },
+  {
+    "id": "medical_training",
+    "name": "MEDICAL TRAINING",
+    "tier": "beginner",
+    "tool": "cleaver",
+    "cost": "Passive",
+    "type": "support",
+    "description": "Once per Downtime, choose a packmate. They end 1 level of Wounded."
+    
+  }
+
+]

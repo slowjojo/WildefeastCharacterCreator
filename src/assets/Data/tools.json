@@ -1,0 +1,93 @@
+[
+    {
+      "id": "tool_cleaver",
+      "name": "Cleaver",
+      "primary_styles":["mighty","precise"],
+      "techniques": {
+        "starter":"clean_cut",
+        "beginner": ["big_fucking_sword", "medical_training", "waste_not"],
+        "intermediate": ["student_of_bones", "surgeons_mark", "without_fear_of_death"],
+        "advanced": ["bloodsoaked_beast", "the_inevitable_blade"],
+        "shared": ["i_can_take_it", "reindforced_tool", "solid_footing",
+                    "exact_portions", "fainted_traces", "weak_point"]
+                    },
+      "description": "A six-foot arksteel blade used to sever dangerous monster parts. More surgical than savage."
+      
+    },
+    {
+        "id": "tool_mitts",
+        "name": "Mitts",
+        "primary_styles": ["mighty", "swift"],
+        "techniques": {
+          "starter":"close_and_personal",
+          "beginner": ["armored_reach", "ive_got_you", "strong_grip_wide_hands"],
+          "intermediate": ["exhilarating_charge","hang_on_tight", "the_old_one_two"],
+          "advanced": ["500_blows_topple_the_heavens", "lend_your_strenght_to_my_fist"],
+          "shared": ["i_can_take_it", "reindforced_tool", "solid_footing",
+                      "hurtle_through", "lets_get_this_done", "rapid_combination"]
+                      },
+        "description": ""
+        
+      },
+      {
+        "id": "tool_pan",
+        "name": "Pan",
+        "primary_styles": ["mighty", "tricky"],
+        "techniques": {
+          "starter":"steel_shield",
+          "beginner": ["bouncing_throw","centering_stance", "mirror_surface"],
+          "intermediate": ["come_at_me", "generous_portions", "get_a_hold_of_yourself"],
+          "advanced": ["parable_of_the_one_armed_sage","the_greater_pain_is_to_see_you_suffer"],
+          "shared": ["i_can_take_it", "reindforced_tool", "solid_footing",
+                      "decoy_maneuver", "disguised_mutations", "spook"]
+                      },
+        "description": "The common folk like pan-wielding wilders best, as these wilders are legendary for the massive, communal meals they can sizzle in their tools. Monsters, on the other hand, are ambivalent, for the pan’s reflective surface has distracted and agitated many of them while the wielder’s packmates make their escape. On the trail, pans heat up well over a campfire, and during the hunt, arksteel pans can deflect fatal blows, with claws and fangs failing to even scratch their adamantine surfaces. The practice of throwing pans is a recent innovation, where pan-wielders toss their weapon like a discus and bounce it off a monster from a safe distance, but old-fashioned wilders still prefer a hearty whack over any new-fangled technique."
+        
+      },
+      {
+        "id": "tool_spit",
+        "name": "Spit",
+        "primary_styles": ["precise", "swift"],
+        "techniques": {
+          "starter":"flurry_of_motion",
+          "beginner": ["dining_etiquette", "needle_and_thread", "unencumbered"],
+          "intermediate": ["mixed_skewer","pole_vault", "pressure_point"],
+          "advanced": ["no_shadow_spear", "tell_me_who_built_the_road"],
+          "shared": ["hurtle_through", "lets_get_this_done", "rapid_combination",
+                      "exact_portions", "fainted_traces", "weak_point"]
+                      },
+        "description": "Spits are actually a family of tools, all of which have similar functions. The most common are little more than arksteel skewers, both ends tapering to fine points, but others bear closer resemblance to tridents or forks, with multiple prongs and a long handle. Of all the tools, spits are the most likely to bear elegant decorations or engravings. As for spit-wielders, they specialize in moving far and fast, whirling their tools like batons or stabbing them with pinpoint precision. The most experienced often affix thread, wire, or chain to one end of their tool, so they can grapple up to high surfaces or quickly pull their weapon back after a javelin-like throw."
+        
+      },
+      {
+        "id": "tool_torch",
+        "name": "Torch",
+        "primary_styles": ["precise", "tricky"],
+        "techniques": {
+          "starter":"line_of_fire",
+          "beginner": ["guiding_light", "preheat", "quick_ignition"],
+          "intermediate": ["comparable_mechanism", "flambe", "overwatch"],
+          "advanced": ["from_ashed_growing_seeds", "thermonuclear_arkfire_blast"],
+          "shared": ["exact_portions", "fainted_traces", "weak_point",
+                      "decoy_maneuver", "disguised_mutations", "spook"]
+                      },
+        "description": "The most enigmatic of the arksteel tools, the torch defies explanation. Torches appear in a variety of shapes and configurations, though each typically has a nozzle, canister, and trigger. A giant could operate one with a single hand, but most wilders attach straps, buckles, or extra handles just to carry them. They never require refueling, and Charter academicians claim the torch actually functions by opening a microscopic gateway to a distant but extreme heat source, like the heart of a star. Only with careful training can one master the controls for the blue blade of flame, and thus extend the fire’s reach or manipulate its shape. Torch-wielders who do become experts in ancient craftwork, for theirs is the only tool with a function more complex than its form."
+        
+      },
+      {
+        "id": "tool_twine",
+        "name": "twine",
+        "primary_styles": ["swift", "tricky"],
+        "techniques": {
+          "starter":"lasso_and_leash",
+          "beginner": ["field_repairs", "snare","whiplash"],
+          "intermediate": ["bountiful_basket", "entangling_string", "safety_harness"],
+          "advanced": ["principle_of_inconstant_form", "silver_chains_bind_the_world"],
+          "shared": ["hurtle_through", "lets_get_this_done", "rapid_combination",
+                     "decoy_maneuver", "disguised_mutations", "spook"]
+                      },
+        "description": "Arksteel twine is the most versatile tool. Woven into a basket, it can carry harvested or foraged ingredients, while woven into a cradle, it can carry injured or infant monsters. With a few knots, a wilder can make their twine into a snare, a lasso, a climbing rig, a net, or anything else that imagination and dexterity together can manage. And though it may seem like the most reticent of the tools to hurt another, twine has its uses during the hunt as well. Twine-wielders can wield their weapon like a whip, garrote, or even weaponized yoyo, and they can often restrain frenzied monsters so their packmates can deal the finishing blow."
+        
+      }
+  ]
+  
