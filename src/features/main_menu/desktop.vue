@@ -2,9 +2,8 @@
  <!-- top nav -->
 <div>
   <MajorBtn @click="goToWilderManagment">catalogue</MajorBtn>
+  <MajorBtn @click="goToCompendium">compendium</MajorBtn>
 </div>
-  <!-- compendium button -->
-  <!-- catalogue button -->
   <!-- compendium button -->
   <!-- content manager button -->
 
@@ -20,6 +19,9 @@ import MajorBtn from '../../UI/components/MajorBtn.vue';
 const router = useRouter()
  function goToWilderManagment() {
   router.push({ name: 'WilderManagement' })
+ }
+ function goToCompendium() {
+  router.push({ name: 'Compendium'})
  }
 </script>
 
