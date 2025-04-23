@@ -19,7 +19,7 @@ import MajorBtn from '../../UI/components/MajorBtn.vue';
 
 const router = useRouter()
  function goToWilderManagment() {
-  router.push({ name: 'WilderRoster' })
+  router.push({ name: 'WilderManagement' })
  }
 </script>
 

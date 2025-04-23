@@ -6,7 +6,7 @@
     "tool": "cleaver",
     "cost": "4 Actions",
     "type": "STRIKE",
-    "description": "Make a MIGHTY STRIKE or PRECISE STRIKE against a creature within 1 Stride. If you succeed, deal [A] × 2 Part Damage. If you fail, you become Exposed."
+    "description": "Make a MIGHTY STRIKE or PRECISE STRIKE against a creature within 1 Stride. If you succeed, deal [A] * 2 Part Damage. If you fail, you become Exposed."
     
   },
   {
@@ -28,6 +28,585 @@
     "type": "support",
     "description": "Once per Downtime, choose a packmate. They end 1 level of Wounded."
     
+  },{
+    "id": "waste_not",
+    "name": "WASTE NOT",
+    "tier": "beginner",
+    "tool": "cleaver",
+    "cost": "Passive",
+    "type": "feast",
+    "description": "After you finish The Feast, you gain 1 serving of this Ingredient: The Best Bit. Gain (+1) in any STYLE."
+  },
+  {
+    "id": "surgeons_mark",
+    "name": "SURGEON'S MARK",
+    "tier": "intermediate",
+    "tool": "cleaver",
+    "cost": "5 Stamina",
+    "type": "utility",
+    "description": "Choose a creature's PART. That PART loses twice as much Durability when it takes Part Damage. This effect ends when the PART breaks or you use this Technique again."
+  },
+  {
+    "id": "student_of_bones",
+    "name": "STUDENT OF BONES",
+    "tier": "intermediate",
+    "tool": "cleaver",
+    "cost": "Passive",
+    "type": "utility",
+    "description": "You gain Advantage when you Attack any monster your pack killed during a previous Journey."
+  },
+  {
+    "id": "without_fear_of_death",
+    "name": "WITHOUT FEAR OF DEATH",
+    "tier": "intermediate",
+    "tool": "cleaver",
+    "cost": "Passive",
+    "type": "utility",
+    "description": "You can spend Stamina while Wounded 2."
+  },
+  {
+    "id": "bloodsoaked_beast",
+    "name": "BLOODSOAKED BEAST",
+    "tier": "advanced",
+    "tool": "cleaver",
+    "cost": "Passive",
+    "type": "utility",
+    "description": "You can become Wounded 4. When you're Wounded 2 or more, you suffer the effects of the previous level instead."
+  },
+  {
+    "id": "inevitable_blade",
+    "name": "THE INEVITABLE BLADE",
+    "tier": "advanced",
+    "tool": "cleaver",
+    "cost": "10 Stamina",
+    "type": "STRIKE",
+    "description": "If you make a STRIKE, you gain 1 Success. You can't use this Technique if you go wild."
+  },
+  {
+    "id": "close_and_personal",
+    "name": "CLOSE AND PERSONAL",
+    "tier": "beginner",
+    "tool": "mitts",
+    "cost": "Passive",
+    "type": "strike",
+    "description": "You gain Advantage on STRIKES against creatures within 0 Strides of you."
+  },
+  {
+    "id": "armored_reach",
+    "name": "ARMORED REACH",
+    "tier": "beginner",
+    "tool": "mitts",
+    "cost": "Passive",
+    "type": "utility",
+    "description": "You take no Damage from Passive TRAITS (like BURNING BODY or TOUCH-ME-NOT)."
+  },
+  {
+    "id": "ive_got_you",
+    "name": "I'VE GOT YOU",
+    "tier": "beginner",
+    "tool": "mitts",
+    "cost": "2 Stamina",
+    "type": "utility",
+    "description": "Choose a Rehabilitating or Wounded creature within 0 Strides. You carry it. As long as you carry this creature, you can't Attack, and if it takes Damage, you take the Damage instead. You can put the creature down at any point. If the creature is a monster, this Technique costs 3 additional Stamina."
+  },
+  {
+    "id": "strong_grip_wide_hands",
+    "name": "STRONG GRIP, WIDE HANDS",
+    "tier": "beginner",
+    "tool": "mitts",
+    "cost": "2 Stamina",
+    "type": "utility",
+    "description": "Until the start of your next turn, you gain 1 level in one of the following Traits: CLIMBING, DIGGING, or SWIMMING."
+  },
+  {
+    "id": "exhilarating_charge",
+    "name": "EXHILARATING CHARGE",
+    "tier": "intermediate",
+    "tool": "mitts",
+    "cost": "Passive",
+    "type": "utility",
+    "description": "For each Stride you Move toward the Monster, you become Invigorated."
+  },
+  {
+    "id": "hang_on_tight",
+    "name": "HANG ON TIGHT",
+    "tier": "intermediate",
+    "tool": "mitts",
+    "cost": "Passive",
+    "type": "utility",
+    "description": "If you're within 0 Strides of a monster, it can't increase its distance from you. If it Moves, it pulls you with it unless you choose to let go."
+  },
+  {
+    "id": "the_old_one_two",
+    "name": "THE OLD ONE-TWO",
+    "tier": "intermediate",
+    "tool": "mitts",
+    "cost": "Passive",
+    "type": "strike",
+    "description": "If you hit a creature with both a SWIFT STRIKE and a MIGHTY STRIKE in the same turn, that creature becomes Stunned."
+  },
+  {
+    "id": "500_blows_topple_heavens",
+    "name": "500 BLOWS TOPPLE THE HEAVENS",
+    "tier": "advanced",
+    "tool": "mitts",
+    "cost": "1 Success on a SWIFT STRIKE",
+    "type": "strike",
+    "description": "You gain -1 SWIFT until the end of your turn. Then you may immediately Attack using the SWIFT Style again without spending any Actions."
+  },
+  {
+    "id": "lend_strength_to_my_fist",
+    "name": "LEND YOUR STRENGTH TO MY FIST",
+    "tier": "advanced",
+    "tool": "mitts",
+    "cost": "5 Stamina",
+    "type": "strike",
+    "description": "If you make a MIGHTY STRIKE, increase [A] by <H>. Your packmates may each also spend 5 Stamina. If they all do, then increase [A] by <H> again."
+  },{
+    "id": "steel_shield",
+    "name": "STEEL SHIELD",
+    "tier": "beginner",
+    "tool": "pan",
+    "cost": "Passive",
+    "type": "utility",
+    "description": "Your Pan's maximum Durability increases by 30."
+  },
+  {
+    "id": "bouncing_throw",
+    "name": "BOUNCING THROW",
+    "tier": "beginner",
+    "tool": "pan",
+    "cost": "Passive",
+    "type": "strike",
+    "description": "Your Pan gains “Range: 2 (SHOT). If you deal 10 or more Damage with a SHOT, your target becomes Stunned.”"
+  },
+  {
+    "id": "centering_stance",
+    "name": "CENTERING STANCE",
+    "tier": "beginner",
+    "tool": "pan",
+    "cost": "Passive",
+    "type": "utility",
+    "description": "When you restore Stamina, you may also end a level of any Condition except Wounded or Discordant."
+  },
+  {
+    "id": "mirror_surface",
+    "name": "MIRROR SURFACE",
+    "tier": "beginner",
+    "tool": "pan",
+    "cost": "Passive",
+    "type": "utility",
+    "description": "You can Taunt from any distance."
+  },
+  {
+    "id": "come_at_me",
+    "name": "COME AT ME!",
+    "tier": "intermediate",
+    "tool": "pan",
+    "cost": "2 Stamina",
+    "type": "utility",
+    "description": "If you Attack a creature and succeed, you can Taunt it without spending an Action."
+  },
+  {
+    "id": "generous_portions",
+    "name": "GENEROUS PORTIONS",
+    "tier": "intermediate",
+    "tool": "pan",
+    "cost": "Passive",
+    "type": "feast",
+    "description": "When your pack Camps, cooks a meal, and serves it fresh, you also make a Snack that restores an equal amount of Stamina but has no additional effect."
+  },
+  {
+    "id": "get_a_hold_of_yourself",
+    "name": "GET A HOLD OF YOURSELF!",
+    "tier": "intermediate",
+    "tool": "pan",
+    "cost": "2 Actions",
+    "type": "utility",
+    "description": "Deal 1 Damage to a packmate within 0 Strides. They end all levels of Confused, Fatigued, Frightened, and Stunned."
+  },
+  {
+    "id": "parable_of_the_one_armed_sage",
+    "name": "PARABLE OF THE ONE-ARMED SAGE",
+    "tier": "advanced",
+    "tool": "pan",
+    "cost": "Passive",
+    "type": "utility",
+    "description": "If any packmate restores Stamina, you restore an equal amount of Stamina."
+  },
+  {
+    "id": "greater_pain_is_to_see_you_suffer",
+    "name": "THE GREATER PAIN IS TO SEE YOU SUFFER",
+    "tier": "advanced",
+    "tool": "pan",
+    "cost": "Passive",
+    "type": "utility",
+    "description": "If you Taunt, you can Brace without spending any Actions."
+  },
+  {
+    "id": "flurry_of_motion",
+    "name": "FLURRY OF MOTION",
+    "tier": "beginner",
+    "tool": "spit",
+    "cost": "5 Stamina",
+    "type": "utility",
+    "description": "You gain an extra Action if you're on The Hunt."
+  },
+  {
+    "id": "dining_etiquette",
+    "name": "DINING ETIQUETTE",
+    "tier": "beginner",
+    "tool": "spit",
+    "cost": "3 Stamina",
+    "type": "utility",
+    "description": "Choose a human Community. The Guide tells you one action which will make them approve of you and one action which will make them disapprove of you."
+  },
+  {
+    "id": "needle_and_thread",
+    "name": "NEEDLE AND THREAD",
+    "tier": "beginner",
+    "tool": "spit",
+    "cost": "Passive",
+    "type": "utility",
+    "description": "Your Spit gains: “Range: 2 (SHOT). If you make a SHOT with this TOOL and succeed, you may pull yourself 1 Stride closer to your target.”"
+  },
+  {
+    "id": "unencumbered",
+    "name": "UNENCUMBERED",
+    "tier": "beginner",
+    "tool": "spit",
+    "cost": "3 Stamina",
+    "type": "utility",
+    "description": "You may reroll a TRAVERSAL."
+  },
+  {
+    "id": "pole_vault",
+    "name": "POLE VAULT",
+    "tier": "intermediate",
+    "tool": "spit",
+    "cost": "1 Stamina",
+    "type": "utility",
+    "description": "Until the start of your next turn, you gain 1 level in FLYING."
+  },
+  {
+    "id": "pressure_point",
+    "name": "PRESSURE POINT",
+    "tier": "intermediate",
+    "tool": "spit",
+    "cost": "5 Stamina",
+    "type": "utility",
+    "description": "If you deal Damage to a PART, the PART becomes temporarily broken until the end of the Monster's next turn."
+  },
+  {
+    "id": "mixed_skewer",
+    "name": "MIXED SKEWER",
+    "tier": "intermediate",
+    "tool": "spit",
+    "cost": "Passive",
+    "type": "feast",
+    "description": "When your pack Camps and cooks a meal, the meal can have an additional effect."
+  },
+  {
+    "id": "no_shadow_spear",
+    "name": "NO-SHADOW SPEAR",
+    "tier": "advanced",
+    "tool": "spit",
+    "cost": "Passive",
+    "type": "utility",
+    "description": "During the first round of The Hunt, you get a turn even if the Monster has the initiative, and you gain 3 Actions instead of 1."
+  },
+  {
+    "id": "tell_me_who_built_the_road",
+    "name": "TELL ME WHO BUILT THE ROAD",
+    "tier": "advanced",
+    "tool": "spit",
+    "cost": "4 Stamina",
+    "type": "utility",
+    "description": "Before an Event starts, the Guide generates an additional Event of the same type. Choose one Event out of those options as the path the pack follows, and ignore the rest."
+  },
+  {
+    "id": "line_of_fire",
+    "name": "LINE OF FIRE",
+    "tier": "beginner",
+    "tool": "torch",
+    "cost": "Passive",
+    "type": "utility",
+    "description": "Your Torch gains: “Range: 3 (SHOT).”"
+  },
+  {
+    "id": "guiding_light",
+    "name": "GUIDING LIGHT",
+    "tier": "beginner",
+    "tool": "torch",
+    "cost": "Passive",
+    "type": "utility",
+    "description": "If you make a TRAVERSAL and succeed, the next packmate to make a TRAVERSAL gains Advantage."
+  },
+  {
+    "id": "preheat",
+    "name": "PREHEAT",
+    "tier": "beginner",
+    "tool": "torch",
+    "cost": "3 Stamina",
+    "type": "utility",
+    "description": "Choose a packmate within 0 Strides. Until the end of the round, if the chosen packmate deals Part Damage, that PART also becomes Burned."
+  },
+  {
+    "id": "quick_ignition",
+    "name": "QUICK IGNITION",
+    "tier": "beginner",
+    "tool": "torch",
+    "cost": "Passive",
+    "type": "feast",
+    "description": "When your pack Camps and cooks a meal, you may cook an additional meal."
+  },
+  {
+    "id": "comparable_mechanism",
+    "name": "COMPARABLE MECHANISM",
+    "tier": "intermediate",
+    "tool": "torch",
+    "cost": "Passive",
+    "type": "utility",
+    "description": "You gain Advantage on Tests to study or operate arksteel artifacts. In addition, once per Downtime, choose a packmate. The chosen packmate can Train without spending an Action."
+  },
+  {
+    "id": "flambe",
+    "name": "FLAMBÉ",
+    "tier": "intermediate",
+    "tool": "torch",
+    "cost": "3 Actions",
+    "type": "utility",
+    "description": "Choose a creature within 3 Strides. The next time you deal Part Damage to that creature, each of its PARTS loses [A] Durability and becomes Burned."
+  },
+  {
+    "id": "overwatch",
+    "name": "OVERWATCH",
+    "tier": "intermediate",
+    "tool": "torch",
+    "cost": "2 Stamina",
+    "type": "utility",
+    "description": "Until the start of your next turn, the first time a creature Moves toward you, you may make a TRICKY SHOT against it, dealing [A] Part Damage if you succeed. You can't use this Technique if you're Exposed."
+  },
+  {
+    "id": "from_ashes_growing_seeds",
+    "name": "FROM ASHES, GROWING SEEDS",
+    "tier": "advanced",
+    "tool": "torch",
+    "cost": "Passive",
+    "type": "utility",
+    "description": "If any Community's Health reaches 0, the Guide starts a TN 20 Challenge only you can complete by Working on a Project during Downtime. If you complete the Challenge, you restore the Community to 1 Health."
+  },
+  {
+    "id": "thermonuclear_arkfire_blast",
+    "name": "THERMONUCLEAR ARKFIRE BLAST",
+    "tier": "advanced",
+    "tool": "torch",
+    "cost": "3 Actions",
+    "type": "strike",
+    "description": "Once per Journey, choose a creature. At the start of your next turn, that creature and each creature within 1 Stride of it takes 20 Damage, and each of their PARTS becomes Burned."
+  },
+  {
+    "id": "lasso_and_leash",
+    "name": "LASSO AND LEASH",
+    "tier": "beginner",
+    "tool": "twine",
+    "cost": "3 Stamina",
+    "type": "utility",
+    "description": "Either pull yourself 1 Stride closer to a creature or pull a packmate 1 Stride closer to you."
+  },
+  {
+    "id": "field_repairs",
+    "name": "FIELD REPAIRS",
+    "tier": "beginner",
+    "tool": "twine",
+    "cost": "2 Actions",
+    "type": "utility",
+    "description": "Choose a packmate within 0 Strides and make a SWIFT CRAFT. If you succeed, restore [A] Durability to the chosen packmate's TOOL."
+  },
+  {
+    "id": "snare",
+    "name": "SNARE",
+    "tier": "beginner",
+    "tool": "twine",
+    "cost": "2 Actions",
+    "type": "utility",
+    "description": "Make a TRICKY CRAFT. If you succeed, the next time a hostile creature Moves toward you, it instead takes [A] Part Damage and can't Move until the start of its next turn."
+  },
+  {
+    "id": "whiplash",
+    "name": "WHIPLASH",
+    "tier": "beginner",
+    "tool": "twine",
+    "cost": "Passive",
+    "type": "strike",
+    "description": "Your Twine gains: “Range: 2 (STRIKE).”"
+  },
+  {
+    "id": "bountiful_basket",
+    "name": "BOUNTIFUL BASKET",
+    "tier": "intermediate",
+    "tool": "twine",
+    "cost": "1 Stamina",
+    "type": "utility",
+    "description": "If you Forage and succeed, you may choose a different STYLE than the one you used. If you do, you harvest Ingredients corresponding to that STYLE."
+  },
+  {
+    "id": "entangling_string",
+    "name": "ENTANGLING STRING",
+    "tier": "intermediate",
+    "tool": "twine",
+    "cost": "3 Stamina",
+    "type": "utility",
+    "description": "If you Attack a creature and succeed, the creature gains Disadvantage the next time it Attacks."
+  },
+  {
+    "id": "safety_harness",
+    "name": "SAFETY HARNESS",
+    "tier": "intermediate",
+    "tool": "twine",
+    "cost": "Passive",
+    "type": "utility",
+    "description": "If you take Damage during The Trail, your Stamina can't go below 1."
+  },
+  {
+    "id": "principle_of_inconstant_form",
+    "name": "PRINCIPLE OF INCONSTANT FORM",
+    "tier": "advanced",
+    "tool": "twine",
+    "cost": "Variable",
+    "type": "utility",
+    "description": "Learn a Technique from any other TOOL."
+  },
+  {
+    "id": "silver_chains_bind_the_world",
+    "name": "SILVER CHAINS BIND THE WORLD",
+    "tier": "advanced",
+    "tool": "twine",
+    "cost": "5 Stamina",
+    "type": "utility",
+    "description": "If you Attack a creature and succeed, it becomes Caught by your TWINE. As long as the creature is Caught, you can't Attack. Additionally, at the start of each round, you must either spend 5 Stamina or end the Condition."
+  },
+  {
+    "id": "i_can_take_it",
+    "name": "I CAN TAKE IT",
+    "tier": "intermediate",
+    "tool": "shared",
+    "style": "mighty",
+    "cost": "Passive",
+    "type": "utility",
+    "description": "If you become the Monster's target, restore <H> Stamina."
+  },
+  {
+    "id": "reinforced_tool",
+    "name": "REINFORCED TOOL",
+    "tier": "intermediate",
+    "tool": "shared",
+    "style": "mighty",
+    "cost": "Passive",
+    "type": "utility",
+    "description": "Your TOOL's maximum Durability increases by 10."
+  },
+  {
+    "id": "solid_footing",
+    "name": "SOLID FOOTING",
+    "tier": "intermediate",
+    "tool": "shared",
+    "style": "mighty",
+    "cost": "1 Action",
+    "type": "utility",
+    "description": "Your turn ends. You gain Advantage on your next Test. If you Move before making a Test, you lose your Advantage."
+  },
+  {
+    "id": "hurtle_through",
+    "name": "HURTLE THROUGH",
+    "tier": "intermediate",
+    "tool": "shared",
+    "style": "swift",
+    "cost": "Variable",
+    "type": "strike",
+    "description": "Before you Attack, you may Move as many Strides as you like toward your target. After you Attack, Move an equal number of Strides away. Spend 1 Stamina for each Stride you Move this way."
+  },
+  {
+    "id": "lets_get_this_done",
+    "name": "LET'S GET THIS DONE",
+    "tier": "intermediate",
+    "tool": "shared",
+    "style": "swift",
+    "cost": "Passive",
+    "type": "utility",
+    "description": "Once per Downtime, you can Work on a Project without spending an Action."
+  },
+  {
+    "id": "rapid_combination",
+    "name": "RAPID COMBINATION",
+    "tier": "intermediate",
+    "tool": "shared",
+    "style": "swift",
+    "cost": "Passive",
+    "type": "strike",
+    "description": "You can Attack using the SWIFT Style multiple times during the same turn."
+  },
+  {
+    "id": "exact_portions",
+    "name": "EXACT PORTIONS",
+    "tier": "intermediate",
+    "tool": "shared",
+    "style": "precise",
+    "cost": "Passive",
+    "type": "feast",
+    "description": "When the pack Camps and cooks a meal, choose a packmate who gained enough Stamina to reach their max from that meal. Then make a Snack that restores Stamina equal to the extra Stamina they would've gone over — this Snack has no additional effect."
+  },
+  {
+    "id": "study_hard",
+    "name": "STUDY HARD",
+    "tier": "intermediate",
+    "tool": "shared",
+    "style": "precise",
+    "cost": "1 Action",
+    "type": "utility",
+    "description": "Until the start of your next turn, gain Advantage on any STYLE that uses the STUDY skill. You also gain 1 level of INSIGHT."
+  },
+  {
+    "id": "precision_tempo",
+    "name": "PRECISION TEMPO",
+    "tier": "intermediate",
+    "tool": "shared",
+    "style": "precise",
+    "cost": "2 Stamina",
+    "type": "utility",
+    "description": "If you make a Test using the PRECISE Style and succeed, reduce the cost of your next Technique by 1 Stamina (minimum 1)."
+  },
+  {
+    "id": "surprise_twist",
+    "name": "SURPRISE TWIST",
+    "tier": "intermediate",
+    "tool": "shared",
+    "style": "tricky",
+    "cost": "2 Stamina",
+    "type": "utility",
+    "description": "If you succeed on a TRICKY Style Test, you may change its outcome slightly (ask the Guide what's allowed)."
+  },
+  {
+    "id": "creative_leverage",
+    "name": "CREATIVE LEVERAGE",
+    "tier": "intermediate",
+    "tool": "shared",
+    "style": "tricky",
+    "cost": "Passive",
+    "type": "utility",
+    "description": "When you use a TOOL in an unconventional way and the Guide agrees it's creative or risky, you gain Advantage."
+  },
+  {
+    "id": "subtle_timing",
+    "name": "SUBTLE TIMING",
+    "tier": "intermediate",
+    "tool": "shared",
+    "style": "tricky",
+    "cost": "1 Action",
+    "type": "utility",
+    "description": "You may delay the effect of a Technique you use until the end of the round, or until a trigger you describe happens (as long as the Guide agrees it's fair)."
   }
+
+
 
 ]

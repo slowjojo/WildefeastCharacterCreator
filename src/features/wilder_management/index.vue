@@ -2,7 +2,7 @@
     <div>
       <div class="ma-3">
         <v-fade-transition leave-absolute>
-          wilder-management page
+        
           <router-view />
         </v-fade-transition>
       </div>
