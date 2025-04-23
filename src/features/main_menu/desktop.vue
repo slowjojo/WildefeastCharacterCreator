@@ -1,7 +1,7 @@
 <template>
  <!-- top nav -->
 <div>
-  <MajorBtn></MajorBtn>
+  <MajorBtn @click="goToWilderManagment">catalogue</MajorBtn>
 </div>
   <!-- compendium button -->
   <!-- catalogue button -->
@@ -14,9 +14,13 @@
 </template>
 
 <script setup lang="ts">
+import { useRouter } from 'vue-router';
 import MajorBtn from '../../UI/components/MajorBtn.vue';
 
-// nothing needed for now
+const router = useRouter()
+ function goToWilderManagment() {
+  router.push({ name: 'WilderRoster' })
+ }
 </script>
 
 <style>

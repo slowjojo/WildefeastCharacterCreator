@@ -1,21 +1,18 @@
-import { RouteConfig } from 'vue-router'
+// src/pages/wilder-management/routes.ts
 
-const routes: RouteConfig[] = [
+import type { RouteRecordRaw } from 'vue-router'
+
+const routes: RouteRecordRaw[] = [
   {
-    path: '',
-    component: require('./index.vue').default, // <- loads the layout above
+    path: '/wilder-management', // Give this route a full path!
+    component: () => import('./index.vue'), // The layout page
     children: [
       {
-        path: '',
-        name: 'wilder-roster',
-        component: require('./roster/index.vue').default,
+        path: '', // default sub-route for /wilder-management
+        name: 'wilder-management',
+        component: () => import('./roster/index.vue'), // The main roster
       },
-      // You can add more routes later:
-      // {
-      //   path: 'new',
-      //   name: 'create-wilder',
-      //   component: require('./new/CharacterBuilder.vue').default,
-      // }
+      
     ],
   },
 ]

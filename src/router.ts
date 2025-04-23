@@ -6,7 +6,13 @@ const routes: RouteRecordRaw[] = [
     path: '/',
     name: 'main-menu',
     component: MainMenu,
+  },
+  {
+    path: '/wilder-management',
+    name: 'WilderManagement',
+    component: () => import('@/features/wilder_management/index.vue')
   }
+
 ]
 
   const router = createRouter({
