@@ -1,5 +1,6 @@
 <template>
     <div>
+      <h1>wilder-management</h1>
       <div class="ma-3">
         <v-fade-transition leave-absolute>
         
