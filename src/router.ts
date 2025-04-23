@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router'
 import MainMenu from '@/features/main_menu/desktop.vue'
 import wilderManagementRoutes from '@/features/wilder_management/routes.ts'
+import compendiumRoutes from './features/compendium/routes'
 
 const routes: RouteRecordRaw[] = [
   {
@@ -8,7 +9,8 @@ const routes: RouteRecordRaw[] = [
     name: 'main-menu',
     component: MainMenu,
   },
-  ...wilderManagementRoutes // <-- use this instead of hardcoding /wilder-management
+  ...wilderManagementRoutes,
+  ...compendiumRoutes,
 ]
 
 const router = createRouter({
