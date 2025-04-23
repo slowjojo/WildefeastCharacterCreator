@@ -7,7 +7,7 @@ const routes: RouteRecordRaw[] = [
     children: [
       {
         path: '',
-        name: 'WilderRoster',
+        name: 'WilderManagement',
         component: () => import('./roster/index.vue')
       },
       {
