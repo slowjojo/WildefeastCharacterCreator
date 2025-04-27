@@ -1,6 +1,6 @@
 <template>
  <!-- top nav -->
-<div>
+ <div style="display: flex; flex-direction: column; gap: 0.5rem;">
   <MajorBtn @click="goToWilderManagment">catalogue</MajorBtn>
   <MajorBtn @click="goToCompendium">compendium</MajorBtn>
 </div>

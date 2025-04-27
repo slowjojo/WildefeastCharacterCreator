@@ -3,7 +3,7 @@
     <h1>Wilder Management</h1>
 
     <div class="ma-3">
-      <v-btn color="primary" @click="goToCreator">New</v-btn>
+      <button @click="goToCreator">New</button>
 
       <v-fade-transition leave-absolute>
         <router-view />
