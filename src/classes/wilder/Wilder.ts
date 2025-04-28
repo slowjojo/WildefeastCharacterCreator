@@ -1,11 +1,12 @@
 import type { iRankData } from "@/interfaces"
+import { ThreeCourseBackground } from "./backgrounds/threeCourseBackground"
 
 class WilderData
 {
     name: string
     pronouns: string
     tool: string
-    styles: number [string, string, string, string]
+    styles: [number, number, number, number]
     specialty: string
     traits: iRankData[]
     skills: iRankData[]
@@ -13,13 +14,16 @@ class WilderData
     maxStamina: number
     durability: number
     maxDurability: number
-    isBroken: boolean
-    background: //figure this out
+    get isBroken() {
+        return this.durability <= 0
+    }
+    dead: boolean 
+    conditions: iRankData[]
+    background: threeCourseBackground
     staple: string
     spice: string
     monsterouscAquaintance: string
     areAndStruggleToBe: [string, string]
-    //connection
 
 
 }
