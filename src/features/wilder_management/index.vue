@@ -1,33 +1,23 @@
+<!-- /wilder-management/index.vue -->
 <template>
-  <div>
+  <div class="wilder-management-page">
     <h1>Wilder Management</h1>
+    
 
-    <div class="ma-3">
-      <button @click="goToCreator">New</button>
-
-      <v-fade-transition leave-absolute>
-        <router-view />
-      </v-fade-transition>
-    </div>
+    <router-view /> <!-- Will show roster (later), or /new/... pages -->
+   
   </div>
 </template>
 
 <script setup lang="ts">
-import { useRouter } from 'vue-router'
-const router = useRouter()
-
-function goToCreator() {
-  router.push({ name: 'CreateWilder' })
-}
 </script>
 
 <style scoped>
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+.wilder-management-page {
+  padding: 2rem;
 }
-body {
-  overflow: hidden;
+button {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
 }
 </style>

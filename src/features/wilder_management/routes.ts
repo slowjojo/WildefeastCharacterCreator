@@ -1,22 +1,23 @@
-import type { RouteRecordRaw } from 'vue-router'
+import WilderManagementWrapper from './index.vue'
+import CharacterCreationWrapper from './new/index.vue'
+import NewRoutes from './new/routes'
 
-const routes: RouteRecordRaw[] = [
+const RosterPlaceholder = { template: '<div>Wilder Roster will go here</div>' }
+
+export default [
   {
     path: '/wilder-management',
-    component: () => import('./index.vue'),
+    component: WilderManagementWrapper,
     children: [
       {
         path: '',
-        name: 'WilderManagement',
-        component: () => import('./roster/index.vue')
+        component: RosterPlaceholder
       },
       {
         path: 'new',
-        name: 'CreateWilder',
-        component: () => import('./new/CharacterBuilder.vue')
+        component: CharacterCreationWrapper,
+        children: NewRoutes
       }
     ]
   }
 ]
-
-export default routes

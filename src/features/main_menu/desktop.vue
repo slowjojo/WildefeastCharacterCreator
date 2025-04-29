@@ -4,7 +4,6 @@
   <MajorBtn @click="goToWilderManagment">catalogue</MajorBtn>
   <MajorBtn @click="goToCompendium">compendium</MajorBtn>
 </div>
-  <!-- compendium button -->
   <!-- content manager button -->
 
   <!-- left side view -->
