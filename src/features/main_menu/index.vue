@@ -1,5 +1,6 @@
 <template>
  <!-- top nav -->
+  <h1>main menu</h1>
  <div style="display: flex; flex-direction: column; gap: 0.5rem;">
   <MajorBtn @click="goToWilderManagment">catalogue</MajorBtn>
   <MajorBtn @click="goToCompendium">compendium</MajorBtn>
@@ -17,7 +18,7 @@ import MajorBtn from '../../UI/components/MajorBtn.vue';
 
 const router = useRouter()
  function goToWilderManagment() {
-  router.push({ name: 'WilderManagement' })
+  router.push('/wilder-management')
  }
  function goToCompendium() {
   router.push({ name: 'Compendium'})

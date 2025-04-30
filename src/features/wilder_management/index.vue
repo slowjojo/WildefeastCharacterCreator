@@ -3,9 +3,8 @@
   <div class="wilder-management-page">
     <h1>Wilder Management</h1>
     
+    <router-view /> 
 
-    <router-view /> <!-- Will show roster (later), or /new/... pages -->
-   
   </div>
 </template>
 
@@ -13,11 +12,5 @@
 </script>
 
 <style scoped>
-.wilder-management-page {
-  padding: 2rem;
-}
-button {
-  margin-top: 1rem;
-  padding: 0.5rem 1rem;
-}
+
 </style>

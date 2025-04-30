@@ -1,8 +1,6 @@
 import WilderManagementWrapper from './index.vue'
 import CharacterCreationWrapper from './new/index.vue'
-import NewRoutes from './new/routes'
-
-const RosterPlaceholder = { template: '<div>Wilder Roster will go here</div>' }
+import Roster from './roster/index.vue'
 
 export default [
   {
@@ -11,12 +9,12 @@ export default [
     children: [
       {
         path: '',
-        component: RosterPlaceholder
+        name: 'Roster',
+        component: Roster
       },
       {
         path: 'new',
-        component: CharacterCreationWrapper,
-        children: NewRoutes
+        component: CharacterCreationWrapper
       }
     ]
   }
