@@ -1,15 +1,16 @@
 <template>
-  <v-app id="app">
-    <h1>app vue page</h1>
-    <router-view />
-  </v-app>
+  <div class="app">
+    <h1>app</h1>
+    <router-view/>
+  </div>
 </template>
 
-<script setup lang="ts">
-</script>
-
 <style>
-html {
-  scroll-behavior: smooth;
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Fill the entire viewport */
 }
+
+
 </style>

@@ -1,30 +1,55 @@
 <template>
- <!-- top nav -->
-  <h1>main menu</h1>
- <div style="display: flex; flex-direction: column; gap: 0.5rem;">
-  <MajorBtn @click="goToWilderManagment">catalogue</MajorBtn>
-  <MajorBtn @click="goToCompendium">compendium</MajorBtn>
-</div>
-  <!-- content manager button -->
+  <div class="main-container">
+    <!-- Left Side: Navigation -->
+    <div class="left-pane">
+      <h1>Main Menu</h1>
+      <div class="button-column">
+        <MajorBtn @click="goToWilderManagment">catalogue</MajorBtn>
+        <MajorBtn @click="goToCompendium">compendium</MajorBtn>
+      </div>
+    </div>
 
-  <!-- left side view -->
-
-<!-- bottom nav -->
+    <!-- Right Side: Content (currently empty, placeholder) -->
+    <div class="right-pane">
+    <h1>THIS IS WHERE SOMETHING ELSE WILL GO!</h1>
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">
 import { useRouter } from 'vue-router';
 import MajorBtn from '../../UI/components/MajorBtn.vue';
 
-const router = useRouter()
- function goToWilderManagment() {
-  router.push('/wilder-management')
- }
- function goToCompendium() {
-  router.push({ name: 'Compendium'})
- }
+const router = useRouter();
+
+function goToWilderManagment() {
+  router.push('/wilder-management');
+}
+function goToCompendium() {
+  router.push({ name: 'Compendium' });
+}
 </script>
 
-<style>
+<style scoped>
+.main-container {
+  display: flex;
+  height: 100vh; /* full screen height */
+}
 
+.left-pane {
+  flex: 40%; /* half the screen */
+}
+
+.right-pane {
+  flex: 60%; /* other half */
+  padding: 2rem;
+  background-color: #ffffff;
+}
+
+.button-column {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
 </style>

@@ -1,16 +1,15 @@
-<!-- /wilder-management/index.vue -->
 <template>
   <div class="wilder-management-page">
-    <h1>Wilder Management</h1>
-    
-    <router-view /> 
-
+    <h1>wilder-management-page</h1>
+    <router-view/>
   </div>
 </template>
 
-<script setup lang="ts">
-</script>
-
 <style scoped>
+.wilder-management-page {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
 
 </style>

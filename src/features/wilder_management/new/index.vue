@@ -1,15 +1,13 @@
-<!-- /wilder-management/new/index.vue -->
-<template>
-  <div class="character-creation-wrapper">
-    <h1>Create Your Wilder</h1>
-  </div>
+  <template>
+      <h1>Create Your Wilder</h1>
+       <input v-model="name" placeholder="Enter name" />
+      <div>your name is {{name}}</div>
+  </template>
 
-  <v-stepper :items="['Tool', 'Specialty', 'Backstory', 'Identity']"
-    <template v-slot=""
-  </v-stepper>
-</template>
+  <script setup lang="ts">
+  import { ref } from 'vue'
 
-<script setup lang="ts">
+ const name = ref('')
 </script>
 
 <style scoped>

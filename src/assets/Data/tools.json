@@ -1,6 +1,7 @@
 [
     {
       "id": "tool_cleaver",
+      "icon": "cleaver-knife.png",
       "name": "Cleaver",
       "primary_styles":["mighty","precise"],
       "techniques": {
@@ -14,6 +15,7 @@
     },
     {
         "id": "tool_mitts",
+        "icon": "oven-mitts.png",
         "name": "Mitts",
         "primary_styles": ["mighty", "swift"],
         "techniques": {
@@ -27,6 +29,7 @@
       },
       {
         "id": "tool_pan",
+        "icon": "frying-pan.png",
         "name": "Pan",
         "primary_styles": ["mighty", "tricky"],
         "techniques": {
@@ -40,6 +43,7 @@
       },
       {
         "id": "tool_spit",
+        "icon": "fork-in-diagonal.png",
         "name": "Spit",
         "primary_styles": ["precise", "swift"],
         "techniques": {
@@ -53,6 +57,7 @@
       },
       {
         "id": "tool_torch",
+        "icon": "welding-torch.png",
         "name": "Torch",
         "primary_styles": ["precise", "tricky"],
         "techniques": {
@@ -66,6 +71,7 @@
       },
       {
         "id": "tool_twine",
+        "icon": "intertwisted.png",
         "name": "twine",
         "primary_styles": ["swift", "tricky"],
         "techniques": {
