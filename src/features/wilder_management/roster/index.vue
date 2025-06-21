@@ -18,45 +18,56 @@
     </div>
 
     <div class="right-pane">
-      <h1 v-if="selectedWilder">this will display the WilderRosterSummary of {{ selectedWilder.name }} </h1>
+      <h1 v-if="selectedWilder">this will display the WilderRosterSummary of {{ selectedWilder?.name }}</h1>  
+        <v-btn
+    v-if="selectedWilder"
+    color="red"
+    @click="deleteSelectedWilder"
+    style="margin-top: 1rem"
+  >
+    Delete Wilder
+  </v-btn>
       <h1 v-else>Select a Wilder</h1>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { computed } from 'vue'
 import { useRouter } from 'vue-router'
 import OptionsArray from '@/UI/components/options-array/OptionsArray.vue'
 import WilderRosterButtons from './components/WilderRosterButtons.vue'
+import { useWilderStore } from '@/stores/wilderCatalogueStore'
 
 const router = useRouter()
+const wilderStore = useWilderStore()
+const wilders = computed(() => wilderStore.wilders)
+const selectedWilder = computed(() => wilderStore.selectedWilder)
 
-const selectedWilder = ref<any | null>(null)
+
+function selectWilder(wilder: any) {
+  wilderStore.selectedWilder = wilder
+}
 
 function goToCharacterCreator() {
   router.push('/wilder-management/new')
 }
 
-function selectWilder(wilder: any) {
-  selectedWilder.value = wilder
+function deleteSelectedWilder() {
+  if (
+    selectedWilder.value &&
+    confirm(`Are you sure you want to delete ${selectedWilder.value.name}?`)
+  ) {
+    wilderStore.removeWilder(selectedWilder.value.id)
+    wilderStore.selectedWilder = null
+  }
 }
 
-const wilders = ref([
-  { id: 1, name: 'Ashfang', tool: 'Cleaver', specialty: 'Butcher' },
-  { id: 2, name: 'Mistvale', tool: 'Twine', specialty: 'Gardener' },
-  { id: 3, name: 'Driftroot', tool: 'Pan', specialty: 'Stockkeeper' },
-  { id: 4, name: 'Ash', tool: 'Cleaver', specialty: 'Butcher' },
-  { id: 5, name: 'Misa', tool: 'Twine', specialty: 'Gardener' },
-  { id: 6, name: 'Dot', tool: 'Pan', specialty: 'Stockkeeper' },
-  { id: 7, name: 'fang', tool: 'Cleaver', specialty: 'Butcher' },
-  { id: 8, name: 'istvale', tool: 'Twine', specialty: 'Gardener' },
-  { id: 9, name: 'riftoot', tool: 'Pan', specialty: 'Stockkeeper' }
-])
 </script>
 
+
+
 <style scoped>
-/* Ensure top-level containers don't scroll past viewport */
 :global(html),
 :global(body),
 :global(#app) {

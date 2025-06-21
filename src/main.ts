@@ -5,10 +5,23 @@ import router from './router'
 import { createVuetify } from 'vuetify'
 import 'vuetify/styles'
 import '@mdi/font/css/materialdesignicons.css'
+import { createPinia } from 'pinia'
 
-const vuetify = createVuetify()
+import * as components from 'vuetify/components'
+import * as directives from 'vuetify/directives'
+
+const vuetify = createVuetify({
+  components,
+  directives,
+})
+
 const app = createApp(App)
+const pinia = createPinia()
 
+app.use(pinia)
 app.use(router)
 app.use(vuetify)
+
+import('./io/Startup')
+
 app.mount('#app')

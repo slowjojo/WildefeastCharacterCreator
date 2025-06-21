@@ -17,7 +17,7 @@
 <script setup lang="ts">
 defineProps<{
   wilders: {
-    id: number
+    id: string
     name: string
     tool: string
     specialty: string
