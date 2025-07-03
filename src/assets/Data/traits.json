@@ -1,0 +1,646 @@
+[
+  {
+    "name": "GRIT",
+    "level": 1,
+    "cost": "1 Success",
+    "description": "Increase [A] by 1.",
+    "id": "grit"
+  },
+  {
+    "name": "INSIGHT",
+    "level": 1,
+    "cost": "1 Success",
+    "description": "Establish a detail about the situation.",
+    "id": "insight"
+  },
+  {
+    "name": "AMBUSH PREDATOR",
+    "level": 1,
+    "cost": "Passive",
+    "description": "If you Attack while Hidden, you deal double Damage.",
+    "id": "ambush_predator"
+  },
+  {
+    "name": "APOSEMATIC",
+    "level": 1,
+    "cost": "2 Actions",
+    "description": "Make a DISPLAY, using any STYLE. You become Exposed, and a creature of your choice",
+    "id": "aposematic"
+  },
+  {
+    "name": "BIOLUMINESCENT",
+    "level": 1,
+    "cost": "1 TRICKY Success",
+    "description": "A creature of your choice becomes Confused.",
+    "id": "bioluminescent"
+  },
+  {
+    "name": "BIOLUMINESCENT",
+    "level": 2,
+    "cost": "1 TRICKY Success",
+    "description": "A creature of your choice becomes Confused 2.",
+    "id": "bioluminescent"
+  },
+  {
+    "name": "BIOLUMINESCENT",
+    "level": 3,
+    "cost": "1 TRICKY Success",
+    "description": "A creature of your choice becomes Confused 3.",
+    "id": "bioluminescent"
+  },
+  {
+    "name": "BLOOD SCENT",
+    "level": 1,
+    "cost": "Passive",
+    "description": "You gain Advantage on all Tests during the first round of The Hunt if the other side has a Wounded",
+    "id": "blood_scent"
+  },
+  {
+    "name": "BLOODSUCKER",
+    "level": 1,
+    "cost": "3 Actions",
+    "description": "Make a PRECISE STRIKE against a creature within 1 Stride. If you succeed, you gain a level",
+    "id": "bloodsucker"
+  },
+  {
+    "name": "BLUBBER",
+    "level": 1,
+    "cost": "Passive",
+    "description": "Your maximum Stamina increases by 10 but only during The Trail.",
+    "id": "blubber"
+  },
+  {
+    "name": "BLUBBER",
+    "level": 2,
+    "cost": "Passive",
+    "description": "Your maximum Stamina increases by 10.",
+    "id": "blubber"
+  },
+  {
+    "name": "BROOD PARASITE",
+    "level": 1,
+    "cost": "Passive",
+    "description": "When you Work on a Project, choose an NPC: The chosen NPC also makes one Test to",
+    "id": "brood_parasite"
+  },
+  {
+    "name": "BURNING BODY",
+    "level": 1,
+    "cost": "Passive",
+    "description": "At the start of each round, every creature of your choice within 0 Strides of you takes 2 Damage. In",
+    "id": "burning_body"
+  },
+  {
+    "name": "CAMOUFLAGE",
+    "level": 1,
+    "cost": "1 TRICKY Success",
+    "description": "You become Hidden.",
+    "id": "camouflage"
+  },
+  {
+    "name": "CHARGE",
+    "level": 1,
+    "cost": "1 Action",
+    "description": "Choose a creature within 3 Strides. You Move within 0 Strides of the creature, then deal Damage to",
+    "id": "charge"
+  },
+  {
+    "name": "CLIMBING",
+    "level": 1,
+    "cost": "Passive",
+    "description": "You can climb without Disadvantage.",
+    "id": "climbing"
+  },
+  {
+    "name": "CLIMBING",
+    "level": 2,
+    "cost": "Passive",
+    "description": "You can climb without Disadvantage. In addition, if you Move while climbing, you can Move up to",
+    "id": "climbing"
+  },
+  {
+    "name": "CLIMBING",
+    "level": 3,
+    "cost": "Passive",
+    "description": "You can climb without Disadvantage. In addition, if you Move while climbing, you can Move up to",
+    "id": "climbing"
+  },
+  {
+    "name": "CULTIVATOR",
+    "level": 1,
+    "cost": "Passive",
+    "description": "Double the effects gained from giving away your portion of The Feast.",
+    "id": "cultivator"
+  },
+  {
+    "name": "DIGGING",
+    "level": 1,
+    "cost": "Passive",
+    "description": "You can dig.",
+    "id": "digging"
+  },
+  {
+    "name": "DIGGING",
+    "level": 2,
+    "cost": "Passive",
+    "description": "You can dig. In addition, if you Move while digging, you can Move up to 2 Strides instead of 1.",
+    "id": "digging"
+  },
+  {
+    "name": "DIGGING",
+    "level": 3,
+    "cost": "Passive",
+    "description": "You can dig. In addition, if you Move while digging, you can Move up to 2 Strides instead of 1.",
+    "id": "digging"
+  },
+  {
+    "name": "DISORIENTING",
+    "level": 1,
+    "cost": "Passive",
+    "description": "Creatures who Attack you (whether they succeed or fail) become Confused.",
+    "id": "disorienting"
+  },
+  {
+    "name": "DIVE",
+    "level": 1,
+    "cost": "1 Action",
+    "description": "Move within 0 Strides of a creature in a Terrain below you. (Sky is above most Terrain, and Underground",
+    "id": "dive"
+  },
+  {
+    "name": "ECHOLOCATION",
+    "level": 1,
+    "cost": "1 Success on a CALL",
+    "description": "A creature of your choice becomes Exposed.",
+    "id": "echolocation"
+  },
+  {
+    "name": "ELECTRIC SHOCK",
+    "level": 1,
+    "cost": "2 Actions",
+    "description": "Make a SWIFT CALL. If you succeed, each creature within 1 Stride takes [A] Damage and",
+    "id": "electric_shock"
+  },
+  {
+    "name": "ELECTRORECEPTIVE",
+    "level": 1,
+    "cost": "Passive",
+    "description": "Hidden creatures don\u2019t gain Advantage if they Attack you.",
+    "id": "electroreceptive"
+  },
+  {
+    "name": "ENDURANCE PREDATOR",
+    "level": 1,
+    "cost": "1 MIGHTY or SWIFT Success",
+    "description": "A creature of your choice becomes Fatigued.",
+    "id": "endurance_predator"
+  },
+  {
+    "name": "ENERGY FEEDER",
+    "level": 1,
+    "cost": "Passive",
+    "description": "If you are Rehabilitating and spend Downtime near a leyline, you restore 10 Stamina. If you are",
+    "id": "energy_feeder"
+  },
+  {
+    "name": "EXPAND",
+    "level": 1,
+    "cost": "1 Action",
+    "description": "You become Expanded.",
+    "id": "expand"
+  },
+  {
+    "name": "FERMENTER",
+    "level": 1,
+    "cost": "Passive",
+    "description": "When you eat a meal, instead of restoring Stamina, you may gain levels of Invigorated equal to half the",
+    "id": "fermenter"
+  },
+  {
+    "name": "FIRE BREATH",
+    "level": 1,
+    "cost": "2 Actions",
+    "description": "Make a MIGHTY SHOT against a creature within 2 Strides. If you succeed, you deal [A] Part",
+    "id": "fire_breath"
+  },
+  {
+    "name": "FLASH",
+    "level": 1,
+    "cost": "2 Actions",
+    "description": "Make a SWIFT DISPLAY. If you succeed, a creature of your choice becomes Stunned and Confused [A].",
+    "id": "flash"
+  },
+  {
+    "name": "FLOATING",
+    "level": 1,
+    "cost": "Passive",
+    "description": "As long as you can fly, you may ignore the Area\u2019s Traits.",
+    "id": "floating"
+  },
+  {
+    "name": "FLYING",
+    "level": 1,
+    "cost": "Passive",
+    "description": "You can fly.",
+    "id": "flying"
+  },
+  {
+    "name": "FLYING",
+    "level": 2,
+    "cost": "Passive",
+    "description": "You can fly. In addition, if you Move while flying, you can Move up to 2 Strides instead of 1.",
+    "id": "flying"
+  },
+  {
+    "name": "FLYING",
+    "level": 3,
+    "cost": "Passive",
+    "description": "You can fly. In addition, if you Move while flying, you can Move up to 2 Strides instead of 1. Finally,",
+    "id": "flying"
+  },
+  {
+    "name": "GENERALIST DIET",
+    "level": 1,
+    "cost": "Passive",
+    "description": "When you eat a meal with an additional effect, you may ignore the effect and instead restore",
+    "id": "generalist_diet"
+  },
+  {
+    "name": "HASTE",
+    "level": 1,
+    "cost": "1 SWIFT Success",
+    "description": "You can Move without spending an Action.",
+    "id": "haste"
+  },
+  {
+    "name": "HEADBUTT",
+    "level": 1,
+    "cost": "1 Success",
+    "description": "After you Attack a creature, push it 1 Stride away from you. If the creature is climbing or flying, it",
+    "id": "headbutt"
+  },
+  {
+    "name": "HERD DEFENDER",
+    "level": 1,
+    "cost": "Passive",
+    "description": "If you Gather Up with a creature, you both may Brace without spending any Actions.",
+    "id": "herd_defender"
+  },
+  {
+    "name": "HIBERNATOR",
+    "level": 1,
+    "cost": "Passive",
+    "description": "Each level of Rested increases your maximum Stamina by 2 instead of 1.",
+    "id": "hibernator"
+  },
+  {
+    "name": "HUNGER",
+    "level": 1,
+    "cost": "1 Harmony",
+    "description": "Reroll your Action Die.",
+    "id": "hunger"
+  },
+  {
+    "name": "METAMORPHOSIS",
+    "level": 1,
+    "cost": "Passive",
+    "description": "During The Feast, you may permanently lose this TRAIT. If you do, choose two STYLES,",
+    "id": "metamorphosis"
+  },
+  {
+    "name": "MIGRATOR",
+    "level": 1,
+    "cost": "Passive",
+    "description": "You gain Advantage on all TRAVERSALS through Areas you\u2019ve entered before.",
+    "id": "migrator"
+  },
+  {
+    "name": "NATURAL ARMOR",
+    "level": 1,
+    "cost": "Passive",
+    "description": "You halve the Damage you take from MIGHTY STRIKES and MIGHTY SHOTS.",
+    "id": "natural_armor"
+  },
+  {
+    "name": "NATURAL REFLEXES",
+    "level": 1,
+    "cost": "Passive",
+    "description": "You halve the Damage you take from SWIFT STRIKES and SWIFT SHOTS.",
+    "id": "natural_reflexes"
+  },
+  {
+    "name": "NEST BUILDER",
+    "level": 1,
+    "cost": "Passive",
+    "description": "When the pack Camps, you and your packmates may keep all levels of one Condition of your choice.",
+    "id": "nest_builder"
+  },
+  {
+    "name": "PATIENCE",
+    "level": 1,
+    "cost": "Passive",
+    "description": "You can Prepare up to 3 times per turn.",
+    "id": "patience"
+  },
+  {
+    "name": "PARENTAL SACRIFICE",
+    "level": 1,
+    "cost": "Passive",
+    "description": "At the start of Downtime, instead of ending 1 Wounded, you may Work on a Project",
+    "id": "parental_sacrifice"
+  },
+  {
+    "name": "PHOTOSYNTHESIS",
+    "level": 1,
+    "cost": "3 Actions",
+    "description": "If you have access to Sky, restore your Stamina to its maximum.",
+    "id": "photosynthesis"
+  },
+  {
+    "name": "PLAYFUL",
+    "level": 1,
+    "cost": "1 Success",
+    "description": "Harmony increases by 1. You may increase Harmony beyond its maximum, but you can only use",
+    "id": "playful"
+  },
+  {
+    "name": "POLLINATOR",
+    "level": 1,
+    "cost": "1 Success on a SEARCH",
+    "description": "Harmony increases by 1.",
+    "id": "pollinator"
+  },
+  {
+    "name": "PURSUIT PREDATOR",
+    "level": 1,
+    "cost": "Passive",
+    "description": "If you Move toward a creature, you gain Advantage when you Attack it until the end of your turn.",
+    "id": "pursuit_predator"
+  },
+  {
+    "name": "REGENERATION",
+    "level": 1,
+    "cost": "1 Success",
+    "description": "Restore 1 Durability to any of your PARTS.",
+    "id": "regeneration"
+  },
+  {
+    "name": "REGENERATION",
+    "level": "2 TO 5",
+    "cost": "1 Success",
+    "description": "Restore 1 Durability to any of your PARTS for each level of this TRAIT you have.",
+    "id": "regeneration"
+  },
+  {
+    "name": "SCAVENGER",
+    "level": 1,
+    "cost": "Passive",
+    "description": "You can\u2019t become Poisoned from food. If you Forage (whether you succeed or fail), you also gain",
+    "id": "scavenger"
+  },
+  {
+    "name": "SEDATIVE",
+    "level": 1,
+    "cost": "1 Action",
+    "description": "Until the start of your next turn, all creatures must spend 1 extra Action to Attack.",
+    "id": "sedative"
+  },
+  {
+    "name": "SELECTIVE DIET",
+    "level": 1,
+    "cost": "Passive",
+    "description": "When you gain this TRAIT, name an Ingredient. You gain <H> servings of this Ingredient at the",
+    "id": "selective_diet"
+  },
+  {
+    "name": "SHOCK RESISTANT",
+    "level": 1,
+    "cost": "Passive",
+    "description": "You can\u2019t become Stunned.",
+    "id": "shock_resistant"
+  },
+  {
+    "name": "SLIPPERY",
+    "level": 1,
+    "cost": "Passive",
+    "description": "You can\u2019t become Caught.",
+    "id": "slippery"
+  },
+  {
+    "name": "SLOW DIGESTION",
+    "level": 1,
+    "cost": "Passive",
+    "description": "Meals with effects that last until your next meal instead last until the end of the Journey.",
+    "id": "slow_digestion"
+  },
+  {
+    "name": "SOCIAL GROOMING",
+    "level": 1,
+    "cost": "Passive",
+    "description": "If you help a packmate with an ASSURANCE, CALL, or DISPLAY and they succeed, Harmony",
+    "id": "social_grooming"
+  },
+  {
+    "name": "SOCIAL PREDATOR",
+    "level": 1,
+    "cost": "Passive",
+    "description": "If you Gather Up with a creature, that creature gains Advantage the next time it Attacks.",
+    "id": "social_predator"
+  },
+  {
+    "name": "KEEN SENSES",
+    "level": 1,
+    "cost": "1 PRECISE Success",
+    "description": "A creature of your choice becomes Exposed.",
+    "id": "keen_senses"
+  },
+  {
+    "name": "INDEFATIGABLE",
+    "level": 1,
+    "cost": "1 MIGHTY Success",
+    "description": "End <H> Fatigued and restore <H> Stamina.",
+    "id": "indefatigable"
+  },
+  {
+    "name": "INSTINCTUAL AIM",
+    "level": 1,
+    "cost": "1 Success on a SHOT",
+    "description": "The creature hit by your SHOT becomes Stunned.",
+    "id": "instinctual_aim"
+  },
+  {
+    "name": "SONIC BLAST",
+    "level": 1,
+    "cost": "Passive",
+    "description": "When you Attack, you may make a CALL instead of a SHOT or STRIKE.",
+    "id": "sonic_blast"
+  },
+  {
+    "name": "STASIS",
+    "level": 1,
+    "cost": "Passive",
+    "description": "If you\u2019re about to die, you enter stasis. Your pack must Work on a Project during Downtime to revive you,",
+    "id": "stasis"
+  },
+  {
+    "name": "STURDY",
+    "level": 1,
+    "cost": "Passive",
+    "description": "Nothing can push or pull you unless you allow it or unless you\u2019re Caught.",
+    "id": "sturdy"
+  },
+  {
+    "name": "SWAGGER",
+    "level": 1,
+    "cost": "2 Actions",
+    "description": "Make a MIGHTY DISPLAY. If you succeed, you and all creatures of your choice restore [A]",
+    "id": "swagger"
+  },
+  {
+    "name": "SWALLOW WHOLE",
+    "level": 1,
+    "cost": "1 Action",
+    "description": "Eat any number of Ingredients to restore an equal amount of Stamina. You don\u2019t gain any",
+    "id": "swallow_whole"
+  },
+  {
+    "name": "SWARMING",
+    "level": 1,
+    "cost": "Passive",
+    "description": "If you help a creature who also has this TRAIT, you both restore <H> Stamina.",
+    "id": "swarming"
+  },
+  {
+    "name": "SWIMMING",
+    "level": 1,
+    "cost": "Passive",
+    "description": "You can swim without Disadvantage.",
+    "id": "swimming"
+  },
+  {
+    "name": "SWIMMING",
+    "level": 2,
+    "cost": "Passive",
+    "description": "You can swim without Disadvantage. In addition, if you Move while swimming, you can Move up",
+    "id": "swimming"
+  },
+  {
+    "name": "SWIMMING",
+    "level": 3,
+    "cost": "Passive",
+    "description": "You can swim without Disadvantage. In addition, if you Move while swimming, you can Move up",
+    "id": "swimming"
+  },
+  {
+    "name": "TEACHER",
+    "level": 1,
+    "cost": "1 PRECISE Success",
+    "description": "Until the end of the round, your packmates gain Advantage if they make a Test using the",
+    "id": "teacher"
+  },
+  {
+    "name": "TERRITORIAL",
+    "level": 1,
+    "cost": "Passive",
+    "description": "You gain Advantage on all Tests against intruders within your Den.",
+    "id": "territorial"
+  },
+  {
+    "name": "THANATOSIS",
+    "level": 1,
+    "cost": "Passive",
+    "description": "If you\u2019re Wounded 3 and staying down, at the end of each round, you may instead push yourself.",
+    "id": "thanatosis"
+  },
+  {
+    "name": "THIEF",
+    "level": 1,
+    "cost": "1 TRICKY Success",
+    "description": "Take an Ingredient, Snack, or Caught creature from a creature within 1 Stride. (You choose if",
+    "id": "thief"
+  },
+  {
+    "name": "THREATEN",
+    "level": 1,
+    "cost": "1 MIGHTY Success",
+    "description": "A creature of your choice becomes Frightened.",
+    "id": "threaten"
+  },
+  {
+    "name": "THREATEN",
+    "level": 2,
+    "cost": "1 MIGHTY Success",
+    "description": "All creatures of your choice become Frightened.",
+    "id": "threaten"
+  },
+  {
+    "name": "TOUCH-ME-NOT",
+    "level": 1,
+    "cost": "Passive",
+    "description": "If a creature makes a GRAB or STRIKE against you, deal 1 Damage to it.",
+    "id": "touch_me_not"
+  },
+  {
+    "name": "TOUCH-ME-NOT",
+    "level": "2 TO 5",
+    "cost": "Passive",
+    "description": "If a creature makes a GRAB or STRIKE against you, deal 1 Damage to it for each level",
+    "id": "touch_me_not"
+  },
+  {
+    "name": "UNFLAPPABLE",
+    "level": 1,
+    "cost": "Passive",
+    "description": "You can\u2019t become Confused.",
+    "id": "unflappable"
+  },
+  {
+    "name": "VENOM",
+    "level": 1,
+    "cost": "1 Success on a SHOT or STRIKE",
+    "description": "The creature hit by your SHOT or STRIKE becomes Poisoned.",
+    "id": "venom"
+  },
+  {
+    "name": "VENOM",
+    "level": 2,
+    "cost": "1 Success on a SHOT or STRIKE",
+    "description": "The creature hit by your SHOT or STRIKE becomes Poisoned 2.",
+    "id": "venom"
+  },
+  {
+    "name": "VENOM",
+    "level": 3,
+    "cost": "1 Success on a SHOT or STRIKE",
+    "description": "The creature hit by your SHOT or STRIKE becomes Poisoned 3.",
+    "id": "venom"
+  },
+  {
+    "name": "VOCAL MIMICRY",
+    "level": 1,
+    "cost": "2 Actions",
+    "description": "Make a TRICKY CALL with Disadvantage. If you succeed, choose one of the following",
+    "id": "vocal_mimicry"
+  },
+  {
+    "name": "WALLOW",
+    "level": 1,
+    "cost": "Passive",
+    "description": "When you Camp, you may restore a PART to its maximum Durability.",
+    "id": "wallow"
+  },
+  {
+    "name": "WEBSPINNER",
+    "level": 1,
+    "cost": "2 Actions",
+    "description": "Make a TRICKY CRAFT. If you succeed, the next time a hostile creature Moves toward you, it",
+    "id": "webspinner"
+  },
+  {
+    "name": "WITHDRAW",
+    "level": 1,
+    "cost": "1 MIGHTY or PRECISE Success",
+    "description": "You may Brace without spending any Actions, but you cannot Move until",
+    "id": "withdraw"
+  }
+]
