@@ -1,6 +1,5 @@
 <template>
   <div class="wilder-management-page">
-    <h1>wilder-management-page</h1>
     <router-view/>
   </div>
 </template>

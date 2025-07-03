@@ -1,32 +1,39 @@
 <template>
   <div class="wilder-roster-cards">
     <v-card
-  v-for="wilder in wilders"
-  :key="wilder.id"
-  class="wilder-card"
-  @click="$emit('select', wilder)"
->
-  <div class="card-text">
-    <v-card-title>{{ wilder.name }}</v-card-title>
-    <v-card-subtitle>{{ wilder.tool }} – {{ wilder.specialty }}</v-card-subtitle>
-  </div>
-</v-card>
+      v-for="wilder in wilders"
+      :key="wilder.id"
+      class="wilder-card"
+      @click="$emit('select', wilder.id)"
+    >
+      <div class="card-text">
+        <v-card-title>{{ wilder.name }}</v-card-title>
+        <v-card-subtitle>
+          {{ getToolName(wilder.tool) }} – {{ wilder.specialty }}
+        </v-card-subtitle>
+      </div>
+    </v-card>
   </div>
 </template>
 
 <script setup lang="ts">
-defineProps<{
+import type { ToolData } from '@/classes/wilder/Tool'
+
+const props = defineProps<{
   wilders: {
     id: string
     name: string
     tool: string
     specialty: string
   }[]
+  tools: ToolData[]
 }>()
 
-defineEmits<{
-  (e: 'select', wilder: any): void
-}>()
+
+function getToolName(toolId: string): string {
+  const tool = props.tools.find(t => t.id === toolId)
+  return tool ? tool.name : toolId
+}
 </script>
 
 <style scoped>

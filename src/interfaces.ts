@@ -1,9 +1,8 @@
-interface iRankData{
-    id: string
-    rank: number
-    custom?: boolean
-}
+    interface iRankData{
+        id: string
+        rank: number
+    }
 
-export type {
-    iRankData
-}
+    export type {
+        iRankData
+    }

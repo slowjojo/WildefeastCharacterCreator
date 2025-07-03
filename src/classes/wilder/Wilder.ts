@@ -1,4 +1,4 @@
-import type { iRankData } from "@/interfaces"
+import type { iRankData } from "@/interfaces";
 
 export class WilderData {
   id: string;
@@ -44,55 +44,56 @@ export class WilderData {
     this.completed = false;
     this.createdAt = Date.now();
   }
-   static Deserialize(obj: Partial<WilderData>): WilderData {
-    const data = new WilderData();
 
-    data.id = obj.id ?? data.id;
-    data.name = obj.name ?? "";
-    data.pronouns = obj.pronouns ?? "";
-    data.tool = obj.tool ?? "";
-    data.styles = obj.styles ?? [0, 0, 0, 0];
-    data.specialty = obj.specialty ?? "";
-    data.traits = obj.traits ?? [];
-    data.skills = obj.skills ?? [];
-    data.stamina = obj.stamina ?? 0;
-    data.maxStamina = obj.maxStamina ?? 0;
-    data.durability = obj.durability ?? 0;
-    data.maxDurability = obj.maxDurability ?? 0;
-    data.dead = obj.dead ?? false;
-    data.conditions = obj.conditions ?? [];
-    data.staple = obj.staple ?? "";
-    data.spice = obj.spice ?? "";
-    data.monsterouscAquaintance = obj.monsterouscAquaintance ?? "";
-    data.areAndStruggleToBe = obj.areAndStruggleToBe ?? ["", ""];
-    data.completed = obj.completed ?? false;
-    data.createdAt = obj.createdAt ?? data.createdAt;
+ toJSON() {
+  return {
+    id: this.id,
+    name: this.name,
+    pronouns: this.pronouns,
+    tool: this.tool,
+    styles: [...this.styles], // clone reactive array
+    specialty: this.specialty,
+    traits: this.traits.map(t => ({ ...t })), // clone each trait
+    skills: this.skills.map(s => ({ ...s })), // clone each skill
+    stamina: this.stamina,
+    maxStamina: this.maxStamina,
+    durability: this.durability,
+    maxDurability: this.maxDurability,
+    dead: this.dead,
+    conditions: this.conditions.map(c => ({ ...c })), // clone each condition
+    staple: this.staple,
+    spice: this.spice,
+    monsterouscAquaintance: this.monsterouscAquaintance,
+    areAndStruggleToBe: [...this.areAndStruggleToBe], // clone reactive array
+    completed: this.completed,
+    createdAt: this.createdAt,
+  };
+}
 
-    return data;
-  }
+  static fromJSON(data: Partial<WilderData>): WilderData {
+    const w = new WilderData();
 
-  Serialize(): object {
-    return {
-      id: this.id,
-      name: this.name,
-      pronouns: this.pronouns,
-      tool: this.tool,
-      styles: this.styles,
-      specialty: this.specialty,
-      traits: this.traits,
-      skills: this.skills,
-      stamina: this.stamina,
-      maxStamina: this.maxStamina,
-      durability: this.durability,
-      maxDurability: this.maxDurability,
-      dead: this.dead,
-      conditions: this.conditions,
-      staple: this.staple,
-      spice: this.spice,
-      monsterouscAquaintance: this.monsterouscAquaintance,
-      areAndStruggleToBe: this.areAndStruggleToBe,
-      compleated: this.completed,
-      createdAt: this.createdAt,
-    };
+    w.id = data.id ?? w.id;
+    w.name = data.name ?? "";
+    w.pronouns = data.pronouns ?? "";
+    w.tool = data.tool ?? "";
+    w.styles = data.styles ?? [0, 0, 0, 0];
+    w.specialty = data.specialty ?? "";
+    w.traits = data.traits ?? [];
+    w.skills = data.skills ?? [];
+    w.stamina = data.stamina ?? 0;
+    w.maxStamina = data.maxStamina ?? 0;
+    w.durability = data.durability ?? 0;
+    w.maxDurability = data.maxDurability ?? 0;
+    w.dead = data.dead ?? false;
+    w.conditions = data.conditions ?? [];
+    w.staple = data.staple ?? "";
+    w.spice = data.spice ?? "";
+    w.monsterouscAquaintance = data.monsterouscAquaintance ?? "";
+    w.areAndStruggleToBe = data.areAndStruggleToBe ?? ["", ""];
+    w.completed = data.completed ?? false;
+    w.createdAt = data.createdAt ?? Date.now();
+
+    return w;
   }
 }

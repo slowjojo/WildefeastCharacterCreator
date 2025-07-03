@@ -2,7 +2,6 @@
   <div class="main-container">
     <!-- Left Side: Navigation -->
     <div class="left-pane">
-      <h1>Main Menu</h1>
       <div class="button-column">
         <MajorBtn @click="goToWilderManagment">catalogue</MajorBtn>
         <MajorBtn @click="goToCompendium">compendium</MajorBtn>

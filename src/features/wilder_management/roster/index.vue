@@ -1,128 +1,138 @@
-<template>
-  <div class="main-container">
-    <div class="left-pane">
-      <div class="options-container">
-        <OptionsArray>
-          <WilderRosterButtons
-            :wilders="wilders"
-            @select="selectWilder"
-          />
-        </OptionsArray>
+  <template>
+    <div class="main-container">
+      <!-- Left Panel -->
+      <div class="left-pane">
+        <div class="options-container">
+          <OptionsArray>
+            <WilderRosterButtons
+            :wilders="wilders" 
+            :tools="tools"
+             @select="selectWilder"
+            />
+          </OptionsArray>
+        </div>
+
+        <div class="button-container">
+          <v-btn class="newwilderbutton" @click="goToCharacterCreator" block>
+            New Wilder
+          </v-btn>
+        </div>
       </div>
 
-      <div class="button-container">
-        <v-btn class="newwilderbutton" @click="goToCharacterCreator" block color="white" text>
-          New Wilder
-        </v-btn>
+      <!-- Right Panel -->
+      <div class="right-pane">
+        <div v-if="selectedWilder">
+          <h2>{{ selectedWilder.name }}</h2>
+           <p><strong>Tool:</strong> {{ getToolName(selectedWilder.tool) }}</p>  
+          <p><strong>Specialty:</strong> {{ selectedWilder.specialty }}</p>
+          <v-btn color="red" @click="deleteSelectedWilder" style="margin-top: 1rem">
+            Delete Wilder
+          </v-btn>
+        </div>
+        <div v-else>
+          <h2>Select a Wilder</h2>
+        </div>
       </div>
     </div>
+  </template>
 
-    <div class="right-pane">
-      <h1 v-if="selectedWilder">this will display the WilderRosterSummary of {{ selectedWilder?.name }}</h1>  
-        <v-btn
-    v-if="selectedWilder"
-    color="red"
-    @click="deleteSelectedWilder"
-    style="margin-top: 1rem"
-  >
-    Delete Wilder
-  </v-btn>
-      <h1 v-else>Select a Wilder</h1>
-    </div>
-  </div>
-</template>
+  <script setup lang="ts">
+  import { useRouter } from 'vue-router'
+  import { onMounted } from 'vue'
+  import OptionsArray from '@/UI/components/options-array/OptionsArray.vue'
+  import WilderRosterButtons from './components/WilderRosterButtons.vue'
+  import { useWilders } from '@/stores/useWilders'
+  import { useTools } from '@/stores/useTools'
 
-<script setup lang="ts">
-import { computed } from 'vue'
-import { useRouter } from 'vue-router'
-import OptionsArray from '@/UI/components/options-array/OptionsArray.vue'
-import WilderRosterButtons from './components/WilderRosterButtons.vue'
-import { useWilderStore } from '@/stores/wilderCatalogueStore'
+  const router = useRouter()
 
-const router = useRouter()
-const wilderStore = useWilderStore()
-const wilders = computed(() => wilderStore.wilders)
-const selectedWilder = computed(() => wilderStore.selectedWilder)
+  const { tools } = useTools()
 
+  const {
+    wilders,
+    selectedWilder,
+    createWilder,
+    selectWilder,
+    deleteWilder,
+    loadWilders
+  } = useWilders()
 
-function selectWilder(wilder: any) {
-  wilderStore.selectedWilder = wilder
+  onMounted(async () => {
+    await loadWilders()
+    console.log('Loaded wilders:', wilders.value)
+  })
+
+  function getToolName(id: string): string {
+  const tool = tools.find(t => t.id === id)
+  return tool ? tool.name : id
 }
 
-function goToCharacterCreator() {
-  router.push('/wilder-management/new')
-}
-
-function deleteSelectedWilder() {
-  if (
-    selectedWilder.value &&
-    confirm(`Are you sure you want to delete ${selectedWilder.value.name}?`)
-  ) {
-    wilderStore.removeWilder(selectedWilder.value.id)
-    wilderStore.selectedWilder = null
+  function goToCharacterCreator() {
+    const newWilder = createWilder()
+    selectWilder(newWilder.id)
+    router.push('/wilder-management/new')
   }
-}
 
-</script>
+  function deleteSelectedWilder() {
+    if (
+      selectedWilder.value &&
+      confirm(`Are you sure you want to delete ${selectedWilder.value.name}?`)
+    ) {
+      deleteWilder()
+    }
+  }
+  </script>
 
+  <style scoped>
+  :global(html),
+  :global(body),
+  :global(#app) {
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
 
-
-<style scoped>
-:global(html),
-:global(body),
-:global(#app) {
-  height: 100vh;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-}
-
-.main-container {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  height: 100%;
-  overflow: hidden;
-}
+  .main-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    height: 100%;
+    overflow: hidden;
+  }
 
 .left-pane {
   display: flex;
   flex-direction: column;
-  height: 100%;
-  background-color: aqua;
-  padding: 1rem;
+  height: 100vh;
+  background-color: #f9f9f9;
   box-sizing: border-box;
-  overflow: hidden;
+  border-right: 2px solid black;
+}
+.options-container {
+  flex-basis: 80%;
+  min-height: 0;
+  overflow-y: auto;
 }
 
-/* New wrapper to restrict OptionsArray scroll area */
-.options-container {
-  flex: 1;
-  margin-bottom: 0.5rem;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-}
 
 .button-container {
-  flex-shrink: 0;
-  padding: 0;
-  background-color: brown;
+  flex-basis: 20%;
   display: flex;
   justify-content: center;
+  align-items: center;
+  width: 60%;
+  margin: 0 auto;
 }
 
 .newwilderbutton {
-  cursor: pointer;
-  border: 2px solid black;
-  transition: transform 0.1s ease, box-shadow 0.1s ease;
-  padding: 0.75rem;
-  width: 100%;
-  background-color: brown;
-  color: white;
-  text-align: center;
+  width: 60%;
+  max-width: 200px;
+  margin: 0 auto;
+  display: block;
 }
 
-.right-pane {
-  padding: 1rem;
-}
-</style>
+  .right-pane {
+    padding: 2rem;
+    overflow-y: auto;
+  }
+  </style>

@@ -1,4 +1,7 @@
-import { useWilderStore } from '@/stores/wilderCatalogueStore'
+// src/Startup.ts
+import { useWilders } from "@/stores/useWilders"
 
-const store = useWilderStore()
-store.loadWildersFromStorage()
+export async function startupApp() {
+  const store = useWilders()
+  await store.loadWilders()
+}
