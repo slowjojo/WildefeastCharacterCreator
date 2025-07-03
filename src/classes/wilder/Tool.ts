@@ -1,4 +1,4 @@
-export class ToolData {
+export class toolData {
     id: string;
     icon: string;
     name: string;

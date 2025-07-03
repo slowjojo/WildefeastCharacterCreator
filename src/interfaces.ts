@@ -3,6 +3,13 @@
         rank: number
     }
 
+    interface nameAndDescription{
+        name: string
+        description: string
+    }
+    
+
     export type {
-        iRankData
+        iRankData,
+        nameAndDescription
     }

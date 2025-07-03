@@ -1,7 +1,9 @@
 import { WilderData } from "./classes/wilder/Wilder";
-import { ToolData } from "./classes/wilder/Tool";
+import { toolData } from "./classes/wilder/Tool";
+import { specialtyData } from "./classes/wilder/specialty";
 
 export {
     WilderData,
-    ToolData
+    toolData,
+    specialtyData
 }
