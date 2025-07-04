@@ -1,0 +1,288 @@
+{
+    "upringings":[
+       { "number": 1,
+        "description": "Wild sweetleaves, foraged as you played in the brush. Your parents told you never to take another until you finished the first, lest you angered the woods with your greed.",
+        "bonus":"search"
+    },
+       { "number": 2,
+        "description": "Sun-dried, salted fish, clamped between your teeth as you scrambled up the ropes. Your captain didn’t like fires on the ship, so you made do with preserves.",
+        "bonus":"grab"
+    },
+       { "number": 3,
+        "description": "Cheese and a crust of bread, eaten as your herd of wooda bleated around you. On nice days, you’d chew as slow as possible, enjoying the breeze, the sun, and the soft grass.",
+        "bonus":"traversal"
+    },
+       { "number": 4,
+        "description": "Thin gruel, ladled from the stationtown soup kitchen. Orphans congregated around the stations to beg, and scuffles broke out as soon as the adults turned their backs.",
+        "bonus":"strike"
+    },
+       { "number": 5,
+        "description": "Flank steak, garnished with gold leaf. Your supper always came hot from the manor kitchens, but your family’s eyes across the table were cold.",
+        "bonus":"hoard"
+    },
+       { "number": 6,
+        "description": "Fried dough twists, dusted with cinnamon. Your voice hoarse from hawking your wares, you always stole a bite or two near the end of your shift at the market stall.",
+        "bonus":"call"
+    },
+       { "number": 7,
+        "description": "Mintbloom tea, which soothes aches and pains. Even after you recovered from your sickness, the apothecary taught you the uses of every plant you brought them.",
+        "bonus":"cure"
+    },
+       { "number": 8,
+        "description": "Steamed buns, eaten as you waited on the steps. You had your dinner on the porch every night for a year, until you finally accepted that your parents weren’t coming home.",
+        "bonus":"assurance"
+    },
+       { "number": 9,
+        "description": "Melon oranges, as big as your head, picked fresh from the temple gardens. You served the slices before the evening prayer, on plates you made yourself.",
+        "bonus":"craft"
+    },
+       { "number": 10,
+        "description": "Saddle jerky, made from the game you hunted on the trail. Your monstrous steed, now old and sleepy, still lives with you, though you don’t take it out riding as often these days.",
+        "bonus":"shot"
+    },
+       { "number": 11,
+        "description": "Stewed greens and a glass of milk. They fed you the same meals at the Charter boarding school you attended, a diet supposedly optimized by science.",
+        "bonus":"cure"
+    },
+       { "number": 12,
+        "description": "Scrambled eggs, with a little shell in them. When you were practicing to juggle, your mentor made you eat every egg you failed to catch.",
+        "bonus":"display"
+    },
+       { "number": 13,
+        "description": "Chum fish, garnished to look like a miracle food. If the con didn’t work, you’d eat the meal you were trying to peddle, then start again in the morning with a fresh catch.",
+        "bonus":"display"
+    },
+       { "number": 14,
+        "description": "Fermented vegetables, pungent with spices. The villagers always shared the pickles they made with your jars, and even when you were full to bursting, you couldn’t say no.",
+        "bonus":"craft"
+    },
+       { "number": 15,
+        "description": "Bland, hard rice, which the prison guards mixed with sawdust. You ate it anyway, so you’d have the strength to run when the opportunity arrived. ",
+        "bonus":"strike"
+    },
+       { "number": 16,
+        "description": "Fried scallion noodles, tossed with sausage. On the days your hunting earned meat for your family, your siblings always fought over the best bites.",
+        "bonus":"shot"
+    },
+       { "number": 17,
+        "description": "Rattling hotpot, which was your fellow stowaway’s nickname for the stew you ate by robbing the trains. To you, the cargo cars were the world’s biggest pantry.",
+        "bonus":"traversal"
+    },
+       { "number": 18,
+        "description": "Boiled river crabs, scooped out of the shallows with your bare hands. Your fingers were always wrapped in bandages, but the succulent meat was worth it.",
+        "bonus":"grab"
+    },
+       { "number": 19,
+        "description": "Bean cakes, stamped with prayer seals. The elders instructed you on what every seal meant, and to this day you can trace them all from memory.",
+        "bonus":"assurance"
+    },
+       { "number": 20,
+        "description": "Worms that wriggled and multiplied in your mouth. Your guardians, if they could be called that, used you to explore the world’s deeper mysteries.",
+        "bonus":"study"
+    }
+],
+    "initiation" :[
+        { "number": 1,
+        "description": "With your parents guiding your hand. Your ancestors swore a sacred oath to protect the wild, and you practiced the family recipes from a young age.",
+        "bonus":"craft"
+
+        },
+         { "number": 2,
+        "description": "With your parents checking this was what you wanted. You were adopted by wilders, but they hesitated to force this life upon you.",
+        "bonus":"assurance"
+
+        },
+         { "number": 3,
+        "description": "With your parents growling in confusion. You were adopted by monsters. To protect them and their home, you learned all sorts of human things like cooking and talking.",
+        "bonus":"call"
+
+        },
+         { "number": 4,
+        "description": "With your parents silent and ashen-faced. They had too many mouths to feed, and they knew it. You set out on the trail to ease their burden.",
+        "bonus":"search"
+
+        },
+         { "number": 5,
+        "description": "After they diagnosed you with the frenzy. You joined your pack on the condition that they’d keep you in check, if the curse ever got worse.",
+        "bonus":"cure"
+
+        },
+         { "number": 6,
+        "description": "To save your village. A frenzied monster threatened your home. You learned as much as you could about it before you resolved to cook and eat it.",
+        "bonus":"study"
+
+        },
+         { "number": 7,
+        "description": "To avenge your village. You were too late to save your home. When you killed and ate its destroyer, its flesh tasted like ash on your tongue.",
+        "bonus":"shot"
+
+        },
+         { "number": 8,
+        "description": "To destroy your village. The greed of your neighbors threatened all the life that shared their land. You made the wild a part of yourself so you could save it.",
+        "bonus":"display"
+
+        },
+         { "number": 9,
+        "description": "As punishment for a terrible crime. An act of violence left you with a single choice: you could serve as a wilder, or they’d turn you over to the Charter.",
+        "bonus":"strike"
+
+        },
+         { "number": 10,
+        "description": "To avoid punishment for a terrible crime. Fleeing from your home, stealing and eating whatever meat you could find was the only way for you to survive.",
+        "bonus":"grab"
+
+        },
+         { "number": 11,
+        "description": "Under your officer’s orders. Initiatives to make wilder soldiers are rare, and they never end well. Among all those chosen, you were the only one who survived.",
+        "bonus":"shot"
+
+        },
+         { "number": 12,
+        "description": "After signing a contract. A wealthy patron promised you riches if you dedicated your life to the trail and the hunt. Their motives remain mysterious.",
+        "bonus":"hoard"
+
+        },
+         { "number": 13,
+        "description": "To heal your body. You suffered a grievous injury or debilitating sickness. Becoming a wilder was the only path to stay alive.",
+        "bonus":"cure"
+        },
+         { "number": 14,
+        "description": "To study the One Law. A scholar and a wilder both, you needed first-hand experience to understand. You still have the notes from your initial experiment.",
+        "bonus":"study"
+
+        },
+         { "number": 15,
+        "description": "To see the One Land. Longing to see more than just your tiny home, you made your body into one better suited to traversing the wild.",
+        "bonus":"traversal"
+
+        },
+         { "number": 16,
+        "description": "With its child in your lap. After killing the frenzied monster, you swore to foster and raise its newly orphaned offspring.",
+        "bonus":"call"
+
+        },
+         { "number": 17,
+        "description": "When you came of age. An omen marked you for this fate when you were born. You received all the resources and training you needed to prepare you for your duty.",
+        "bonus":"hoard"
+
+        },
+         { "number": 18,
+        "description": "On accident. You didn’t recognize the symptoms of a frenzied monster, and you didn’t realize what you’d eaten until the mutations began.",
+        "bonus":"search"
+
+        },
+         { "number": 19,
+        "description": "For the glory of the hunt. The first time you faced a monster in combat, you realized you’d never felt more alive.",
+        "bonus":"strike"
+
+        },
+         { "number": 20,
+        "description": "While mourning your best friend. After it died of the frenzy, you became a wilder in its memory. May what happened to you both never happen to anyone again.",
+        "bonus":"assurance"
+
+        }
+        
+    ],
+    "Example ambition" :[
+        { "number": 1,
+        "description": "Jumbled rice bowls, at a warm and well-lit table, with friends who share your easy laughter. You hope one day you’ll trust anyone enough to have a meal like this again.",
+        "bonus":"search"
+
+        },
+         { "number": 2,
+        "description": "A picnic sandwich, in a tree you used to climb. You remember this place when it was green and the birds still sang. You want to be here when it heals.",
+        "bonus":"grab"
+
+        },
+         { "number": 3,
+        "description": "Wild game carpaccio, caught by a juvenile monster in your care. Once this happens, you’ll know the monster you raised can take care of itself.",
+        "bonus":"call"
+
+        },
+         { "number": 4,
+        "description": "Roast meat from an apex monster, eaten where it fell. They’ll sing your name for all time if you hunt and cook a frenzied god.",
+        "bonus":"display"
+
+        },
+         { "number": 5,
+        "description": "Fresh garden salad. You’ve never stayed in one place long enough to grow food for yourself. You want to know what it feels like to create as much as you destroy.",
+        "bonus":"craft"
+
+        },
+         { "number": 6,
+        "description": "An ancient family recipe, lost when the greenkings fell. Learning about your oldest relatives might help you reconnect with the ones who are still alive.",
+        "bonus":"craft"
+
+        },
+         { "number": 7,
+        "description": "Luxury preserves, stolen from the Charter, shared with its enemies. By feasting with rebels, you’ll show them how much they can gain from working together.",
+        "bonus":"shot"
+
+        },
+         { "number": 8,
+        "description": "A mug of mead with a wilder you admire. You fantasize about showing all your trophies to this legendary figure, swapping stories about each one.",
+        "bonus":"hoard"
+
+        },
+         { "number": 9,
+        "description": "Spring water from atop the highest peak. After clambering to the summit of the world, you want to take a moment to savor the view.",
+        "bonus":"traversal"
+
+        },
+         { "number": 10,
+        "description": "Peach wedding buns, you and your beloved seated at the head of the table. The further your mutations progress, the more you wonder if this can ever be reality.",
+        "bonus":"assurance"
+
+        },
+         { "number": 11,
+        "description": "Wine toasted in victory, after you’ve humiliated your enemies and ground their faces into the dust. The bigger the audience, the better.",
+        "bonus":"display"
+
+        },
+         { "number": 12,
+        "description": "A meal no one’s eaten before. Somewhere in the One Land, or perhaps even beyond it, there are surely ingredients that you will be the first to taste.",
+        "bonus":"search"
+
+        },
+         { "number": 13,
+        "description": "Spice-crusted dishes from the palace kitchens, with bowing servants and fine china. You’ve never dined in such luxury before and you just want to know what it’s like.",
+        "bonus":"hoard"
+
+        },
+         { "number": 14,
+        "description": "A dish created by your old teacher. They entrusted you with the recipe long ago, but you still have much to learn before you’re ready to make it.",
+        "bonus":"study"
+
+        },
+         { "number": 15,
+        "description": "Tarts snatched from a giant’s plate. The best meals you’ve ever had are the ones you were forbidden to eat.",
+        "bonus":"grab"
+
+        },
+         { "number": 16,
+        "description": "Patisserie from a foreign land. You’ve heard tales about this place since you were a child — though your imagination may have outstripped the real thing.",
+        "bonus":"traversal"
+
+        },
+         { "number": 17,
+        "description": "Tea, brewed Charter-style, which giants reserve for business. They say the giants know how to survive the cancer land, and you’ll make any deal to get their medicine.",
+        "bonus":"cure"
+
+        },
+         { "number": 18,
+        "description": "Candied apples for a sacred monster. Presenting and sharing an offering with this elusive, fabled beast would be the greatest honor.",
+        "bonus":"call"
+
+        },
+         { "number": 19,
+        "description": "A slice of the eldritch worm beyond the waygates. You’ve heard its legend, and you know there’s still so much to learn.",
+        "bonus":"study"
+
+        },
+         { "number": 20,
+        "description": "A giant’s heart, bloody and raw. Let them watch their kind be eaten.",
+        "bonus":"strike"
+
+        }
+    ]
+}
