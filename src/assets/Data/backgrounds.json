@@ -1,5 +1,5 @@
 {
-    "upringings":[
+    "upbringings":[
        { "number": 1,
         "description": "Wild sweetleaves, foraged as you played in the brush. Your parents told you never to take another until you finished the first, lest you angered the woods with your greed.",
         "bonus":"search"
@@ -81,7 +81,7 @@
         "bonus":"study"
     }
 ],
-    "initiation" :[
+    "initiations" :[
         { "number": 1,
         "description": "With your parents guiding your hand. Your ancestors swore a sacred oath to protect the wild, and you practiced the family recipes from a young age.",
         "bonus":"craft"
@@ -183,7 +183,7 @@
         }
         
     ],
-    "Example ambition" :[
+    "ambitions" :[
         { "number": 1,
         "description": "Jumbled rice bowls, at a warm and well-lit table, with friends who share your easy laughter. You hope one day you’ll trust anyone enough to have a meal like this again.",
         "bonus":"search"

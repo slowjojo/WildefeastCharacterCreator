@@ -3,6 +3,7 @@
     "id": "tool_cleaver",
     "icon": "cleaver-knife.png",
     "name": "CLEAVER",
+    "are_and_struggle": [ "brutal", "careful", "decisive", "efficient", "scary", "parctical" ],
     "primary_styles": [
       "mighty",
       "precise"
@@ -30,6 +31,7 @@
     "id": "tool_mitts",
     "icon": "oven-mitts.png",
     "name": "MITTS",
+    "are_and_struggle": [ "brave", "casual", "focused", "honest", "understanding", "upbeat" ],
     "primary_styles": [
       "mighty",
       "swift"
@@ -57,6 +59,7 @@
     "id": "tool_pan",
     "icon": "frying-pan.png",
     "name": "PAN",
+    "are_and_struggle": [ "composed", "generous", "leaderly", "popular", "resolute", "wary" ],
     "primary_styles": [
       "mighty",
       "tricky"
@@ -84,6 +87,7 @@
     "id": "tool_spit",
     "icon": "fork-in-diagonal.png",
     "name": "SPIT",
+    "are_and_struggle": [ "curious", "delicate", "honourable", " hopeful", "polite", "spontaneous" ],
     "primary_styles": [
       "precise",
       "swift"
@@ -111,6 +115,7 @@
     "id": "tool_torch",
     "icon": "welding-torch.png",
     "name": "TORCH",
+    "are_and_struggle": [ "in control", "patient", "scheming", "secretive", "studious", "thourough"],
     "primary_styles": [
       "precise",
       "tricky"
@@ -138,6 +143,7 @@
     "id": "tool_twine",
     "icon": "intertwisted.png",
     "name": "TWINE",
+    "are_and_struggle": [ "consistent", "creative", "flexible", "gentle", "quiet", "wise"],
     "primary_styles": [
       "swift",
       "tricky"

@@ -18,7 +18,7 @@ export class WilderData {
   staple: string;
   spice: string;
   monsterouscAquaintance: string;
-  areAndStruggleToBe: [string, string];
+  areAndStruggle: [string, string];
   completed: boolean;
   createdAt: number;
 
@@ -40,7 +40,7 @@ export class WilderData {
     this.staple = "";
     this.spice = "";
     this.monsterouscAquaintance = "";
-    this.areAndStruggleToBe = ["", ""];
+    this.areAndStruggle = ["", ""];
     this.completed = false;
     this.createdAt = Date.now();
   }
@@ -64,7 +64,7 @@ export class WilderData {
     staple: this.staple,
     spice: this.spice,
     monsterouscAquaintance: this.monsterouscAquaintance,
-    areAndStruggleToBe: [...this.areAndStruggleToBe], // clone reactive array
+    areAndStruggleToBe: [...this.areAndStruggle], // clone reactive array
     completed: this.completed,
     createdAt: this.createdAt,
   };
@@ -90,7 +90,7 @@ export class WilderData {
     w.staple = data.staple ?? "";
     w.spice = data.spice ?? "";
     w.monsterouscAquaintance = data.monsterouscAquaintance ?? "";
-    w.areAndStruggleToBe = data.areAndStruggleToBe ?? ["", ""];
+    w.areAndStruggle = data.areAndStruggle ?? ["", ""];
     w.completed = data.completed ?? false;
     w.createdAt = data.createdAt ?? Date.now();
 
