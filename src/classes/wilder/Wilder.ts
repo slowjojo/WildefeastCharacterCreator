@@ -1,4 +1,5 @@
 import type { iRankData } from "@/interfaces";
+import { threeCourseBackgroundData } from "./ThreeCourseBackground";
 
 export class WilderData {
   id: string;
@@ -7,6 +8,7 @@ export class WilderData {
   tool: string;
   styles: [number, number, number, number];
   specialty: string;
+  background: threeCourseBackgroundData;
   traits: iRankData[];
   skills: iRankData[];
   stamina: number;
@@ -29,8 +31,26 @@ export class WilderData {
     this.tool = "";
     this.styles = [0, 0, 0, 0];
     this.specialty = "";
+    this.background = new threeCourseBackgroundData({
+      upbringing: { number: 0, description: "", skillId: "" },
+      initiation: { number: 0, description: "", skillId: "" },
+      ambition: { number: 0, description: "", skillId: "" },
+    });
     this.traits = [];
-    this.skills = [];
+    this.skills = [
+      { id: "assurance", rank: 0 },
+      { id: "call", rank: 0 },
+      { id: "craft", rank: 0 },
+      { id: "cure", rank: 0 },
+      { id: "display", rank: 0 },
+      { id: "grab", rank: 0 },
+      { id: "hoard", rank: 0 },
+      { id: "search", rank: 0 },
+      { id: "shot", rank: 0 },
+      { id: "strike", rank: 0 },
+      { id: "study", rank: 0 },
+      { id: "traversal", rank: 0 },
+    ];
     this.stamina = 0;
     this.maxStamina = 0;
     this.durability = 0;

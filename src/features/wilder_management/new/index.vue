@@ -1,63 +1,66 @@
    <!-- Rip this whole part out eventually and replace it with multiple pages -->
    
    <template>
-      <div class="form" v-if="selectedWilder">
-        <h1>select Name</h1>
-        <input v-model="selectedWilder.name" placeholder="Character Name" />
-        <h1>select Tool</h1>
-          <select v-model="selectedWilder.tool">
-        <option 
-          v-for="tool in tools" 
-          :key="tool.id" 
-          :value="tool.id"
-        >
-          {{ tool.name }}
-        </option>
-      </select>
+<div class="form" v-if="selectedWilder">
+  <h1>select Name</h1>
+    <input v-model="selectedWilder.name" placeholder="Character Name" />
+  <h1>select Tool</h1>
+    <select v-model="selectedWilder.tool">
+      <option 
+        v-for="tool in tools" 
+        :key="tool.id" 
+        :value="tool.id">
+        {{ tool.name }}
+      </option>
+    </select>
 
-          <h1>Select what you are</h1>
-      <select v-model="are">
-        <option disabled value="">Select one</option>
-        <option v-for="option in areOptions" :key="option" :value="option">
+  <h1>Select what you are</h1>
+    <select v-model="are">
+      <option disabled value=""></option>
+      <option v-for="option in areOptions" :key="option" :value="option">
           {{ option }}
-        </option>
-      </select>
+      </option>
+    </select>
 
-      <h1>Select what you struggle to be</h1>
-      <select v-model="struggle">
-        <option disabled value="">Select one</option>
-        <option v-for="option in struggleOptions" :key="option" :value="option">
+  <h1>Select what you struggle to be</h1>
+    <select v-model="struggle">
+      <option disabled value="">  </option>
+      <option v-for="option in struggleOptions" :key="option" :value="option">
           {{ option }}
-        </option>
-      </select>
+       </option>
+    </select>
 
-   <h1>select specialty</h1>
-          <select v-model="selectedWilder.specialty">
-        <option 
+  <h1>select specialty</h1>
+    <select v-model="selectedWilder.specialty">
+      <option 
           v-for="specialty in specialties" 
           :key="specialty.id" 
           :value="specialty.id"
         >
-          {{ specialty.name }}
-        </option>
-      </select>
+        {{ specialty.name }}
+      </option>
+    </select>
 
-<h1>Select first Trait (from your Specialty)</h1>
-<select v-model="trait1">
-  <option v-for="trait in availableFirstTraits" :key="trait.id" :value="trait.id">
-    {{ trait.name }}
-  </option>
-</select>
+  <h1>Select first Trait (from your Specialty)</h1>
+    <select v-model="trait1">
+      <option v-for="trait in availableFirstTraits" :key="trait.id" :value="trait.id">
+        {{ trait.name }}
+      </option>
+    </select>
 
-<h1>Select second Trait (from any Specialty)</h1>
-<select v-model="trait2">
-  <option v-for="trait in availableSecondTraits" :key="trait.id" :value="trait.id">
-    {{ trait.name }}
-  </option>
-</select>
-        <button @click="goBack">Done</button>
-      </div>
-    </template>
+  <h1>Select second Trait (from any Specialty)</h1>
+    <select v-model="trait2">
+      <option v-for="trait in availableSecondTraits" :key="trait.id" :value="trait.id">
+        {{ trait.name }}
+      </option>
+    </select>
+  
+    <h1>Select your initiation</h1>
+    
+
+      <button @click="goBack">Done</button>
+  </div>
+</template>
 
     <script setup lang="ts">
     import { useRouter } from 'vue-router'
