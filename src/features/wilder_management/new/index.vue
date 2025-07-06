@@ -55,7 +55,41 @@
       </option>
     </select>
   
-    <h1>Select your initiation</h1>
+    <h1>Select Upbringing</h1>
+<select v-model="selectedUpbringing">
+  <option disabled value="">-- Select an Upbringing --</option>
+  <option
+    v-for="bg in allBackgrounds.upbringings"
+    :key="bg.number"
+    :value="bg"
+  >
+    {{ bg.description }}
+  </option>
+</select>
+
+<h1>Select Initiation</h1>
+<select v-model="selectedInitiation">
+  <option disabled value="">-- Select an Initiation --</option>
+  <option
+    v-for="bg in allBackgrounds.initiations"
+    :key="bg.number"
+    :value="bg"
+  >
+    {{ bg.description }}
+  </option>
+</select>
+
+<h1>Select Ambition</h1>
+<select v-model="selectedAmbition">
+  <option disabled value="">-- Select an Ambition --</option>
+  <option
+    v-for="bg in allBackgrounds.ambitions"
+    :key="bg.number"
+    :value="bg"
+  >
+    {{ bg.description }}
+  </option>
+</select>
     
 
       <button @click="goBack">Done</button>
@@ -65,7 +99,7 @@
     <script setup lang="ts">
     import { useRouter } from 'vue-router'
     import { useWilders } from '@/stores/useWilders'
-    import { WilderData } from '@/class'
+    import { threeCourseBackgroundData, WilderData } from '@/class'
     import { useCompendium } from '@/stores/useCompendium'
     import { computed, ref, watch } from 'vue'
 
@@ -74,8 +108,12 @@
     const { tools,
             specialties,
             traits,
+            allBackgrounds,
+            selectedUpbringing,
+            selectedInitiation,
+            selectedAmbition
+           } = useCompendium()
 
-       } = useCompendium()
     
         const trait1 = ref("")
         const trait2 = ref("")
@@ -125,11 +163,32 @@ watch(() => selectedWilder.value?.tool, () => {
 
 function goBack() {
   if (selectedWilder.value) {
+    if (!selectedUpbringing.value || !selectedInitiation.value || !selectedAmbition.value) {
+      alert("Please select all three backgrounds.");
+      return;
+    }
+
     selectedWilder.value.traits = [
       { id: trait1.value, rank: 1 },
       { id: trait2.value, rank: 1 }
     ];
     selectedWilder.value.areAndStruggle = [are.value, struggle.value];
+
+    selectedWilder.value.background = new threeCourseBackgroundData({
+      upbringing: selectedUpbringing.value,
+      initiation: selectedInitiation.value,
+      ambition: selectedAmbition.value
+    });
+
+    const bonuses = [
+      selectedUpbringing.value.bonus,
+      selectedInitiation.value.bonus,
+      selectedAmbition.value.bonus
+    ];
+    bonuses.forEach(skillId => {
+      const skill = selectedWilder.value!.skills.find(s => s.id === skillId);
+      if (skill) skill.rank += 1;
+    });
 
     const cleanWilder = WilderData.fromJSON(selectedWilder.value);
 

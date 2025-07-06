@@ -6,12 +6,13 @@ import { useTools } from "./useTools";
 import { useSpecialties } from "./useSpecialties";
 import { useTechnqiues } from "./useTechniques";
 import { useTraits } from "./useTraits";
+import { useExampleBackgroundMeals } from "./useExampleBackgroundMeals";
 
 const { tools, selectedTool } = useTools()
 const { specialties, selectedSpecialty } = useSpecialties()
 const { techniques, selectedTechnique } = useTechnqiues()
 const { traits, selectedTrait } = useTraits()
-
+const {allBackgrounds, selectedUpbringing, selectedInitiation, selectedAmbition } = useExampleBackgroundMeals()
 
 export function useCompendium() {
     return {
@@ -22,6 +23,10 @@ export function useCompendium() {
     techniques,
     selectedTechnique,
     traits,
-    selectedTrait
+    selectedTrait,
+    allBackgrounds,
+    selectedUpbringing,
+    selectedInitiation,
+    selectedAmbition
     };
 }

@@ -1,7 +1,7 @@
 export interface backgroundMeal{
   number: number;
   description: string;
-  skillId: string;
+  bonus: string;
 }
 
 export class threeCourseBackgrounds {

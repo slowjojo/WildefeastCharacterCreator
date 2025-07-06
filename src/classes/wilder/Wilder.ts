@@ -32,9 +32,9 @@ export class WilderData {
     this.styles = [0, 0, 0, 0];
     this.specialty = "";
     this.background = new threeCourseBackgroundData({
-      upbringing: { number: 0, description: "", skillId: "" },
-      initiation: { number: 0, description: "", skillId: "" },
-      ambition: { number: 0, description: "", skillId: "" },
+      upbringing: { number: 0, description: "", bonus: "" },
+      initiation: { number: 0, description: "", bonus: "" },
+      ambition: { number: 0, description: "", bonus: "" },
     });
     this.traits = [];
     this.skills = [
@@ -65,7 +65,7 @@ export class WilderData {
     this.createdAt = Date.now();
   }
 
- toJSON() {
+toJSON() {
   return {
     id: this.id,
     name: this.name,
@@ -73,6 +73,11 @@ export class WilderData {
     tool: this.tool,
     styles: [...this.styles], // clone reactive array
     specialty: this.specialty,
+    background: {
+      upbringing: { ...this.background.upbringing },
+      initiation: { ...this.background.initiation },
+      ambition: { ...this.background.ambition },
+    },
     traits: this.traits.map(t => ({ ...t })), // clone each trait
     skills: this.skills.map(s => ({ ...s })), // clone each skill
     stamina: this.stamina,
@@ -84,36 +89,44 @@ export class WilderData {
     staple: this.staple,
     spice: this.spice,
     monsterouscAquaintance: this.monsterouscAquaintance,
-    areAndStruggleToBe: [...this.areAndStruggle], // clone reactive array
+    areAndStruggleToBe: [...this.areAndStruggle],
     completed: this.completed,
     createdAt: this.createdAt,
   };
 }
 
   static fromJSON(data: Partial<WilderData>): WilderData {
-    const w = new WilderData();
+  const w = new WilderData();
 
-    w.id = data.id ?? w.id;
-    w.name = data.name ?? "";
-    w.pronouns = data.pronouns ?? "";
-    w.tool = data.tool ?? "";
-    w.styles = data.styles ?? [0, 0, 0, 0];
-    w.specialty = data.specialty ?? "";
-    w.traits = data.traits ?? [];
-    w.skills = data.skills ?? [];
-    w.stamina = data.stamina ?? 0;
-    w.maxStamina = data.maxStamina ?? 0;
-    w.durability = data.durability ?? 0;
-    w.maxDurability = data.maxDurability ?? 0;
-    w.dead = data.dead ?? false;
-    w.conditions = data.conditions ?? [];
-    w.staple = data.staple ?? "";
-    w.spice = data.spice ?? "";
-    w.monsterouscAquaintance = data.monsterouscAquaintance ?? "";
-    w.areAndStruggle = data.areAndStruggle ?? ["", ""];
-    w.completed = data.completed ?? false;
-    w.createdAt = data.createdAt ?? Date.now();
+  w.id = data.id ?? w.id;
+  w.name = data.name ?? "";
+  w.pronouns = data.pronouns ?? "";
+  w.tool = data.tool ?? "";
+  w.styles = data.styles ?? [0, 0, 0, 0];
+  w.specialty = data.specialty ?? "";
+  w.traits = data.traits ?? [];
+  w.skills = data.skills ?? [];
+  w.stamina = data.stamina ?? 0;
+  w.maxStamina = data.maxStamina ?? 0;
+  w.durability = data.durability ?? 0;
+  w.maxDurability = data.maxDurability ?? 0;
+  w.dead = data.dead ?? false;
+  w.conditions = data.conditions ?? [];
+  w.staple = data.staple ?? "";
+  w.spice = data.spice ?? "";
+  w.monsterouscAquaintance = data.monsterouscAquaintance ?? "";
+  w.areAndStruggle = data.areAndStruggle ?? ["", ""];
+  w.completed = data.completed ?? false;
+  w.createdAt = data.createdAt ?? Date.now();
 
-    return w;
+  if (data.background) {
+    w.background = new threeCourseBackgroundData({
+      upbringing: data.background.upbringing,
+      initiation: data.background.initiation,
+      ambition: data.background.ambition,
+    });
   }
+
+  return w;
+}
 }
