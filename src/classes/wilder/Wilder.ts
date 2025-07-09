@@ -1,5 +1,6 @@
 import type { iRankData } from "@/interfaces";
 import { threeCourseBackgroundData } from "./ThreeCourseBackground";
+import type { toolData } from "./Tool";
 
 export class WilderData {
   id: string;
@@ -7,6 +8,7 @@ export class WilderData {
   pronouns: string;
   tool: string;
   styles: [number, number, number, number];
+  techniques: string[];
   specialty: string;
   background: threeCourseBackgroundData;
   traits: iRankData[];
@@ -30,6 +32,7 @@ export class WilderData {
     this.pronouns = "";
     this.tool = "";
     this.styles = [0, 0, 0, 0];
+    this.techniques = [];
     this.specialty = "";
     this.background = new threeCourseBackgroundData({
       upbringing: { number: 0, description: "", bonus: "" },
@@ -71,7 +74,8 @@ toJSON() {
     name: this.name,
     pronouns: this.pronouns,
     tool: this.tool,
-    styles: [...this.styles], // clone reactive array
+    styles: [...this.styles],
+    techniques: [...this.techniques],
     specialty: this.specialty,
     background: {
       upbringing: { ...this.background.upbringing },
@@ -89,7 +93,7 @@ toJSON() {
     staple: this.staple,
     spice: this.spice,
     monsterouscAquaintance: this.monsterouscAquaintance,
-    areAndStruggleToBe: [...this.areAndStruggle],
+    areAndStruggle: [...this.areAndStruggle],
     completed: this.completed,
     createdAt: this.createdAt,
   };
@@ -103,6 +107,7 @@ toJSON() {
   w.pronouns = data.pronouns ?? "";
   w.tool = data.tool ?? "";
   w.styles = data.styles ?? [0, 0, 0, 0];
+  w.techniques = data.techniques ?? [];
   w.specialty = data.specialty ?? "";
   w.traits = data.traits ?? [];
   w.skills = data.skills ?? [];
@@ -128,5 +133,14 @@ toJSON() {
   }
 
   return w;
+}
+
+
+//-- Helper Functions ----------------------------------------------------------------------------------
+applyTool(tool: toolData): void {
+  this.tool = tool.id;
+  this.techniques = [tool.techniques.starter];
+  this.styles = [0, 0, 0, 0];
+  this.areAndStruggle = ["", ""];
 }
 }
