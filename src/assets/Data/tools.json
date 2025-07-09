@@ -4,10 +4,10 @@
     "icon": "cleaver-knife.png",
     "name": "CLEAVER",
     "are_and_struggle": [ "brutal", "careful", "decisive", "efficient", "scary", "parctical" ],
-    "primary_styles": [
-      "mighty",
-      "precise"
-    ],
+    "styles": [
+      { "mighty": 3, "precise": 2, "swift": 1, "tricky": 1 },
+      { "mighty": 2, "precise": 3, "swift": 1, "tricky": 1 }
+      ],
     "techniques": {
       "starter": "clean_cut",
       "beginner": [
@@ -32,10 +32,10 @@
     "icon": "oven-mitts.png",
     "name": "MITTS",
     "are_and_struggle": [ "brave", "casual", "focused", "honest", "understanding", "upbeat" ],
-    "primary_styles": [
-      "mighty",
-      "swift"
-    ],
+    "styles": [
+          { "mighty": 3, "precise": 1, "swift": 2, "tricky": 1 },
+          { "mighty": 2, "precise": 1, "swift": 3, "tricky": 1 }
+          ],
     "techniques": {
       "starter": "close_and_personal",
       "beginner": [
@@ -60,10 +60,10 @@
     "icon": "frying-pan.png",
     "name": "PAN",
     "are_and_struggle": [ "composed", "generous", "leaderly", "popular", "resolute", "wary" ],
-    "primary_styles": [
-      "mighty",
-      "tricky"
-    ],
+    "styles": [
+        { "mighty": 3, "precise": 1, "swift": 1, "tricky": 2 },
+        { "mighty": 2, "precise": 1, "swift": 1, "tricky": 3 }
+        ],
     "techniques": {
       "starter": "steel_shield",
       "beginner": [
@@ -88,10 +88,10 @@
     "icon": "fork-in-diagonal.png",
     "name": "SPIT",
     "are_and_struggle": [ "curious", "delicate", "honourable", " hopeful", "polite", "spontaneous" ],
-    "primary_styles": [
-      "precise",
-      "swift"
-    ],
+    "styles": [
+        { "mighty": 1, "precise": 3, "swift": 2, "tricky": 1 },
+        { "mighty": 1, "precise": 2, "swift": 3, "tricky": 1 }
+        ],
     "techniques": {
       "starter": "flurry_of_motion",
       "beginner": [
@@ -116,10 +116,10 @@
     "icon": "welding-torch.png",
     "name": "TORCH",
     "are_and_struggle": [ "in control", "patient", "scheming", "secretive", "studious", "thourough"],
-    "primary_styles": [
-      "precise",
-      "tricky"
-    ],
+    "styles": [
+        { "mighty": 1, "precise": 3, "swift": 1, "tricky": 2 },
+        { "mighty": 1, "precise": 2, "swift": 1, "tricky": 3 }
+        ],
     "techniques": {
       "starter": "line_of_fire",
       "beginner": [
@@ -144,10 +144,10 @@
     "icon": "intertwisted.png",
     "name": "TWINE",
     "are_and_struggle": [ "consistent", "creative", "flexible", "gentle", "quiet", "wise"],
-    "primary_styles": [
-      "swift",
-      "tricky"
-    ],
+    "styles": [
+        { "mighty": 1, "precise": 1, "swift": 3, "tricky": 2 },
+        { "mighty": 1, "precise": 1, "swift": 2, "tricky": 3 }
+        ],
     "techniques": {
       "starter": "lasso_and_leash",
       "beginner": [

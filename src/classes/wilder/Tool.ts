@@ -1,9 +1,11 @@
+import type { styleSpread } from "@/interfaces";
+
 export class toolData {
     id: string;
     icon: string;
     name: string;
     are_and_struggle: string[];
-    primary_styles: string[];
+    styles: styleSpread[];
     techniques: {
         starter: string;
         beginner: string[];
@@ -17,7 +19,7 @@ export class toolData {
         this.icon = data.icon;
         this.name = data.name;
         this.are_and_struggle = data.are_and_struggle
-        this.primary_styles = data.primary_styles;
+        this.styles = data.styles;
         this.techniques = data.techniques;
         this.description = data.description;
     }

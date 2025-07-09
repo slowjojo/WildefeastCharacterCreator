@@ -1,13 +1,15 @@
-import type { iRankData } from "@/interfaces";
+import type { iRankData, styleSpread } from "@/interfaces";
 import { threeCourseBackgroundData } from "./ThreeCourseBackground";
 import type { toolData } from "./Tool";
+
+const BaseStyles: styleSpread = { mighty: 1, precise: 1, swift: 1, tricky: 1 };
 
 export class WilderData {
   id: string;
   name: string;
   pronouns: string;
   tool: string;
-  styles: [number, number, number, number];
+  styles: styleSpread;
   techniques: string[];
   specialty: string;
   background: threeCourseBackgroundData;
@@ -31,7 +33,7 @@ export class WilderData {
     this.name = "";
     this.pronouns = "";
     this.tool = "";
-    this.styles = [0, 0, 0, 0];
+    this.styles = { ...BaseStyles };
     this.techniques = [];
     this.specialty = "";
     this.background = new threeCourseBackgroundData({
@@ -74,7 +76,7 @@ toJSON() {
     name: this.name,
     pronouns: this.pronouns,
     tool: this.tool,
-    styles: [...this.styles],
+    styles: { ...this.styles },
     techniques: [...this.techniques],
     specialty: this.specialty,
     background: {
@@ -106,7 +108,7 @@ toJSON() {
   w.name = data.name ?? "";
   w.pronouns = data.pronouns ?? "";
   w.tool = data.tool ?? "";
-  w.styles = data.styles ?? [0, 0, 0, 0];
+  w.styles = data.styles ?? { ...BaseStyles };
   w.techniques = data.techniques ?? [];
   w.specialty = data.specialty ?? "";
   w.traits = data.traits ?? [];
@@ -140,7 +142,11 @@ toJSON() {
 applyTool(tool: toolData): void {
   this.tool = tool.id;
   this.techniques = [tool.techniques.starter];
-  this.styles = [0, 0, 0, 0];
+  this.styles = { mighty: 0, precise: 0, swift: 0, tricky: 0 };
   this.areAndStruggle = ["", ""];
+}
+
+applyStartingStyles(startingStyles: styleSpread): void {
+  this.styles = { ...startingStyles };
 }
 }

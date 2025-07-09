@@ -10,14 +10,11 @@
 </template>
 
 <script setup lang="ts">
-  import { useRouter } from 'vue-router'
-
   import { ref, watchEffect } from 'vue'
   import ToolPage from './ToolPage.vue'
 
   import { WilderData } from '@/class'
 
-    const router = useRouter()
     const step = ref(1)
     const draftWilder = ref(new WilderData())
 

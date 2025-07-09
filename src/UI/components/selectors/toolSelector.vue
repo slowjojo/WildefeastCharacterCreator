@@ -16,7 +16,6 @@ import { useTools } from '@/stores/useTools'
 import { watch } from 'vue';
 
 const { tools, getToolById } = useTools()
-
 const { wilder } = defineProps<{ wilder: WilderData }>()
 
 watch(
