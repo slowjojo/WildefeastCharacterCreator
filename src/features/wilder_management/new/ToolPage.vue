@@ -3,7 +3,7 @@
 		<h1>TOOL PAGE</h1>
 		<toolSelector :wilder="wilder" />
 		<styleSelector v-if="tool" :wilder="wilder" :tool="tool" />
-		<Traitselector v-if="tool" :wilder="wilder" :tool="tool" />
+		<techniqueSelector v-if="tool" :wilder="wilder" :tool="tool" />
 	</div>
 </template>
 
@@ -11,9 +11,10 @@
 import { computed } from 'vue';
 import styleSelector from '@/UI/components/selectors/styleSelector.vue';
 import toolSelector from '@/UI/components/selectors/toolSelector.vue';
+import techniqueSelector from '@/UI/components/selectors/techniqueSelector.vue';
 import { WilderData } from '@/class';
 import { useTools } from '@/stores/useTools';
-import Traitselector from '@/UI/components/selectors/traitselector.vue';
+
 
 const { getToolById } = useTools();
 

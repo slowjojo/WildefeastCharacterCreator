@@ -11,16 +11,19 @@
 </template>
 
 <script setup lang="ts">
-import type { styleSpread } from '@/interfaces'
-import type { toolData } from '@/classes/wilder/Tool'
-import type { WilderData } from '@/classes/wilder/Wilder'
+import type { styleSpread } from "@/interfaces"
+import type { toolData } from "@/classes/wilder/Tool"
+import type { WilderData } from "@/class"
+import { ref, watch } from "vue"
 
 const props = defineProps<{
   wilder: WilderData
   tool: toolData
 }>()
 
-import { ref, watch } from 'vue'
+
+
+// cant bind styleSpread to v-model directly so i need to do this, maybe fix later
 
 const selectedIndex = ref<number | ''>('')
 

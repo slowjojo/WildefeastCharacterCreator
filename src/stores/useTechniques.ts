@@ -5,9 +5,15 @@ import { type Ref, ref } from 'vue';
 const techniques: techniqueData[] = techniquesJson.map(data => new techniqueData(data));
 const selectedTechnique: Ref<techniqueData | null> = ref(null);
 
+function getTechniqueById(id: string): techniqueData | undefined {
+  return techniques.find(technique => technique.id === id);
+}
+
+
 export function useTechnqiues() {
     return {
     techniques,
     selectedTechnique,
+    getTechniqueById
     };
 }

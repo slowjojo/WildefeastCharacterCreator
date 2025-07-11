@@ -1,6 +1,9 @@
 import type { iRankData, styleSpread } from "@/interfaces";
-import { threeCourseBackgroundData } from "./ThreeCourseBackground";
-import type { toolData } from "./Tool";
+import { 
+  type toolData,
+  threeCourseBackgroundData,
+  type techniqueData 
+  } from "@/class"
 
 const BaseStyles: styleSpread = { mighty: 1, precise: 1, swift: 1, tricky: 1 };
 
@@ -84,14 +87,14 @@ toJSON() {
       initiation: { ...this.background.initiation },
       ambition: { ...this.background.ambition },
     },
-    traits: this.traits.map(t => ({ ...t })), // clone each trait
-    skills: this.skills.map(s => ({ ...s })), // clone each skill
+    traits: this.traits.map(t => ({ ...t })),
+    skills: this.skills.map(s => ({ ...s })), 
     stamina: this.stamina,
     maxStamina: this.maxStamina,
     durability: this.durability,
     maxDurability: this.maxDurability,
     dead: this.dead,
-    conditions: this.conditions.map(c => ({ ...c })), // clone each condition
+    conditions: this.conditions.map(c => ({ ...c })), 
     staple: this.staple,
     spice: this.spice,
     monsterouscAquaintance: this.monsterouscAquaintance,
@@ -126,14 +129,13 @@ toJSON() {
   w.completed = data.completed ?? false;
   w.createdAt = data.createdAt ?? Date.now();
 
-  if (data.background) {
-    w.background = new threeCourseBackgroundData({
-      upbringing: data.background.upbringing,
-      initiation: data.background.initiation,
-      ambition: data.background.ambition,
-    });
-  }
-
+ if (data.background) {
+  w.background = new threeCourseBackgroundData({
+    upbringing: data.background.upbringing ?? { number: 0, description: "", bonus: "" },
+    initiation: data.background.initiation ?? { number: 0, description: "", bonus: "" },
+    ambition: data.background.ambition ?? { number: 0, description: "", bonus: "" },
+  });
+}
   return w;
 }
 
@@ -149,4 +151,16 @@ applyTool(tool: toolData): void {
 applyStartingStyles(startingStyles: styleSpread): void {
   this.styles = { ...startingStyles };
 }
+
+addTechnique(technique: techniqueData): void {
+  if (!this.techniques.includes(technique.id)) {
+    this.techniques.push(technique.id);
+  }
+}
+
+removeTechnique(technique: techniqueData): void {
+  this.techniques = this.techniques.filter(id => id !== technique.id);
+}
+
+
 }

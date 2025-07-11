@@ -3,6 +3,7 @@ import { toolData } from "./classes/wilder/Tool";
 import { specialtyData } from "./classes/wilder/Specialty";
 import { traitData } from "./classes/wilder/Trait";
 import { threeCourseBackgrounds, threeCourseBackgroundData } from "./classes/wilder/ThreeCourseBackground";
+import { techniqueData } from "./classes/wilder/Techniques";
 
 export {
     WilderData,
@@ -10,5 +11,6 @@ export {
     specialtyData,
     traitData,
     threeCourseBackgrounds,
-    threeCourseBackgroundData
+    threeCourseBackgroundData,
+    techniqueData
 }
