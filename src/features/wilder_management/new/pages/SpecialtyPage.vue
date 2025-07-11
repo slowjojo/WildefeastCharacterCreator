@@ -1,4 +1,12 @@
-// handle the choosing of specialty, secondary specialty and traits
 <template>
-    <h1>this is the specialty page</h1>
+	<h1>select specialty</h1>
+		<specialtySelector :wilder="wilder" />
 </template>
+
+<script setup lang="ts">
+import type { WilderData } from "@/class"
+import specialtySelector from "@/UI/components/selectors/specialtySelector.vue";
+
+const props = defineProps<{ wilder: WilderData }>();
+
+</script>

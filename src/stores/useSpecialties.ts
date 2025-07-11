@@ -12,9 +12,14 @@ const specialties: specialtyData[] = specialtyJson.map(data => new specialtyData
 
 const selectedSpecialty: Ref<specialtyData | null> = ref(null);
 
+function getSpecialtyById(id: string): specialtyData | undefined {
+  return specialties.find(specialty => specialty.id === id);
+}
+
 export function useSpecialties() {
   return {
     specialties,
     selectedSpecialty,
+    getSpecialtyById
   };
 }

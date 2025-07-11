@@ -1,13 +1,14 @@
 <template>
-    <div>
-        <h1>TOOL SELECTOR</h1>
-            <select v-model="wilder.tool">
-                 <option disabled value="">-- Select a Tool --</option>
-                <option v-for="tool in tools" :key="tool.id" :value="tool.id">
-                    {{ tool.name }}
-                </option>
-            </select>
-    </div>
+  <div>
+    <select v-model="wilder.tool">
+      <option disabled value="">-- Select a Tool --</option>
+      <option v-for="tool in tools" 
+      :key="tool.id" 
+      :value="tool.id">
+        {{ tool.name }}
+      </option>
+    </select>
+  </div>
 </template>
 
 <script setup lang="ts">

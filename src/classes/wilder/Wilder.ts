@@ -2,7 +2,8 @@ import type { iRankData, styleSpread } from "@/interfaces";
 import { 
   type toolData,
   threeCourseBackgroundData,
-  type techniqueData 
+  type techniqueData, 
+  specialtyData
   } from "@/class"
 
 const BaseStyles: styleSpread = { mighty: 1, precise: 1, swift: 1, tricky: 1 };
@@ -155,6 +156,11 @@ applyStartingStyles(startingStyles: styleSpread): void {
 applyAreAndStruggle(are: string, struggle: string): void {
   this.areAndStruggle = [are, struggle];
 }
+
+applySpecialty(specialty: specialtyData): void {
+  this.specialty = specialty.id
+}
+
 addTechnique(technique: techniqueData): void {
   if (!this.techniques.includes(technique.id)) {
     this.techniques.push(technique.id);

@@ -51,7 +51,6 @@
   const {
     wilders,
     selectedWilder,
-    createWilder,
     selectWilder,
     deleteWilder,
     loadWilders
@@ -68,8 +67,6 @@
 }
 
   function goToCharacterCreator() {
-    const newWilder = createWilder()
-    selectWilder(newWilder.id)
     router.push('/wilder-management/new')
   }
 

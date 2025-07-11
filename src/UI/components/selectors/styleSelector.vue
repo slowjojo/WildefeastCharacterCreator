@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h2>Style Selector</h2>
     <select v-model="selectedIndex" @change="applySelectedStyle">
       <option disabled value="">-- Select a Style Spread --</option>
       <option v-for="(style, index) in tool.styles" :key="index" :value="index">

@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h1>TECHNIQUE SELECTOR</h1>
     <select v-model="selectedTechnique" @change="addSelectedTechnique">
       <option disabled value="">-- Select a technique --</option>
       <option
