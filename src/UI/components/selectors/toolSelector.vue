@@ -24,7 +24,7 @@ watch(
   (newToolId) => {
     const selectedTool = getToolById(newToolId);
     if (selectedTool) {
-      wilder.applyTool(selectedTool);
+      wilder.toolController.applyTool(selectedTool)
     }
   }
 );

@@ -14,11 +14,10 @@ import { WilderData } from '@/class';
 import { useTools } from '@/stores/useTools';
 
 
-
-import styleSelector from '@/UI/components/selectors/styleSelector.vue';
-import toolSelector from '@/UI/components/selectors/toolSelector.vue';
-import techniqueSelector from '@/UI/components/selectors/techniqueSelector.vue';
-import areAndStruggleSelector from '@/UI/components/selectors/areAndStruggleSelector.vue';
+import styleSelector from '@/UI/components/selectors/styleSelector.vue'
+import toolSelector from '@/UI/components/selectors/toolSelector.vue'
+import techniqueSelector from '@/UI/components/selectors/techniqueSelector.vue'
+import areAndStruggleSelector from '@/UI/components/selectors/areAndStruggleSelector.vue'
 
 
 const { getToolById } = useTools();
@@ -26,4 +25,5 @@ const { getToolById } = useTools();
 const props = defineProps<{ wilder: WilderData }>();
 
 const tool = computed(() => getToolById(props.wilder.tool));
+
 </script>

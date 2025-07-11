@@ -1,4 +1,4 @@
-import { toolData } from '@/classes/wilder/Tool'
+import { toolData } from '@/classes/wilder/components/tool/Tool'
 import toolsJson from '@/assets/data/tools.json'
 import { type Ref, ref } from 'vue';
 

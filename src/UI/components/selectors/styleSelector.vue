@@ -11,7 +11,7 @@
 
 <script setup lang="ts">
 import type { styleSpread } from "@/interfaces"
-import type { toolData } from "@/classes/wilder/Tool"
+import type { toolData } from "@/classes/wilder/components/tool/Tool"
 import type { WilderData } from "@/class"
 import { ref, watch } from "vue"
 

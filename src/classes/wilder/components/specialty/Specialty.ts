@@ -1,3 +1,6 @@
+// seems fucked, gotta fix later
+
+
 import type { nameAndDescription } from "@/interfaces";
 import type { traitData } from "@/class";
 

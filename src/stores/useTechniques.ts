@@ -1,4 +1,4 @@
-import { techniqueData } from "@/classes/wilder/Techniques";
+import { techniqueData } from "@/classes/wilder/components/technique/Technique";
 import techniquesJson from '@/assets/data/techniques.json';
 import { type Ref, ref } from 'vue';
 

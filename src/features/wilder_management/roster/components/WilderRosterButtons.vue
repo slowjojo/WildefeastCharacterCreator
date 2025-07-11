@@ -17,7 +17,7 @@
 </template>
 
 <script setup lang="ts">
-import type { ToolData } from '@/classes/wilder/Tool'
+import type { ToolData } from '@/classes/wilder/components/tool/Tool'
 
 const props = defineProps<{
   wilders: {

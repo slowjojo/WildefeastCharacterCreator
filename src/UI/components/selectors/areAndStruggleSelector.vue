@@ -35,7 +35,6 @@ const props = defineProps<{
 const selectedAre = ref('')
 const selectedStruggle = ref('')
 
-// Watch for both values to be selected and then apply
 watch([selectedAre, selectedStruggle], ([are, struggle]) => {
   if (are && struggle && are !== struggle) {
     props.wilder.applyAreAndStruggle(are, struggle)

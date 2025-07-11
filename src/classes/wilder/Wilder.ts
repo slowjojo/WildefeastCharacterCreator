@@ -1,10 +1,11 @@
-import type { iRankData, styleSpread } from "@/interfaces";
+import type { iRankData, styleSpread } from "@/interfaces"
 import { 
-  type toolData,
   threeCourseBackgroundData,
   type techniqueData, 
-  specialtyData
+  specialtyData,
+  traitData
   } from "@/class"
+  import { ToolController } from "./components/tool/toolController"
 
 const BaseStyles: styleSpread = { mighty: 1, precise: 1, swift: 1, tricky: 1 };
 
@@ -31,6 +32,8 @@ export class WilderData {
   areAndStruggle: [string, string];
   completed: boolean;
   createdAt: number;
+
+  toolController: ToolController;
 
   constructor() {
     this.id = `wilder-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
@@ -72,6 +75,8 @@ export class WilderData {
     this.areAndStruggle = ["", ""];
     this.completed = false;
     this.createdAt = Date.now();
+
+    this.toolController = new ToolController(this);
   }
 
 toJSON() {
@@ -142,12 +147,6 @@ toJSON() {
 
 
 //-- Helper Functions ----------------------------------------------------------------------------------
-applyTool(tool: toolData): void {
-  this.tool = tool.id;
-  this.techniques = [tool.techniques.starter];
-  this.styles = { mighty: 0, precise: 0, swift: 0, tricky: 0 };
-  this.areAndStruggle = ["", ""];
-}
 
 applyStartingStyles(startingStyles: styleSpread): void {
   this.styles = { ...startingStyles };
@@ -161,15 +160,29 @@ applySpecialty(specialty: specialtyData): void {
   this.specialty = specialty.id
 }
 
-addTechnique(technique: techniqueData): void {
-  if (!this.techniques.includes(technique.id)) {
-    this.techniques.push(technique.id);
-  }
-}
 
 removeTechnique(technique: techniqueData): void {
   this.techniques = this.techniques.filter(id => id !== technique.id);
 }
 
+addTrait(trait: traitData): void {
+  const baseId = trait.id.split('_')[0]; // e.g., "digging" from "digging_2"
+  const newLevel = trait.level;
 
+  const existingIndex = this.traits.findIndex(t => t.id.startsWith(baseId + '_'));
+
+  if (existingIndex !== -1) {
+    const existingTrait = this.traits[existingIndex];
+    const existingLevel = parseInt(existingTrait.id.split('_')[1]) || 1;
+
+    if (newLevel > existingLevel) {
+  
+      this.traits[existingIndex] = { id: trait.id, rank: 1 };
+    }
+    
+  } else {
+  
+    this.traits.push({ id: trait.id, rank: 1 });
+  }
+}
 }
