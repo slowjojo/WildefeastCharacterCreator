@@ -4,16 +4,21 @@
 		<toolSelector :wilder="wilder" />
 		<styleSelector v-if="tool" :wilder="wilder" :tool="tool" />
 		<techniqueSelector v-if="tool" :wilder="wilder" :tool="tool" />
+		<areAndStruggleSelector v-if="tool" :wilder="wilder" :tool="tool" />
 	</div>
 </template>
 
 <script setup lang="ts">
 import { computed } from 'vue';
+import { WilderData } from '@/class';
+import { useTools } from '@/stores/useTools';
+
+
+
 import styleSelector from '@/UI/components/selectors/styleSelector.vue';
 import toolSelector from '@/UI/components/selectors/toolSelector.vue';
 import techniqueSelector from '@/UI/components/selectors/techniqueSelector.vue';
-import { WilderData } from '@/class';
-import { useTools } from '@/stores/useTools';
+import areAndStruggleSelector from '@/UI/components/selectors/areAndStruggleSelector.vue';
 
 
 const { getToolById } = useTools();

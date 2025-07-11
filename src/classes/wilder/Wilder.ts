@@ -152,6 +152,9 @@ applyStartingStyles(startingStyles: styleSpread): void {
   this.styles = { ...startingStyles };
 }
 
+applyAreAndStruggle(are: string, struggle: string): void {
+  this.areAndStruggle = [are, struggle];
+}
 addTechnique(technique: techniqueData): void {
   if (!this.techniques.includes(technique.id)) {
     this.techniques.push(technique.id);
