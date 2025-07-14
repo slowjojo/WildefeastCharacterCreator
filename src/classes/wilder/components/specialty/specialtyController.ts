@@ -1,19 +1,10 @@
-import { specialtyData, type WilderData } from '@/class'
-import { useSpecialties } from '@/stores/useSpecialties'
+import type { WilderData } from "@/class"
 
 export class SpecialtyController {
-    private wilder: WilderData
-    private specialties: specialtyData[]
+  private wilder: WilderData
 
   constructor(wilder: WilderData) {
     this.wilder = wilder
-    this.specialties = useSpecialties()specialties
-  }
- getSpecialtyId(specialty: specialtyData): string {
-    return specialty.id
- }
-  getSpecialtyById(specialtyId: string): specialtyData | undefined {
-    return this.specialties.find(s => s.id === specialtyId)
   }
 
   applySpecialty(specialtyId: string ): void {

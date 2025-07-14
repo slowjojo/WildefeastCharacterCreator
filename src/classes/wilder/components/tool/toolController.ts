@@ -1,4 +1,4 @@
-import type { WilderData, toolData } from '@/class'
+import type { WilderData} from '@/class'
 
 export class ToolController {
   private wilder: WilderData
@@ -8,8 +8,7 @@ export class ToolController {
     this.wilder = wilder
 
   }
-
-  
+ 
   applyTool(toolId: string): void {
     this.wilder.tool = toolId
   }

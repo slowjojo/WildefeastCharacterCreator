@@ -1,10 +1,5 @@
-import type { iRankData, styleSpread } from "@/interfaces"
-import { 
-  threeCourseBackgroundData,
-  type techniqueData, 
-  specialtyData,
-  traitData
-  } from "@/class"
+import type { iRankData, styleSpread, wilderSpecialty } from "@/interfaces"
+import { threeCourseBackgroundData } from "@/class"
   import { ToolController } from "./components/tool/toolController"
 
 const BaseStyles: styleSpread = { mighty: 1, precise: 1, swift: 1, tricky: 1 };
@@ -16,8 +11,8 @@ export class WilderData {
   tool: string;
   styles: styleSpread;
   techniques: string[];
-  specialty: string;
-  background: threeCourseBackgroundData;
+  specialty: wilderSpecialty | null;
+  background: threeCourseBackgroundData | null;
   traits: iRankData[];
   skills: iRankData[];
   stamina: number;
@@ -42,12 +37,8 @@ export class WilderData {
     this.tool = "";
     this.styles = { ...BaseStyles };
     this.techniques = [];
-    this.specialty = "";
-    this.background = new threeCourseBackgroundData({
-      upbringing: { number: 0, description: "", bonus: "" },
-      initiation: { number: 0, description: "", bonus: "" },
-      ambition: { number: 0, description: "", bonus: "" },
-    });
+    this.specialty = null;
+    this.background = null;
     this.traits = [];
     this.skills = [
       { id: "assurance", rank: 0 },
@@ -119,7 +110,7 @@ toJSON() {
   w.tool = data.tool ?? "";
   w.styles = data.styles ?? { ...BaseStyles };
   w.techniques = data.techniques ?? [];
-  w.specialty = data.specialty ?? "";
+  w.specialty = data.specialty ?? null;
   w.traits = data.traits ?? [];
   w.skills = data.skills ?? [];
   w.stamina = data.stamina ?? 0;
@@ -145,8 +136,10 @@ toJSON() {
   return w;
 }
 
-
+}
 //-- Helper Functions ----------------------------------------------------------------------------------
+
+/**
 
 applyStartingStyles(startingStyles: styleSpread): void {
   this.styles = { ...startingStyles };
@@ -186,3 +179,5 @@ addTrait(trait: traitData): void {
   }
 }
 }
+
+*/

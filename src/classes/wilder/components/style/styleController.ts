@@ -12,6 +12,8 @@ applyStartingStyles(startingStyles: styleSpread): void {
     this.wilder.styles = { ...startingStyles }
   }
 
+// hardcoded base styles seems cringo but idk if this is a problem
+
 removeStartingStyles(): void {
     this.wilder.styles = {
         mighty: 1,

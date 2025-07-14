@@ -1,8 +1,4 @@
-// seems fucked, gotta fix later
-
-
 import type { nameAndDescription } from "@/interfaces";
-import type { traitData } from "@/class";
 
 export class specialtyData {
   id: string;
@@ -12,18 +8,13 @@ export class specialtyData {
   traits: string[];
   important_monsters: nameAndDescription[];
 
-  constructor(data: any, allTraits: traitData[]) {
+  constructor(data: any ) {
     this.id = data.id;
     this.name = data.name;
     this.description = data.description;
     this.example_monsters = data.example_monsters;
-
-    
-    this.traits = data.traits.filter((traitId: string) => {
-      const trait = allTraits.find(t => t.id === traitId && t.level === 1);
-      return trait !== undefined;
-    });
-
-    this.important_monsters = data.important_monsters;
+    this.traits = data.traits;
+    this.important_monsters = data.important_monsters
   }
 }
+

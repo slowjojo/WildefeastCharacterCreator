@@ -1,4 +1,4 @@
-import type { backgroundMeal } from '@/classes/wilder/components/three-course-background/ThreeCourseBackground';
+import type { backgroundMeal } from '@/classes/wilder/components/three-course-background/threeCourseBackground';
 import { threeCourseBackgrounds } from '@/class';
 import backgroundsJson from '@/assets/data/backgrounds.json';
 import { type Ref, ref } from 'vue';
