@@ -3,7 +3,7 @@
         rank: number
     }
 
-    export interface nameAndDescription{
+    export interface monsterousAquaintance{
         id: string
         name: string
         description: string
@@ -14,12 +14,6 @@
         precise: number
         swift: number
         tricky:number
-    }
-    export interface wilderSpecialty{
-        name: string
-        firstTrait: string
-        secondTrait: string
-        importantMonster: nameAndDescription 
     }
     export type Bonus = SkillBonus | StyleBonus | TraitBonus;
 

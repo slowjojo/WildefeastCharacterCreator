@@ -7,8 +7,4 @@ export class SpecialtyController {
     this.wilder = wilder
   }
 
-  applySpecialty(specialtyId: string ): void {
-  this.wilder.specialty = specialtyId
-}
-
 }

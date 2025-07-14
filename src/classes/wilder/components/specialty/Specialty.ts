@@ -1,4 +1,4 @@
-import type { nameAndDescription } from "@/interfaces";
+import type { monsterousAquaintance } from "@/interfaces";
 
 export class specialtyData {
   id: string;
@@ -6,7 +6,7 @@ export class specialtyData {
   description: string;
   example_monsters: string[];
   traits: string[];
-  important_monsters: nameAndDescription[];
+  important_monsters: monsterousAquaintance[];
 
   constructor(data: any ) {
     this.id = data.id;
