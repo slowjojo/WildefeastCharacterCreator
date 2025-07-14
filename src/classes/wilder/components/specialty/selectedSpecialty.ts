@@ -18,3 +18,4 @@ export class SelectedSpecialtyData {
   }
 
 }
+// add toJSON and from json

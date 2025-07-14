@@ -1,7 +1,7 @@
-import { Meal } from "@/class"
+import { meal } from "@/class"
 import type { Bonus } from "@/interfaces"
 
-export class Feast extends Meal {
+export class feast extends meal {
   monsterId: string
 
   constructor(data: { monsterId: string; bonus: Bonus }) {

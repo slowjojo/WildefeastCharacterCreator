@@ -1,6 +1,6 @@
 import type { Bonus } from "@/interfaces"
 
-export class Meal {
+export class meal {
   bonus: Bonus
 
   constructor(bonus: Bonus) {

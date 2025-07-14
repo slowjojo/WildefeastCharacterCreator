@@ -2,6 +2,7 @@ import type { iRankData, styleSpread } from "@/interfaces"
 import { BackgroundMeal, threeCourseBackgroundData } from "@/class"
 import { ToolController } from "./components/tool/toolController"
 import { SelectedSpecialtyData } from "./components/specialty/SelectedSpecialty";
+import { feast } from "./components/feast/feast";
 
 const BaseStyles: styleSpread = { mighty: 1, precise: 1, swift: 1, tricky: 1 };
 
@@ -24,10 +25,10 @@ export class WilderData {
   conditions: iRankData[];
   staple: string;
   spice: string;
-  monsterouscAquaintance: string;
   areAndStruggle: [string, string];
   completed: boolean;
   createdAt: number;
+  feasts: feast[];
 
   toolController: ToolController;
 
@@ -70,10 +71,10 @@ export class WilderData {
     this.conditions = [];
     this.staple = "";
     this.spice = "";
-    this.monsterouscAquaintance = "";
     this.areAndStruggle = ["", ""];
     this.completed = false;
     this.createdAt = Date.now();
+    this.feasts = [];
 
     this.toolController = new ToolController(this);
   }
@@ -102,10 +103,10 @@ toJSON() {
     conditions: this.conditions.map(c => ({ ...c })), 
     staple: this.staple,
     spice: this.spice,
-    monsterouscAquaintance: this.monsterouscAquaintance,
     areAndStruggle: [...this.areAndStruggle],
     completed: this.completed,
     createdAt: this.createdAt,
+    feasts: this.feasts.map(f => f.toJSON?.() ?? f)
   };
 }
 
@@ -131,18 +132,20 @@ toJSON() {
   w.conditions = data.conditions ?? [];
   w.staple = data.staple ?? "";
   w.spice = data.spice ?? "";
-  w.monsterouscAquaintance = data.monsterouscAquaintance ?? "";
   w.areAndStruggle = data.areAndStruggle ?? ["", ""];
   w.completed = data.completed ?? false;
   w.createdAt = data.createdAt ?? Date.now();
 
- if (data.background) {
+if (data.background) {
   w.background = new threeCourseBackgroundData({
-    upbringing: data.background.upbringing ?? { number: 0, description: "", bonus: "" },
-    initiation: data.background.initiation ?? { number: 0, description: "", bonus: "" },
-    ambition: data.background.ambition ?? { number: 0, description: "", bonus: "" },
+    upbringing: new BackgroundMeal(data.background.upbringing),
+    initiation: new BackgroundMeal(data.background.initiation),
+    ambition: new BackgroundMeal(data.background.ambition),
   });
 }
+
+w.feasts = data.feasts ? data.feasts.map(f => new feast(f)) : [];
+
   return w;
 }
 
