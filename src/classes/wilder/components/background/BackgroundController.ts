@@ -1,7 +1,7 @@
 import type { WilderData } from "@/class";
 import type { backgroundMeal } from "./threeCourseBackground";
 
-export class ThreeCourseBackgroundController {
+export class BackgroundController {
     private wilder: WilderData
 
     constructor(wilder: WilderData) {

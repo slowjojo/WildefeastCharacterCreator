@@ -1,15 +1,25 @@
-import type { WilderData} from '@/class'
-
-export class ToolController {
-  private wilder: WilderData
+import type { WilderTool } from "@/interfaces";
+import type { Wilder } from "../../Wilder";
 
 
-  constructor(wilder: WilderData) {
-    this.wilder = wilder
 
-  }
- 
-  applyTool(toolId: string): void {
-    this.wilder.tool = toolId
-  }
+    export class ToolController {
+        public readonly parent: Wilder;
+        private _tool: WilderTool;
+
+        constructor(parent: Wilder, initialTool: WilderTool) {
+            this.parent = parent;
+            this._tool = initialTool;
+        }
+
+        public static Hydrate(parent: Wilder, data: Partial<WilderTool>): void {
+            if (!parent.ToolController) {
+                throw new Error(
+                    `ToolController not found on parent (${typeof parent}). ` +
+                    `Controllers must be instantiated in the parent's constructor.`
+                )
+                parent.ToolController._tool = data.tool.map
+                
+            }
+        }   
 }

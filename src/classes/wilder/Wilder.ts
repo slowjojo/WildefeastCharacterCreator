@@ -1,196 +1,68 @@
-import type { iRankData, styleSpread } from "@/interfaces"
-import { BackgroundMeal, threeCourseBackgroundData } from "@/class"
-import { ToolController } from "./components/tool/toolController"
-import { SelectedSpecialtyData } from "./components/specialty/SelectedSpecialty";
-import { feast } from "./components/feast/feast";
+import { v4 as uuidv4 } from 'uuid';
+import { ToolController } from "./components/tool/toolController";
+import { SpecialtyController } from './components/specialty/specialtyController';
+import { BackgroundController } from './components/background/BackgroundController'
+import { SkillsController } from './components/skill/skillController';
+import type { StylesController } from './components/style/styleController';
+import type { TraitsController } from './components/trait/traitController';
+import type { TechniquesController } from './components/technique/techniqueController';
+import type { FeastsController } from './components/feast/feastController';
+import type { WilderData } from './wilderData';
 
-const BaseStyles: styleSpread = { mighty: 1, precise: 1, swift: 1, tricky: 1 };
+export class Wilder{
 
-export class WilderData {
-  id: string;
-  name: string;
-  pronouns: string;
-  tool: string;
-  styles: styleSpread;
-  techniques: string[];
-  specialty: SelectedSpecialtyData;
-  background: threeCourseBackgroundData;
-  traits: iRankData[];
-  skills: iRankData[];
-  stamina: number;
-  maxStamina: number;
-  durability: number;
-  maxDurability: number;
-  dead: boolean;
-  conditions: iRankData[];
-  staple: string;
-  spice: string;
-  areAndStruggle: [string, string];
-  completed: boolean;
-  createdAt: number;
-  feasts: feast[];
+private _id: string
+private _name: string
+private _player: string
 
-  toolController: ToolController;
+private _dead: boolean
 
-  constructor() {
-    this.id = `wilder-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
-    this.name = "";
-    this.pronouns = "";
-    this.tool = "";
-    this.styles = { ...BaseStyles };
-    this.techniques = [];
-    this.specialty = new SelectedSpecialtyData();
-    this.background = new threeCourseBackgroundData({
-      upbringing: new BackgroundMeal(),
-      initiation: new BackgroundMeal(),
-      ambition: new BackgroundMeal(),
-    });
-    this.traits = [
-      { id: "grit", rank: 1 },
-      { id: "insight", rank: 1 }
-    ];
-    this.skills = [
-      { id: "assurance", rank: 0 },
-      { id: "call", rank: 0 },
-      { id: "craft", rank: 0 },
-      { id: "cure", rank: 0 },
-      { id: "display", rank: 0 },
-      { id: "grab", rank: 0 },
-      { id: "hoard", rank: 0 },
-      { id: "search", rank: 0 },
-      { id: "shot", rank: 0 },
-      { id: "strike", rank: 0 },
-      { id: "study", rank: 0 },
-      { id: "traversal", rank: 0 },
-    ];
-    this.stamina = 0;
-    this.maxStamina = 0;
-    this.durability = 0;
-    this.maxDurability = 0;
-    this.dead = false;
-    this.conditions = [];
-    this.staple = "";
-    this.spice = "";
-    this.areAndStruggle = ["", ""];
-    this.completed = false;
-    this.createdAt = Date.now();
-    this.feasts = [];
+ToolController: ToolController
+SpecialtyController: SpecialtyController
+BackgroundController: BackgroundController
 
-    this.toolController = new ToolController(this);
+StylesController: StylesController
+SkillsController: SkillsController
+TraitsController: TraitsController
+TechniquesController: TechniquesController
+
+FeastsController: FeastsController
+
+public constructor() {
+    this._id = uuidv4()
+    this._name = ""
+    this._player = ""
+
+    this._dead = false
+
+    this.ToolController = new ToolController(this)
+    this.SpecialtyController = new SpecialtyController(this)
+    this.BackgroundController = new BackgroundController(this)
+
+    this.StylesController = new StylesController(this)
+    this.SkillsController = new SkillsController(this)
+    this.TraitsController = new TraitsController(this)
+    this.TechniquesController = new TechniquesController(this)
+
+    this.FeastsController = new FeastsController(this)
   }
 
-toJSON() {
-  return {
-    id: this.id,
-    name: this.name,
-    pronouns: this.pronouns,
-    tool: this.tool,
-    styles: { ...this.styles },
-    techniques: [...this.techniques],
-    specialty: this.specialty,
-    background: {
-      upbringing: { ...this.background.upbringing },
-      initiation: { ...this.background.initiation },
-      ambition: { ...this.background.ambition },
-    },
-    traits: this.traits.map(t => ({ ...t })),
-    skills: this.skills.map(s => ({ ...s })), 
-    stamina: this.stamina,
-    maxStamina: this.maxStamina,
-    durability: this.durability,
-    maxDurability: this.maxDurability,
-    dead: this.dead,
-    conditions: this.conditions.map(c => ({ ...c })), 
-    staple: this.staple,
-    spice: this.spice,
-    areAndStruggle: [...this.areAndStruggle],
-    completed: this.completed,
-    createdAt: this.createdAt,
-    feasts: this.feasts.map(f => f.toJSON?.() ?? f)
-  };
-}
+  //update both for complete and partial
+public Update(data:Partial<WilderData>, hydrate?: boolean): void {
+  this._id = data.id
+  this._name = data.name
+  this._player = data.player
 
-  static fromJSON(data: Partial<WilderData>): WilderData {
-  const w = new WilderData();
+    this.ToolController = ToolController.Hydrate(this, data)
+    this.SpecialtyController = SpecialtyController.Hydrate(this, data)
+    this.BackgroundController = BackgroundController.Hydrate(this, data)
 
-  w.id = data.id ?? w.id;
-  w.name = data.name ?? "";
-  w.pronouns = data.pronouns ?? "";
-  w.tool = data.tool ?? "";
-  w.styles = data.styles ?? { ...BaseStyles };
-  w.techniques = data.techniques ?? [];
-  w.specialty = data.specialty
-  ? new SelectedSpecialtyData(data.specialty)
-  : new SelectedSpecialtyData();
-  w.traits = data.traits ?? [];
-  w.skills = data.skills ?? [];
-  w.stamina = data.stamina ?? 0;
-  w.maxStamina = data.maxStamina ?? 0;
-  w.durability = data.durability ?? 0;
-  w.maxDurability = data.maxDurability ?? 0;
-  w.dead = data.dead ?? false;
-  w.conditions = data.conditions ?? [];
-  w.staple = data.staple ?? "";
-  w.spice = data.spice ?? "";
-  w.areAndStruggle = data.areAndStruggle ?? ["", ""];
-  w.completed = data.completed ?? false;
-  w.createdAt = data.createdAt ?? Date.now();
+    this.StylesController = StylesController.Hydrate(this, data)
+    this.SkillsController = SkillsController.Hydrate(this, data)
+    this.TraitsController = TraitsController.Hydrate(this, data)
+    this.TechniquesController = TechniquesController.Hydrate(this, data)
 
-if (data.background) {
-  w.background = new threeCourseBackgroundData({
-    upbringing: new BackgroundMeal(data.background.upbringing),
-    initiation: new BackgroundMeal(data.background.initiation),
-    ambition: new BackgroundMeal(data.background.ambition),
-  });
-}
+    this.FeastsController = FeastsController.Hydrate(this, data)
 
-w.feasts = data.feasts ? data.feasts.map(f => new feast(f)) : [];
-
-  return w;
-}
-
-}
-//-- Helper Functions ----------------------------------------------------------------------------------
-
-/**
-
-applyStartingStyles(startingStyles: styleSpread): void {
-  this.styles = { ...startingStyles };
-}
-
-applyAreAndStruggle(are: string, struggle: string): void {
-  this.areAndStruggle = [are, struggle];
-}
-
-applySpecialty(specialty: specialtyData): void {
-  this.specialty = specialty.id
-}
-
-
-removeTechnique(technique: techniqueData): void {
-  this.techniques = this.techniques.filter(id => id !== technique.id);
-}
-
-addTrait(trait: traitData): void {
-  const baseId = trait.id.split('_')[0]; // e.g., "digging" from "digging_2"
-  const newLevel = trait.level;
-
-  const existingIndex = this.traits.findIndex(t => t.id.startsWith(baseId + '_'));
-
-  if (existingIndex !== -1) {
-    const existingTrait = this.traits[existingIndex];
-    const existingLevel = parseInt(existingTrait.id.split('_')[1]) || 1;
-
-    if (newLevel > existingLevel) {
-  
-      this.traits[existingIndex] = { id: trait.id, rank: 1 };
-    }
-    
-  } else {
-  
-    this.traits.push({ id: trait.id, rank: 1 });
   }
 }
-}
-
-*/

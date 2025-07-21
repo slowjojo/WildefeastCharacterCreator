@@ -1,7 +1,8 @@
 import type { styleSpread } from '@/interfaces'
 import type { WilderData } from '@/class'
 
-export class StyleController {
+
+export class StylesController {
   private wilder: WilderData
 
   constructor(wilder: WilderData) {

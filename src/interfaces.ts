@@ -1,33 +1,58 @@
-    export interface iRankData{
-        id: string
-        rank: number
-    }
-
-    export interface monsterousAquaintance{
-        id: string
-        name: string
-        description: string
-    }
-    
-    export interface styleSpread{
-        mighty: number
-        precise: number
-        swift: number
-        tricky:number
-    }
-    export type Bonus = SkillBonus | StyleBonus | TraitBonus;
-
-    export interface SkillBonus {
-        type: 'skill';
-        id: string;
-    }
-
-    export interface StyleBonus {
-        type: 'style';
-        id: 'mighty' | 'precise' | 'swift' | 'tricky';
-    }
-
-    export interface TraitBonus {
-        type: 'trait';
-        id: string;
+export interface IRankData{
+    name: string;
+    rank: number;
 }
+
+export interface WilderStyles{
+    mighty: number;
+    precise: number;
+    swift: number;
+    tricky: number;
+}
+
+export interface WilderTool {
+    name: string;
+    styles: WilderStyles;
+    starterTrait: string;
+    beginnerTrait: string;
+    are: string;
+    struggle: string;
+}
+
+
+export interface WilderSpecialty{
+    name: string;
+    firstTrait: string;
+    secondTrait: string;
+    monsterousAquaintance:MonsterousAcquaintance;
+}
+
+export interface MonsterousAcquaintance{
+    name:string;
+    monsterId: string;
+    description: string;
+}
+
+export interface WilderBackground{
+    upbringing: BackgroundMeal;
+    initiation: BackgroundMeal;
+    ambition: BackgroundMeal;
+}
+
+export interface BackgroundMeal extends Meal{
+    description: string;
+}
+
+export interface Bonus{
+    type: "trait" | "skill" | "style";
+    targetId: string;
+}
+
+export interface Meal{
+    bonus: Bonus;
+}
+
+export interface Feast extends Meal{
+    monsterId: string;
+}
+
