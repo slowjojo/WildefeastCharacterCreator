@@ -14,7 +14,7 @@ export class WilderData {
 
   trainedTechniques: IRankData[];
 
-  feasts: Feast[];
+  feasts?: Feast[];
 
   constructor() {
     this.id = "";

@@ -13,8 +13,8 @@ export interface WilderStyles{
 export interface WilderTool {
     name: string;
     styles: WilderStyles;
-    starterTrait: string;
-    beginnerTrait: string;
+    starterTechnique: string;
+    beginnerTechnique: string;
     are: string;
     struggle: string;
 }

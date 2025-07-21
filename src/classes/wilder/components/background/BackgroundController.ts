@@ -1,15 +1,40 @@
-import type { WilderData } from "@/class";
-import type { backgroundMeal } from "./threeCourseBackground";
+import type { Wilder } from "../../Wilder";
+import type { WilderBackground, BackgroundMeal } from "@/interfaces";
 
 export class BackgroundController {
-    private wilder: WilderData
+    public readonly parent: Wilder;
+    private _background: WilderBackground | null;
 
-    constructor(wilder: WilderData) {
-        this.wilder = wilder
+    constructor(parent: Wilder) {
+        this.parent = parent;
+        this._background = null;
     }
 
-    applyMeal(meal: backgroundMeal, type: 'upbringing' | 'initiation' | 'ambition' ):void {
-        this.wilder.background[type] = meal
+    public Hydrate(data: WilderBackground | null): void {
+        if (!data) {
+            this._background = null;
+            return;
+        }
+
+        this._background = {
+            upbringing: this.hydrateMeal(data.upbringing),
+            initiation: this.hydrateMeal(data.initiation),
+            ambition: this.hydrateMeal(data.ambition)
+        };
     }
 
+    private hydrateMeal(meal: BackgroundMeal): BackgroundMeal {
+        return {
+            ...meal,
+            description: meal.description || "", // Default if undefined
+            bonus: {
+                type: meal.bonus.type,
+                targetId: meal.bonus.targetId
+            }
+        };
+    }
+
+    public get background(): WilderBackground | null {
+        return this._background;
+    }
 }

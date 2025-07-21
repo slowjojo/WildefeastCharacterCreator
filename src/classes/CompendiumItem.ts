@@ -1,12 +1,11 @@
-// unfuck this
-
+import type { ICombatOptions } from "./CombatOptions"
 import type { ItemType } from "./enums"
 
 export interface ICompendiumItemData {
     id: string
     name: string
     description: string
-    actions?: IActionData[]
+    combat_options: ICombatOptions
     bonuses?: IBonusData[]
 }
 
@@ -26,6 +25,10 @@ public constructor( data?: ICompendiumItemData )
     this.ID
     this._name = data.name
     this._description = data.description || ""
+
+    this.Actions = //figure this out later
+    this.Bonuses = //later
+
 
 }
 )
