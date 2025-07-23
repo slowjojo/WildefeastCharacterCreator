@@ -11,26 +11,25 @@ export interface WilderStyles{
 }
 
 export interface WilderTool {
-    name: string;
-    styles: WilderStyles;
-    starterTechnique: string;
-    beginnerTechnique: string;
-    are: string;
-    struggle: string;
-}
+    id: string;
 
+    selectedStyles?: WilderStyles;
+    beginnerTechnique?: string;
+    are?: string;
+    struggle?: string;
+}
 
 export interface WilderSpecialty{
-    name: string;
-    firstTrait: string;
-    secondTrait: string;
-    monsterousAquaintance:MonsterousAcquaintance;
+    id: string;
+    firstTrait?: string;
+    secondTrait?: string;
+    monstrousAcquaintance?: monstrousAcquaintance;
 }
 
-export interface MonsterousAcquaintance{
-    name:string;
-    monsterId: string;
+export interface monstrousAcquaintance{
+    name:string;   
     description: string;
+    monsterId?: string;
 }
 
 export interface WilderBackground{

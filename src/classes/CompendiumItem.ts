@@ -1,34 +1,32 @@
-import type { ICombatOptions } from "./CombatOptions"
-import type { ItemType } from "./enums"
+/* import { ItemType } from "./enums"
 
 export interface ICompendiumItemData {
     id: string
     name: string
     description: string
-    combat_options: ICombatOptions
+    actions?: IActionData[]
     bonuses?: IBonusData[]
+    
 }
 
 abstract class CompendiumItem {
-    public ItemType: ItemType
+    public readonly ItemType: ItemType
     public readonly ID: string
     public readonly Actions: Action[]
     public readonly Bonuses: Bonus[]
-    protected _name: string
-    protected _description: string
+    protected Name: string
+    protected Description: string
 }
 
-public constructor( data?: ICompendiumItemData )
+public constructor( data: ICompendiumItemData, itemType: ItemType ) {
+    this.ItemType = ItemType
+    this.ID = data.id
+    this.Name = data.name
+    this.Description = data.description || ""
 
-{
-    this.ItemType = ItemType.None
-    this.ID
-    this._name = data.name
-    this._description = data.description || ""
-
-    this.Actions = //figure this out later
-    this.Bonuses = //later
+    this.Actions = data.actions?.map(a => new Action(a)) || [];
+    this.Bonuses = data.bonuses?.map(b => new Bonus(b)) || [];
 
 
 }
-)
+    */

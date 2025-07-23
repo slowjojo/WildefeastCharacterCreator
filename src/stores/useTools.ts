@@ -1,11 +1,11 @@
-import { toolData } from '@/classes/wilder/components/tool/Tool'
+import { ToolData } from '@/classes/wilder/components/tool/Tool'
 import toolsJson from '@/assets/data/tools.json'
 import { type Ref, ref } from 'vue';
 
-const tools: toolData[] = toolsJson.map(data => new toolData(data));
-const selectedTool: Ref<toolData | null> = ref(null);
+const tools: ToolData[] = toolsJson.map(data => new ToolData(data));
+const selectedTool: Ref<ToolData | null> = ref(null);
 
-function getToolById(id: string): toolData | undefined {
+function getToolById(id: string): ToolData | undefined {
   return tools.find(tool => tool.id === id);
 }
 

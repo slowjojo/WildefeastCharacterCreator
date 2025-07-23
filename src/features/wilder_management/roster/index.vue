@@ -1,101 +1,106 @@
-  <template>
-    <div class="main-container">
-      <!-- Left Panel -->
-      <div class="left-pane">
-        <div class="options-container">
-          <OptionsArray>
-            <WilderRosterButtons
-            :wilders="wilders" 
+<template>
+  <div class="main-container">
+    <!-- Left Panel -->
+    <div class="left-pane">
+      <div class="options-container">
+        <OptionsArray>
+          <WilderRosterButtons
+            :wilders="wilders"
             :tools="tools"
-             @select="selectWilder"
-            />
-          </OptionsArray>
-        </div>
-
-        <div class="button-container">
-          <v-btn class="newwilderbutton" @click="goToCharacterCreator" block>
-            New Wilder
-          </v-btn>
-        </div>
+            @select="selectWilder"
+          />
+        </OptionsArray>
       </div>
 
-      <!-- Right Panel -->
-      <div class="right-pane">
-        <div v-if="selectedWilder">
-          <h2>{{ selectedWilder.name }}</h2>
-           <p><strong>Tool:</strong> {{ getToolName(selectedWilder.tool) }}</p>  
-          <p><strong>Specialty:</strong> {{ selectedWilder.specialty }}</p>
-          <v-btn color="red" @click="deleteSelectedWilder" style="margin-top: 1rem">
-            Delete Wilder
-          </v-btn>
-        </div>
-        <div v-else>
-          <h2>Select a Wilder</h2>
-        </div>
+      <div class="button-container">
+        <v-btn class="newwilderbutton" @click="goToCharacterCreator" block>
+          New Wilder
+        </v-btn>
       </div>
     </div>
-  </template>
 
-  <script setup lang="ts">
-  import { useRouter } from 'vue-router'
-  import { onMounted } from 'vue'
-  import OptionsArray from '@/UI/components/options-array/OptionsArray.vue'
-  import WilderRosterButtons from './components/WilderRosterButtons.vue'
-  import { useWilders } from '@/stores/useWilders'
-  import { useTools } from '@/stores/useTools'
+    <!-- Right Panel -->
+    <div class="right-pane">
+      <div v-if="selectedWilder">
+        <h2>{{ selectedWilder.Name }}</h2>
+        <p>
+          <strong>Tool:</strong>
+          {{ getToolName(selectedWilder.ToolController.tool?.id || '') }}
+        </p>
+        <p>
+          <strong>Specialty:</strong>
+          {{ selectedWilder.SpecialtyController.specialty?.name || '—' }}
+        </p>
+        <v-btn color="red" @click="deleteSelectedWilder" style="margin-top: 1rem">
+          Delete Wilder
+        </v-btn>
+      </div>
+      <div v-else>
+        <h2>Select a Wilder</h2>
+      </div>
+    </div>
+  </div>
+</template>
 
-  const router = useRouter()
+<script setup lang="ts">
+import { onMounted } from 'vue'
+import { useRouter } from 'vue-router'
+import OptionsArray from '@/UI/components/options-array/OptionsArray.vue'
+import WilderRosterButtons from './components/WilderRosterButtons.vue'
+import { useWilders } from '@/stores/useWilders'
+import { useTools } from '@/stores/useTools'
 
-  const { tools } = useTools()
+const router = useRouter()
+const { tools } = useTools()
 
-  const {
-    wilders,
-    selectedWilder,
-    selectWilder,
-    deleteWilder,
-    loadWilders
-  } = useWilders()
+const {
+  wilders,
+  selectedWilder,
+  selectWilder,
+  deleteWilder,
+  loadWilders
+} = useWilders()
 
-  onMounted(async () => {
-    await loadWilders()
-    console.log('Loaded wilders:', wilders.value)
-  })
+onMounted(() => {
+  loadWilders()
+  console.log('Loaded wilders:', wilders.value)
+})
 
-  function getToolName(id: string): string {
+function getToolName(id: string): string {
   const tool = tools.find(t => t.id === id)
-  return tool ? tool.name : id
+  return tool ? tool.name : '—'
 }
 
-  function goToCharacterCreator() {
-    router.push('/wilder-management/new')
-  }
+function goToCharacterCreator() {
+  router.push('/wilder-management/new')
+}
 
-  function deleteSelectedWilder() {
-    if (
-      selectedWilder.value &&
-      confirm(`Are you sure you want to delete ${selectedWilder.value.name}?`)
-    ) {
-      deleteWilder()
-    }
+function deleteSelectedWilder() {
+  if (
+    selectedWilder.value &&
+    confirm(`Are you sure you want to delete ${selectedWilder.value.Name}?`)
+  ) {
+    deleteWilder()
   }
-  </script>
+}
+</script>
 
-  <style scoped>
-  :global(html),
-  :global(body),
-  :global(#app) {
-    height: 100vh;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-  }
+<style scoped>
+:global(html),
+:global(body),
+:global(#app) {
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
 
-  .main-container {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    height: 100%;
-    overflow: hidden;
-  }
+.main-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  height: 100%;
+  overflow: hidden;
+}
 
 .left-pane {
   display: flex;
@@ -105,12 +110,12 @@
   box-sizing: border-box;
   border-right: 2px solid black;
 }
+
 .options-container {
   flex-basis: 80%;
   min-height: 0;
   overflow-y: auto;
 }
-
 
 .button-container {
   flex-basis: 20%;
@@ -128,8 +133,8 @@
   display: block;
 }
 
-  .right-pane {
-    padding: 2rem;
-    overflow-y: auto;
-  }
-  </style>
+.right-pane {
+  padding: 2rem;
+  overflow-y: auto;
+}
+</style>

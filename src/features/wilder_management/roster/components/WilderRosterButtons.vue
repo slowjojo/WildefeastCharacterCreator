@@ -2,14 +2,15 @@
   <div class="wilder-roster-cards">
     <v-card
       v-for="wilder in wilders"
-      :key="wilder.id"
+      :key="wilder.ID"
       class="wilder-card"
-      @click="$emit('select', wilder.id)"
+      @click="$emit('select', wilder.ID)"
     >
       <div class="card-text">
-        <v-card-title>{{ wilder.name }}</v-card-title>
+        <v-card-title>{{ wilder.Name }}</v-card-title>
         <v-card-subtitle>
-          {{ getToolName(wilder.tool) }} – {{ wilder.specialty }}
+          {{ getToolName(wilder.ToolController.tool?.id || '') }} – 
+          {{ wilder.SpecialtyController.specialty?.name || '—' }}
         </v-card-subtitle>
       </div>
     </v-card>
@@ -18,17 +19,12 @@
 
 <script setup lang="ts">
 import type { ToolData } from '@/classes/wilder/components/tool/Tool'
+import type { Wilder } from '@/classes/wilder/Wilder'
 
 const props = defineProps<{
-  wilders: {
-    id: string
-    name: string
-    tool: string
-    specialty: string
-  }[]
+  wilders: Wilder[]
   tools: ToolData[]
 }>()
-
 
 function getToolName(toolId: string): string {
   const tool = props.tools.find(t => t.id === toolId)
@@ -41,6 +37,7 @@ function getToolName(toolId: string): string {
   display: flex;
   flex-direction: column;
 }
+
 .wilder-roster-cards {
   display: flex;
   flex-direction: column;

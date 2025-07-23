@@ -5,7 +5,7 @@ export enum ItemType {
     Tool = "Tool",
     Specialty = "Specialty",
     Trait = "Trait",
-    Harmony = "Harmony"
+    
 
     //monster? 
 }
@@ -14,5 +14,6 @@ export enum CostType {
   Action = 'action',
   Stamina = 'stamina',
   Success = 'success',
-  Passive = 'passive'
+  Passive = 'passive',
+  Harmony = "Harmony"
 }

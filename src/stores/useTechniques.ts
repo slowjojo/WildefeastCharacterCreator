@@ -10,7 +10,7 @@ function getTechniqueById(id: string): techniqueData | undefined {
 }
 
 
-export function useTechnqiues() {
+export function useTechniques() {
     return {
     techniques,
     selectedTechnique,

@@ -1,11 +1,28 @@
-import type { styleSpread } from "@/interfaces";
+import type { WilderStyles } from "@/interfaces";
 
-export class toolData {
+export interface IToolData {
+   id: string;
+    icon: string;
+    name: string;
+    are_and_struggle: string[];
+    styles: WilderStyles[];
+    techniques: {
+        starter: string;
+        beginner: string[];
+        intermediate: string[];
+        advanced: string[];
+    }
+    description:string;
+}
+
+
+
+export class ToolData {
     id: string;
     icon: string;
     name: string;
     are_and_struggle: string[];
-    styles: styleSpread[];
+    styles: WilderStyles[];
     techniques: {
         starter: string;
         beginner: string[];

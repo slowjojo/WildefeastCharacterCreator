@@ -1,64 +1,40 @@
 import { ref } from "vue";
 import type { Ref } from "vue";
-import localforage from "localforage";
-import { WilderData } from "@/classes/wilder/Wilder";
+import { Wilder } from "@/classes/wilder/Wilder";
 
-const wilders: Ref<WilderData[]> = ref([]);
-const selectedWilder: Ref<WilderData | null> = ref(null);
+const wilders: Ref<Wilder[]> = ref([]);
+const selectedWilder: Ref<Wilder | null> = ref(null);
 
-async function loadWilders() {
-  const loaded: WilderData[] = [];
-  await localforage.iterate((value, key) => {
-    if (key.startsWith("wilder-")) {
-      loaded.push(WilderData.fromJSON(value as Partial<WilderData>));
-    }
-  });
-  wilders.value = loaded;
-}
+//load wilders here?
 
 function selectWilder(id: string) {
-  selectedWilder.value = wilders.value.find(w => w.id === id) || null;
+  selectedWilder.value = wilders.value.find(w => w.ID === id) || null;
 }
 
 function clearSelectedWilder() {
   selectedWilder.value = null;
 }
 
-function createWilder(): WilderData {
-  const newWilder = new WilderData();
-  wilders.value.push(newWilder);
-  localforage.setItem(`wilder-${newWilder.id}`, newWilder.toJSON());
-  return newWilder;
+function loadWilders() {
+  // For now, just clear and add one empty Wilder for testing
+  const newWilder = new Wilder()
+  wilders.value = [newWilder]
+  selectedWilder.value = newWilder
 }
 
-async function updateWilder(wilder: WilderData, newData: Partial<WilderData>) {
-  Object.assign(wilder, newData)
-
-  const plain = WilderData.fromJSON(wilder)
-  const json = plain.toJSON()
-
-  console.log('Saving JSON:', json)
-
-  await localforage.setItem(`wilder-${plain.id}`, json)
-}
-
-async function deleteWilder() {
-  if (!selectedWilder.value) return;
-  const id = selectedWilder.value.id;
-  wilders.value = wilders.value.filter(w => w.id !== id);
-  selectedWilder.value = null;
-  await localforage.removeItem(`wilder-${id}`);
+function deleteWilder() {
+  if (!selectedWilder.value) return
+  wilders.value = wilders.value.filter(w => w.ID !== selectedWilder.value?.ID)
+  selectedWilder.value = null
 }
 
 export function useWilders() {
   return {
     wilders,
     selectedWilder,
-    loadWilders,
     selectWilder,
     clearSelectedWilder,
-    createWilder,
-    updateWilder,
+    loadWilders,
     deleteWilder
   };
 }

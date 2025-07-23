@@ -1,57 +1,32 @@
 <template>
-    <div class="ToolButtons d-flex flex-wrap ga-4">
-      <ToolCard
-        v-for="tool in tools"
-        :key="tool.id"
-        :tool="tool"
-        @click="selectTool(tool)"
-      />
-    </div>
-  
-    <!-- <div class="ToolSubOptions mt-6">
-      <v-card v-if="selectedTool">
-        <v-card-title>{{ selectedTool.name }}</v-card-title>
-        <v-card-text>
-          <p><strong>Styles:</strong> {{ selectedTool.primary_styles.join(', ') }}</p>
-          <p><strong>Description:</strong> {{ selectedTool.description }}</p>
-        </v-card-text>
-      </v-card>
-    </div>-->
-  </template>
-  
-  <script setup lang="ts">
-  import { ref } from 'vue'
-  import toolsData from '@/assets/data/tools.json'
-  import ToolCard from './ToolCard.vue'
-  
-  interface Tool {
-  id: string
-  name: string
-  icon: string
-  primary_styles: string[]
-  description: string
-  techniques: {
-    starter: string
-    beginner: string[]
-    intermediate: string[]
-    advanced: string[]
-  }
-}
+	<div>
+		<h1>TOOL PAGE</h1>
+		<toolSelector :wilder="wilder" />
+		<styleSelector v-if="tool" :wilder="wilder" :tool="tool" />
+		<techniqueSelector v-if="tool" :wilder="wilder" :tool="tool" />
+		<areAndStruggleSelector v-if="tool" :wilder="wilder" :tool="tool" />
+	</div>
+</template>
 
-const tools = ref<Tool[]>(toolsData)
-const selectedTool = ref<Tool | null>(null)
+<script setup lang="ts">
+import { computed } from 'vue';
+import { Wilder } from '@/class';
+import { useTools } from '@/stores/useTools';
 
-  
-  function selectTool(tool: any) {
-    selectedTool.value = tool
-  }
-  </script>
-  
-  <style scoped>
-  .ToolButtons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-  </style>
-  
+
+import styleSelector from '@/UI/components/selectors/WilderToolSelectors/styleSelector.vue';
+import toolSelector from '@/UI/components/selectors/WilderToolSelectors/toolSelector.vue';
+import techniqueSelector from '@/UI/components/selectors/WilderToolSelectors/techniqueSelector.vue';
+import areAndStruggleSelector from '@/UI/components/selectors/WilderToolSelectors/areAndStruggleSelector.vue';
+
+
+const { getToolById } = useTools();
+
+const props = defineProps<{ wilder: Wilder }>();
+
+const tool = computed(() => {
+  return getToolById(props.wilder.ToolController.tool?.id || '')
+})
+
+
+</script>
