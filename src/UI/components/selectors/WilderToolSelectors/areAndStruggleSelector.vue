@@ -25,12 +25,12 @@
 
 <script setup lang="ts">
 import { ref, watch, computed } from 'vue'
-import type { Wilder } from '@/class'
 import type { WilderTool } from '@/interfaces'
 import { useTools } from '@/stores/useTools'
+import type { ToolController } from '@/classes/wilder/components/tool/toolController';
 
 const props = defineProps<{
-  wilder: Wilder
+  toolController: ToolController
   tool: WilderTool
 }>()
 
@@ -50,7 +50,7 @@ watch([selectedAre, selectedStruggle], ([are, struggle]) => {
 
 
   if (are && struggle && are !== struggle) {
-    props.wilder.ToolController.setAreAndStruggle(are, struggle)
+    props.toolController.setAreAndStruggle(are, struggle)
   }
 })
 

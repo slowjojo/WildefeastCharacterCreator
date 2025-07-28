@@ -1,35 +1,40 @@
-<template>
-  <div>
-    <select v-model="selectedToolId">
-      <option disabled value="">-- Select a Tool --</option>
-      <option v-for="tool in tools" :key="tool.id" :value="tool.id">
-        {{ tool.name }}
-      </option>
-    </select>
-  </div>
+<template> 
+  <div class="tool-list">
+    <ToolCard
+      v-for="tool in tools"
+      :key="tool.id"
+      :tool="tool"
+      :selected="toolController.tool?.id === tool.id"
+      :complete="!!toolController.tool?.id"
+      @select="handleToolSelect"
+    />
+  </div> 
 </template>
 
 <script setup lang="ts">
-import { ref, watch, onMounted } from 'vue'
 import { useTools } from '@/stores/useTools'
-import type { Wilder } from '@/class'
+import type { ToolController } from '@/classes/wilder/components/tool/toolController'
+import ToolCard from '../../cards/_ToolCard.vue'
 
-const { tools, getToolById } = useTools()
+const props = defineProps<{ toolController: ToolController }>()
 
-const props = defineProps<{
-  wilder: Wilder
-}>()
+const { tools } = useTools()
 
-const selectedToolId = ref('')
-
-onMounted(() => {
-  selectedToolId.value = props.wilder.ToolController.tool?.id || ''
-})
-
-watch(selectedToolId, (newId) => {
-  const selectedTool = getToolById(newId)
-  if (selectedTool) {
-    props.wilder.ToolController.setTool(selectedTool.id)
-  }
-})
+const handleToolSelect = (toolId: string) => {
+  console.log('Tool selected:', toolId)
+  props.toolController.setTool(toolId)
+  console.log('current tool:', props.toolController.tool)
+}
 </script>
+
+<style scoped>
+
+.tool-list {
+  display:flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 8px;
+  padding: 16px;
+}
+
+</style>

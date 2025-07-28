@@ -51,6 +51,10 @@ public constructor() {
     public get Dead(): boolean {
       return this._dead
     }
+
+
+
+
  public Update(data: WilderData): void {
 
         this._id = data.id

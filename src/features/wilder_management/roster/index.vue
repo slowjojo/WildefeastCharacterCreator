@@ -3,13 +3,13 @@
     <!-- Left Panel -->
     <div class="left-pane">
       <div class="options-container">
-        <OptionsArray>
+        <div>
           <WilderRosterButtons
             :wilders="wilders"
             :tools="tools"
             @select="selectWilder"
           />
-        </OptionsArray>
+        </div>
       </div>
 
       <div class="button-container">
@@ -29,7 +29,7 @@
         </p>
         <p>
           <strong>Specialty:</strong>
-          {{ selectedWilder.SpecialtyController.specialty?.name || '—' }}
+          {{ selectedWilder.SpecialtyController.specialty?.id || '—' }}
         </p>
         <v-btn color="red" @click="deleteSelectedWilder" style="margin-top: 1rem">
           Delete Wilder
@@ -45,7 +45,6 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
 import { useRouter } from 'vue-router'
-import OptionsArray from '@/UI/components/options-array/OptionsArray.vue'
 import WilderRosterButtons from './components/WilderRosterButtons.vue'
 import { useWilders } from '@/stores/useWilders'
 import { useTools } from '@/stores/useTools'

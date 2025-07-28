@@ -11,12 +11,12 @@
 
 <script setup lang="ts">
 import type { WilderStyles, WilderTool } from "@/interfaces"
-import type { Wilder } from "@/class"
 import { ref, watch, computed } from "vue"
 import { useTools } from "@/stores/useTools"
+import type { ToolController } from "@/classes/wilder/components/tool/toolController";
 
 const props = defineProps<{
-  wilder: Wilder
+  toolController: ToolController
   tool: WilderTool
 }>()
 
@@ -33,7 +33,7 @@ function describeStyle(styles: WilderStyles): string {
 function applySelectedStyle() {
   const styles = availableStyles.value[selectedIndex.value as number]
   if (styles) {
-    props.wilder.ToolController.setStyles(styles)
+    props.toolController.setStyles(styles)
   }
 }
 

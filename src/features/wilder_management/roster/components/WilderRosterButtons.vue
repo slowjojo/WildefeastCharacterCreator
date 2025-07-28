@@ -10,7 +10,7 @@
         <v-card-title>{{ wilder.Name }}</v-card-title>
         <v-card-subtitle>
           {{ getToolName(wilder.ToolController.tool?.id || '') }} – 
-          {{ wilder.SpecialtyController.specialty?.name || '—' }}
+          {{ wilder.SpecialtyController.specialty?.id || '—' }}
         </v-card-subtitle>
       </div>
     </v-card>

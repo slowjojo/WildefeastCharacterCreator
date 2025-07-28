@@ -25,7 +25,7 @@
         "the_inevitable_blade"
       ]
     },
-    "description": "A six-foot arksteel blade used to sever dangerous monster parts. More surgical than savage."
+    "description": "Among the wilder tools, the cleaver is the most iconic. Six feet or longer, with a flat heavy blade made of pure arksteel, cleavers excel at severing dangerous parts off monsters mid-hunt, as well as butchering the animal so not a scrap of meat is wasted. Cleaver-wielders make intimidating sights, with their massive blades slung over their shoulders, but the cleaver is actually a fairly clumsy weapon when facing anything human-sized. Their fearsome appearances notwithstanding, cleaver-wielders are more often surgeons than soldiers, using their anatomical knowledge to stitch wounds and tend injuries when they return from the trail."
   },
   {
     "id": "tool_mitts",
@@ -53,7 +53,7 @@
         "lend_your_strenght_to_my_fist"
       ]
     },
-    "description": ""
+    "description": "Protective gloves woven from arksteel fiber, mitts are for wilders who want to get their hands dirty without getting their hands dirty. Large enough to go up to the elbow, mitts protect their wielder’s hands from the shock of impact while delivering hard, concussive blows. A few wilders adorn their mitts with blades or spikes, but unless they’re also made of arksteel, these adornments get crushed within seconds of a hunt starting. Most mitt-wielders prefer instead to focus on their personal technique, training with a mix of closed-fist and open-palm styles. They have a reputation for handling and befriending unruly monsters, whose gnashing teeth can’t breach their armored forearms."
   },
   {
     "id": "tool_pan",
@@ -81,7 +81,7 @@
         "the_greater_pain_is_to_see_you_suffer"
       ]
     },
-    "description": "The common folk like pan-wielding wilders best, as these wilders are legendary for the massive, communal meals they can sizzle in their tools. Monsters, on the other hand, are ambivalent, for the pan\u2019s reflective surface has distracted and agitated many of them while the wielder\u2019s packmates make their escape. On the trail, pans heat up well over a campfire, and during the hunt, arksteel pans can deflect fatal blows, with claws and fangs failing to even scratch their adamantine surfaces. The practice of throwing pans is a recent innovation, where pan-wielders toss their weapon like a discus and bounce it off a monster from a safe distance, but old-fashioned wilders still prefer a hearty whack over any new-fangled technique."
+    "description": "The common folk like pan-wielding wilders best, as these wilders are legendary for the massive, communal meals they can sizzle in their tools. Monsters, on the other hand, are ambivalent, for the pan's reflective surface has distracted and agitated many of them while the wielder's packmates make their escape. On the trail, pans heat up well over a campfire, and during the hunt, arksteel pans can deflect fatal blows, with claws and fangs failing to even scratch their adamantine surfaces. The practice of throwing pans is a recent innovation, where pan-wielders toss their weapon like a discus and bounce it off a monster from a safe distance, but old-fashioned wilders still prefer a hearty whack over any new-fangled technique."
   },
   {
     "id": "tool_spit",
@@ -137,7 +137,7 @@
         "thermonuclear_arkfire_blast"
       ]
     },
-    "description": "The most enigmatic of the arksteel tools, the torch defies explanation. Torches appear in a variety of shapes and configurations, though each typically has a nozzle, canister, and trigger. A giant could operate one with a single hand, but most wilders attach straps, buckles, or extra handles just to carry them. They never require refueling, and Charter academicians claim the torch actually functions by opening a microscopic gateway to a distant but extreme heat source, like the heart of a star. Only with careful training can one master the controls for the blue blade of flame, and thus extend the fire\u2019s reach or manipulate its shape. Torch-wielders who do become experts in ancient craftwork, for theirs is the only tool with a function more complex than its form."
+    "description": "The most enigmatic of the arksteel tools, the torch defies explanation. Torches appear in a variety of shapes and configurations, though each typically has a nozzle, canister, and trigger. A giant could operate one with a single hand, but most wilders attach straps, buckles, or extra handles just to carry them. They never require refueling, and Charter academicians claim the torch actually functions by opening a microscopic gateway to a distant but extreme heat source, like the heart of a star. Only with careful training can one master the controls for the blue blade of flame, and thus extend the fire's reach or manipulate its shape. Torch-wielders who do become experts in ancient craftwork, for theirs is the only tool with a function more complex than its form."
   },
   {
     "id": "tool_twine",

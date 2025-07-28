@@ -3,8 +3,8 @@
     <!-- Left Side: Navigation -->
     <div class="left-pane">
       <div class="button-column">
-        <MajorBtn @click="goToWilderManagment">catalogue</MajorBtn>
-        <MajorBtn @click="goToCompendium">compendium</MajorBtn>
+        <v-btn @click="goToWilderManagment">catalogue</v-btn>
+        <v-btn @click="goToCompendium">compendium</v-btn>
       </div>
     </div>
 
@@ -17,7 +17,6 @@
 
 <script setup lang="ts">
 import { useRouter } from 'vue-router';
-import MajorBtn from '../../UI/components/MajorBtn.vue';
 
 const router = useRouter();
 

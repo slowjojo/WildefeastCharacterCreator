@@ -17,11 +17,11 @@
 import { ref, computed } from 'vue'
 import { useTechniques } from '@/stores/useTechniques'
 import { useTools } from '@/stores/useTools'
-import type { Wilder } from '@/class'
 import type { WilderTool } from '@/interfaces'
+import type { ToolController } from '@/classes/wilder/components/tool/toolController'
 
 const props = defineProps<{
-  wilder: Wilder
+  toolController: ToolController
   tool: WilderTool
 }>()
 
@@ -35,7 +35,7 @@ const beginnerTechniqueIds = computed(() => ToolData.value?.techniques.beginner 
 
 function addSelectedTechnique() {
   if (selectedTechnique.value) {
-    props.wilder.ToolController.setBeginnerTechnique(selectedTechnique.value)
+    props.toolController.setBeginnerTechnique(selectedTechnique.value)
   }
 }
 </script>
