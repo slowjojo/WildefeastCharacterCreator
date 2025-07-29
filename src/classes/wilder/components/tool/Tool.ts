@@ -1,11 +1,11 @@
-import type { WilderStyles } from "@/interfaces";
+import { Style } from "@/classes/enums";
 
 export interface IToolData {
    id: string;
     icon: string;
     name: string;
     are_and_struggle: string[];
-    styles: WilderStyles[];
+    main_styles: Style[];
     techniques: {
         starter: string;
         beginner: string[];
@@ -22,7 +22,7 @@ export class ToolData {
     icon: string;
     name: string;
     are_and_struggle: string[];
-    styles: WilderStyles[];
+    main_styles: Style[];
     techniques: {
         starter: string;
         beginner: string[];
@@ -35,8 +35,8 @@ export class ToolData {
         this.id = data.id;
         this.icon = data.icon;
         this.name = data.name;
-        this.are_and_struggle = data.are_and_struggle
-        this.styles = data.styles;
+        this.are_and_struggle = data.are_and_struggle;
+        this.main_styles = data.main_styles;
         this.techniques = data.techniques;
         this.description = data.description;
     }

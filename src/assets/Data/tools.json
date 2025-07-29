@@ -4,10 +4,7 @@
     "icon": "cleaver-knife.png",
     "name": "CLEAVER",
     "are_and_struggle": [ "brutal", "careful", "decisive", "efficient", "scary", "parctical" ],
-    "styles": [
-      { "mighty": 3, "precise": 2, "swift": 1, "tricky": 1 },
-      { "mighty": 2, "precise": 3, "swift": 1, "tricky": 1 }
-      ],
+    "main_styles": [ "mighty", "precise"],
     "techniques": {
       "starter": "clean_cut",
       "beginner": [
@@ -32,10 +29,7 @@
     "icon": "oven-mitts.png",
     "name": "MITTS",
     "are_and_struggle": [ "brave", "casual", "focused", "honest", "understanding", "upbeat" ],
-    "styles": [
-          { "mighty": 3, "precise": 1, "swift": 2, "tricky": 1 },
-          { "mighty": 2, "precise": 1, "swift": 3, "tricky": 1 }
-          ],
+    "main_styles": [ "mighty", "swift"],
     "techniques": {
       "starter": "close_and_personal",
       "beginner": [
@@ -53,17 +47,14 @@
         "lend_your_strenght_to_my_fist"
       ]
     },
-    "description": "Protective gloves woven from arksteel fiber, mitts are for wilders who want to get their hands dirty without getting their hands dirty. Large enough to go up to the elbow, mitts protect their wielder’s hands from the shock of impact while delivering hard, concussive blows. A few wilders adorn their mitts with blades or spikes, but unless they’re also made of arksteel, these adornments get crushed within seconds of a hunt starting. Most mitt-wielders prefer instead to focus on their personal technique, training with a mix of closed-fist and open-palm styles. They have a reputation for handling and befriending unruly monsters, whose gnashing teeth can’t breach their armored forearms."
+    "description": "Protective gloves woven from arksteel fiber, mitts are for wilders who want to get their hands dirty without getting their hands dirty. Large enough to go up to the elbow, mitts protect their wielder’s hands from the shock of impact while delivering hard, concussive blows. A few wilders adorn their mitts with blades or spikes, but unless they’re also made of arksteel, these adornments get crushed within seconds of a hunt starting. Most mitt-wielders prefer instead to focus on their personal technique, training with a mix of closed-fist and open-palm main_styles. They have a reputation for handling and befriending unruly monsters, whose gnashing teeth can’t breach their armored forearms."
   },
   {
     "id": "tool_pan",
     "icon": "frying-pan.png",
     "name": "PAN",
     "are_and_struggle": [ "composed", "generous", "leaderly", "popular", "resolute", "wary" ],
-    "styles": [
-        { "mighty": 3, "precise": 1, "swift": 1, "tricky": 2 },
-        { "mighty": 2, "precise": 1, "swift": 1, "tricky": 3 }
-        ],
+    "main_styles": [ "mighty", "tricky"],
     "techniques": {
       "starter": "steel_shield",
       "beginner": [
@@ -88,10 +79,7 @@
     "icon": "fork-in-diagonal.png",
     "name": "SPIT",
     "are_and_struggle": [ "curious", "delicate", "honourable", " hopeful", "polite", "spontaneous" ],
-    "styles": [
-        { "mighty": 1, "precise": 3, "swift": 2, "tricky": 1 },
-        { "mighty": 1, "precise": 2, "swift": 3, "tricky": 1 }
-        ],
+    "main_styles": [ "precise", "swift"],
     "techniques": {
       "starter": "flurry_of_motion",
       "beginner": [
@@ -116,10 +104,7 @@
     "icon": "welding-torch.png",
     "name": "TORCH",
     "are_and_struggle": [ "in control", "patient", "scheming", "secretive", "studious", "thourough"],
-    "styles": [
-        { "mighty": 1, "precise": 3, "swift": 1, "tricky": 2 },
-        { "mighty": 1, "precise": 2, "swift": 1, "tricky": 3 }
-        ],
+    "main_styles": [ "precise", "tricky"],
     "techniques": {
       "starter": "line_of_fire",
       "beginner": [
@@ -144,10 +129,7 @@
     "icon": "intertwisted.png",
     "name": "TWINE",
     "are_and_struggle": [ "consistent", "creative", "flexible", "gentle", "quiet", "wise"],
-    "styles": [
-        { "mighty": 1, "precise": 1, "swift": 3, "tricky": 2 },
-        { "mighty": 1, "precise": 1, "swift": 2, "tricky": 3 }
-        ],
+    "main_styles": [ "swift", "tricky"],
     "techniques": {
       "starter": "lasso_and_leash",
       "beginner": [

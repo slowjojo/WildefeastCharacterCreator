@@ -1,43 +1,55 @@
 <template>
-  <div>
-    <select v-model="selectedIndex" @change="applySelectedStyle">
-      <option disabled value="">-- Select a Style Spread --</option>
-      <option v-for="(style, index) in availableStyles" :key="index" :value="index">
-        {{ describeStyle(style) }}
-      </option>
-    </select>
+  <div class="style-selector">
+    <div class="style-buttons">
+      <v-btn
+        v-for="style in mainStyles"
+        :key="style"
+        :color="selected === style ? 'primary' : 'default'"
+        @click="selectStyle(style)"
+      >
+        {{ style }}
+      </v-btn>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import type { WilderStyles, WilderTool } from "@/interfaces"
-import { ref, watch, computed } from "vue"
-import { useTools } from "@/stores/useTools"
-import type { ToolController } from "@/classes/wilder/components/tool/toolController";
+import { ref, computed, watch } from 'vue'
+import { useTools } from '@/stores/useTools'
+import type { ToolController } from '@/classes/wilder/components/tool/toolController'
+import type { WilderTool } from '@/interfaces'
+import type { Style } from '@/classes/enums'
 
 const props = defineProps<{
   toolController: ToolController
   tool: WilderTool
 }>()
 
-const { getToolById } = useTools()
-const fullToolData = computed(() => getToolById(props.tool.id))
-const availableStyles = computed(() => fullToolData.value?.styles ?? [])
+const { getMainStylesById, getBaseStyles } = useTools()
+const selected = ref<Style | null>(null)
 
-const selectedIndex = ref<number | ''>('')
+const mainStyles = computed<Style[]>(() => {
+  return getMainStylesById(props.tool.id) ?? []
+})
 
-function describeStyle(styles: WilderStyles): string {
-  return `Mighty: ${styles.mighty}, Precise: ${styles.precise}, Swift: ${styles.swift}, Tricky: ${styles.tricky}`
-}
+function selectStyle(primary: Style) {
+  const [first, second] = mainStyles.value
+  if (!first || !second) return
 
-function applySelectedStyle() {
-  const styles = availableStyles.value[selectedIndex.value as number]
-  if (styles) {
-    props.toolController.setStyles(styles)
-  }
+  const secondary = primary === first ? second : first
+  const spread = getBaseStyles(primary, secondary)
+  props.toolController.setStyles(spread)
+  selected.value = primary
 }
 
 watch(() => props.tool.id, () => {
-  selectedIndex.value = ''
+  selected.value = null
 })
 </script>
+
+<style scoped>
+.style-buttons {
+  display: flex;
+  gap: 12px;
+}
+</style>

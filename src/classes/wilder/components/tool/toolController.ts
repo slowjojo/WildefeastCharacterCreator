@@ -1,5 +1,6 @@
-import type { WilderStyles, WilderTool } from "@/interfaces"
+import type { StyleSpread, WilderTool } from "@/interfaces"
 import type { Wilder } from "../../Wilder"
+import { Style } from "@/classes/enums"
 
 export class ToolController {
   public readonly parent: Wilder
@@ -14,7 +15,7 @@ export class ToolController {
     if (data) {
       this._tool = {
         id: data.id,
-        selectedStyles: data.selectedStyles,
+        baseStyles: data.baseStyles,
         beginnerTechnique: data.beginnerTechnique,
         are: data.are,
         struggle: data.struggle
@@ -27,18 +28,34 @@ export class ToolController {
     public setTool(toolId: string): void {
         this._tool = {
         id: toolId,
-        selectedStyles: undefined,
+        baseStyles: undefined,
         beginnerTechnique: undefined,
         are: undefined,
         struggle: undefined
     }
   }
 
-    public setStyles(style: WilderStyles): void {
-        if (this._tool) {
-        this._tool.selectedStyles = style
- }
+    public getStyleSpread(primary: Style, secondary: Style): StyleSpread {
+    const spread: StyleSpread = {
+      [Style.Mighty]: 1,
+      [Style.Precise]: 1,
+      [Style.Swift]: 1,
+      [Style.Tricky]: 1
+    }
+
+    spread[primary] = 3
+    spread[secondary] = 2
+
+    return spread
+  }
+    
+
+public setStyles(baseStyles: StyleSpread): void {
+  if (this._tool) {
+    this._tool.baseStyles = baseStyles
+  }
 }
+
 
     public setBeginnerTechnique(techniqueId: string): void {
         if (this._tool) {

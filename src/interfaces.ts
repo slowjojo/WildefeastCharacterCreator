@@ -1,23 +1,21 @@
+import type { Style } from "./classes/enums";
+
 export interface IRankData{
     name: string;
     rank: number;
 }
 
-export interface WilderStyles{
-    mighty: number;
-    precise: number;
-    swift: number;
-    tricky: number;
-}
 
 export interface WilderTool {
     id: string;
 
-    selectedStyles?: WilderStyles;
+    baseStyles?: StyleSpread;
     beginnerTechnique?: string;
     are?: string;
     struggle?: string;
 }
+
+export type StyleSpread = Record<Style, number>
 
 export interface WilderSpecialty{
     id: string;

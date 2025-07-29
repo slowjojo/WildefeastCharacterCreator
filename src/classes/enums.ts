@@ -17,3 +17,10 @@ export enum CostType {
   Passive = 'passive',
   Harmony = "Harmony"
 }
+
+export enum Style {
+  Mighty = 'mighty',
+  Precise = 'precise',
+  Swift = 'swift',
+  Tricky = 'tricky'
+}
