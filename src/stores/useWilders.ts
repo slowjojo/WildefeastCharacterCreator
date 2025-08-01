@@ -1,40 +1,58 @@
-import { ref } from "vue";
-import type { Ref } from "vue";
-import { Wilder } from "@/classes/wilder/Wilder";
+// stores/wilderStore.ts
+import { defineStore } from 'pinia'
+import { Wilder, type WilderData } from '@/class'
+import localforage from 'localforage'
 
-const wilders: Ref<Wilder[]> = ref([]);
-const selectedWilder: Ref<Wilder | null> = ref(null);
-
-//load wilders here?
-
-function selectWilder(id: string) {
-  selectedWilder.value = wilders.value.find(w => w.ID === id) || null;
-}
-
-function clearSelectedWilder() {
-  selectedWilder.value = null;
-}
-
-function loadWilders() {
-  // For now, just clear and add one empty Wilder for testing
-  const newWilder = new Wilder()
-  wilders.value = [newWilder]
-  selectedWilder.value = newWilder
-}
-
-function deleteWilder() {
-  if (!selectedWilder.value) return
-  wilders.value = wilders.value.filter(w => w.ID !== selectedWilder.value?.ID)
-  selectedWilder.value = null
-}
-
-export function useWilders() {
-  return {
-    wilders,
-    selectedWilder,
-    selectWilder,
-    clearSelectedWilder,
-    loadWilders,
-    deleteWilder
-  };
-}
+export const useWilderStore = defineStore('wilder', {
+  state: () => ({
+    draftWilder: null as Wilder | null,
+    savedWilders: [] as Wilder[],
+  }),
+  actions: {
+    initializeNewWilder() {
+      this.draftWilder = new Wilder()
+    },
+    
+    saveDraft() {
+      if (!this.draftWilder) return
+      
+      const index = this.savedWilders.findIndex(w => w.ID === this.draftWilder!.ID)
+      if (index !== -1) {
+        this.savedWilders[index] = this.draftWilder
+      } else {
+        this.savedWilders.push(this.draftWilder)
+      }
+    },
+    
+    loadWilder(id: string) {
+      const wilder = this.savedWilders.find(w => w.ID === id)
+      if (wilder) this.draftWilder = wilder
+    },
+    
+    updateWilderData(data: Partial<WilderData>) {
+      if (!this.draftWilder) return
+      this.draftWilder.Update(data as WilderData)
+    },
+    
+    async loadWilders() {
+      try {
+        const loaded: Wilder[] = []
+        
+        await localforage.iterate((value, key) => {
+          if (key.startsWith('wilder-')) {
+            const wilder = new Wilder()
+            wilder.Update(value as WilderData)
+            loaded.push(wilder)
+          }
+        })
+        
+        this.savedWilders = loaded
+        return loaded
+      } catch (error) {
+        console.error('Failed to load wilders:', error)
+        throw error
+      }
+    }
+  },
+  persist: true
+})

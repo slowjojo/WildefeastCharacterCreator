@@ -9,7 +9,7 @@ export interface IRankData{
 export interface WilderTool {
     id: string;
 
-    baseStyles?: StyleSpread;
+    primaryStyle?: Style;
     beginnerTechnique?: string;
     are?: string;
     struggle?: string;
