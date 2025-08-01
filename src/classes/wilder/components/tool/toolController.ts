@@ -1,8 +1,9 @@
 // controllers/ToolController.ts
-import { ref, type Ref, computed } from 'vue';
+import { ref, type Ref } from 'vue';
 import type { StyleSpread, WilderTool } from "@/interfaces";
 import type { Wilder } from "../../Wilder";
 import { Style } from "@/classes/enums";
+import { useTools } from '@/stores/useTools';
 
 export class ToolController {
   public readonly parent: Wilder
@@ -41,7 +42,7 @@ export class ToolController {
     if (!this._tool.value?.id || !this._tool.value?.primaryStyle) return null
     
     // Import this method from your store to get the tool's main styles
-    const { getMainStylesById } = require('@/stores/useTools')
+    const { getMainStylesById } = useTools()
     const mainStyles = getMainStylesById(this._tool.value.id)
     
     if (!mainStyles || mainStyles.length !== 2) return null
@@ -65,7 +66,7 @@ export class ToolController {
   }
 
   // Backward compatibility - remove this method since we store primary style now
-  public setStyles(baseStyles: StyleSpread): void {
+  public setStyles(): void {
     // This method is no longer needed since we derive styles
     console.warn('setStyles is deprecated, use setPrimaryStyle instead')
   }

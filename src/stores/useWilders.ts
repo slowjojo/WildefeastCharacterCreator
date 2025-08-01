@@ -4,12 +4,6 @@ import { computed } from 'vue'
 import { Wilder, WilderData } from '@/class'
 import localforage from 'localforage'
 
-// Define the store state interface explicitly
-interface WilderStoreState {
-  draftWilder: Wilder | null
-  savedWilders: Wilder[]
-  selectedWilder: Wilder | null
-}
 
 const useWilderStore = defineStore('wilder', {
   state: () => ({
