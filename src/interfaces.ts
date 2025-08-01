@@ -5,11 +5,9 @@ export interface IRankData{
     rank: number;
 }
 
-
 export interface WilderTool {
-    id: string;
-
-    primaryStyle?: Style;
+    id?: string;
+    primaryStyle?: Style; // Store only the chosen primary style (3)
     beginnerTechnique?: string;
     are?: string;
     struggle?: string;
@@ -52,4 +50,3 @@ export interface Meal{
 export interface Feast extends Meal{
     monsterId: string;
 }
-

@@ -10,10 +10,6 @@
 
 <script setup lang="ts">
 import type { Wilder } from '@/class';
-import AreAndStruggleSelector from '@/UI/components/selectors/WilderToolSelectors/areAndStruggleSelector.vue';
-import StyleSelector from '@/UI/components/selectors/WilderToolSelectors/styleSelector.vue';
-import TechniqueSelector from '@/UI/components/selectors/WilderToolSelectors/techniqueSelector.vue';
-import ToolSelector from '@/UI/components/selectors/WilderToolSelectors/toolSelector.vue';
 
 
 defineProps<{

@@ -5,16 +5,17 @@
       <v-btn
         v-for="style in mainStyles"
         :key="style"
-        :color="selected === style ? 'primary' : 'default'"
-        @click="selectStyle(style)"
+        :color="selectedPrimaryStyle === style ? 'primary' : 'default'"
+        @click="selectPrimaryStyle(style)"
         class="style-button"
       >
         {{ style.toUpperCase() }}
       </v-btn>
     </div>
-    <div v-if="selected" class="selected-info">
-      <p><strong>Primary:</strong> {{ selected.toUpperCase() }} (3)</p>
-      <p><strong>Secondary:</strong> {{ getSecondary() }} (2)</p>
+    <div v-if="selectedPrimaryStyle" class="selected-info">
+      <p><strong>Primary:</strong> {{ selectedPrimaryStyle.toUpperCase() }} (3)</p>
+      <p><strong>Secondary:</strong> {{ getSecondaryStyle() }} (2)</p>
+      <p><strong>Others:</strong> {{ getOtherStyles().join(', ').toUpperCase() }} (1 each)</p>
     </div>
   </div>
 </template>
@@ -29,8 +30,8 @@ const props = defineProps<{
   toolController: ToolController
 }>()
 
-const { getMainStylesById, getBaseStyles } = useTools()
-const selected = ref<Style | null>(null)
+const { getMainStylesById } = useTools()
+const selectedPrimaryStyle = ref<Style | null>(null)
 
 // Get the current tool reactively
 const tool = computed(() => props.toolController.reactiveTool.value)
@@ -40,27 +41,35 @@ const mainStyles = computed<Style[]>(() => {
   return getMainStylesById(tool.value.id) ?? []
 })
 
-function selectStyle(primary: Style) {
-  const [first, second] = mainStyles.value
-  if (!first || !second) return
-
-  const secondary = primary === first ? second : first
-  const spread = getBaseStyles(primary, secondary)
-  props.toolController.setStyles(spread)
-  selected.value = primary
+function selectPrimaryStyle(primaryStyle: Style) {
+  props.toolController.setPrimaryStyle(primaryStyle)
+  selectedPrimaryStyle.value = primaryStyle
 }
 
-function getSecondary(): string {
-  if (!selected.value) return ''
-  const [first, second] = mainStyles.value
-  const secondary = selected.value === first ? second : first
+function getSecondaryStyle(): string {
+  if (!selectedPrimaryStyle.value) return ''
+  const secondary = mainStyles.value.find(style => style !== selectedPrimaryStyle.value)
   return secondary?.toUpperCase() || ''
+}
+
+function getOtherStyles(): string[] {
+  if (!selectedPrimaryStyle.value) return []
+  const [first, second] = mainStyles.value
+  const others = ['mighty', 'precise', 'swift', 'tricky'].filter(
+    style => style !== first && style !== second
+  )
+  return others
 }
 
 // Reset selection when tool changes
 watch(() => tool.value?.id, () => {
-  selected.value = null
+  selectedPrimaryStyle.value = null
 })
+
+// Initialize selection from existing data
+watch(() => tool.value?.primaryStyle, (primaryStyle) => {
+  selectedPrimaryStyle.value = primaryStyle || null
+}, { immediate: true })
 </script>
 
 <style scoped>
