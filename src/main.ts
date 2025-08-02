@@ -28,19 +28,15 @@ app.use(pinia)
 app.use(router)
 app.use(vuetify)
 
-// Updated startup to initialize both stores
-import('./io/Startup')
-  .then(module => {
-    if (typeof module.startupApp === 'function') {
-      return module.startupApp()
-    }
-  })
+// Initialize stores synchronously first
+import { useDraftWilderStore } from '@/stores/useDraftWilder'
+const draftStore = useDraftWilderStore() // This initializes immediately
+
+// Then handle async startup
+import { startupApp } from './io/Startup'
+startupApp()
   .then(() => {
-    // Initialize the draft store after startup
-    import('@/stores/useDraftWilder').then(({ useDraftWilderStore }) => {
-      const draftStore = useDraftWilderStore()
-      // The store initializes automatically with a new Wilder()
-    })
+    console.log('App startup completed successfully')
   })
   .catch(err => {
     console.error('Startup initialization failed:', err)
