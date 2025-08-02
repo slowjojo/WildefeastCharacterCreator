@@ -9,20 +9,20 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
+import type { Style } from '@/classes/enums'
 import OptionCard from './OptionCard.vue'
 
 const props = defineProps<{
-  style: string
+  style: Style
   selected?: boolean
 }>()
 
 const emit = defineEmits<{
-  (e: 'select', style: string): void
+  (e: 'select', style: Style): void
 }>()
 
 const cardItem = computed(() => ({
   id: props.style,
   name: props.style.toUpperCase(),
-  // No icon needed for styles
 }))
 </script>

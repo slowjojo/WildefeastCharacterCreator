@@ -17,9 +17,7 @@ const props = defineProps<{
   selected?: boolean
 }>()
 
-const emit = defineEmits<{
-  (e: 'select', id: string): void
-}>()
+
 
 const cardItem = computed(() => ({
   id: props.specialty.id,

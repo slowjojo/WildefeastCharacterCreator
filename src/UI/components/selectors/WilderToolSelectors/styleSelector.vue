@@ -19,13 +19,14 @@
 </template>
 
 <script setup lang="ts">
+import { Style } from '@/classes/enums'
 import StyleCard from '../../cards/StyleCard.vue'
 import { useDraftWilderStore } from '@/stores/useDraftWilder'
 
 const { draftWilder } = useDraftWilderStore()
 const toolController = draftWilder.ToolController
 
-function handleStyleSelect(style: string) {
+function handleStyleSelect(style: Style) {
   toolController.setPrimaryStyle(style)
 }
 </script>
