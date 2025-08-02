@@ -84,7 +84,6 @@ export class ToolController {
     return this._tool.id
   }
 
-  // COMPLETION STATE GETTERS - Fixed: removed .value references
   public get hasToolSelected(): boolean {
     return !!this._tool.id
   }
@@ -108,7 +107,6 @@ export class ToolController {
            this.hasAreAndStruggleSelected
   }
 
-  // DERIVED DATA GETTERS - Fixed: removed .value references
   public get currentStyleSpread(): StyleSpread | null {
     if (!this._tool.id || !this._tool.primaryStyle) return null
    
@@ -135,7 +133,7 @@ export class ToolController {
     return spread
   }
 
-  // TOOL DATA GETTERS (requires useTools store)
+
   public get toolData() {
     if (!this.toolId) return null
     const { getToolById } = useTools()
@@ -154,7 +152,7 @@ export class ToolController {
     return getBeginnerTechniquesByTool(this.toolId)
   }
 
-  // Fixed: removed .value reference
+
   public resetAll(): void {
     this._tool = {
       id: "",
