@@ -6,13 +6,12 @@ export interface IRankData{
 }
 
 export interface WilderTool {
-    id?: string;
-    primaryStyle?: Style; // Store only the chosen primary style (3)
-    beginnerTechnique?: string;
-    are?: string;
-    struggle?: string;
+    id: string;
+    primaryStyle: Style | null; 
+    beginnerTechnique: string;
+    are: string;
+    struggle: string;
 }
-
 export type StyleSpread = Record<Style, number>
 
 export interface WilderSpecialty{

@@ -12,7 +12,7 @@
 import { onMounted, ref } from 'vue'
 import { SpecialtyController } from '@/classes/wilder/components/specialty/specialtyController'
 import { useSpecialties } from '@/stores/useSpecialties'
-import SpecialtyCard from '@/UI/components/cards/_SpecialtyCard.vue'
+import SpecialtyCard from '@/UI/components/cards/SpecialtyCard.vue'
 
 const props = defineProps<{ specialtyController: SpecialtyController }>()
 const { specialties } = useSpecialties()

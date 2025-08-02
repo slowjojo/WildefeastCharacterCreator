@@ -1,16 +1,12 @@
 <template>
   <div>
-    <specialtySelector :specialty-controller="wilder.SpecialtyController" />
+    SpecialtyController
   </div>
 </template>
 
 <script setup lang="ts">
-import type { Wilder } from '@/class';
-import specialtySelector from '@/UI/components/selectors/WilderSpecialtySelectors/specialtySelector.vue';
+import SpecialtySelector from '@/UI/components/selectors/WilderSpecialtySelectors/specialtySelector.vue';
+import { useDraftWilderStore } from '@/stores/useDraftWilder'
 
-const { wilder } = defineProps<{ wilder: Wilder }>()
-
-
-
-
+const { draftWilder } = useDraftWilderStore()
 </script>

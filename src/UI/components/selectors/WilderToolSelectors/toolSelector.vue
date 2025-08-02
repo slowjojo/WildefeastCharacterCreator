@@ -4,25 +4,18 @@
       v-for="tool in tools"
       :key="tool.id"
       :tool="tool"
-      :selected="toolController.tool?.id === tool.id"
-      @select="handleToolSelect"
+      :selected="toolController.toolId === tool.id"
+      @select="toolController.setTool"
     />
   </div>
 </template>
 
 <script setup lang="ts">
-import { useTools } from '@/stores/useTools'
-import type { ToolController } from '@/classes/wilder/components/tool/toolController'
-import ToolCard from '../../cards/_ToolCard.vue'
+import ToolCard from '../../cards/ToolCard.vue';
+import { useDraftWilderStore } from '@/stores/useDraftWilder'
+import { useTools } from '@/stores/useTools';
 
-const props = defineProps<{
-  toolController: ToolController
-}>()
-
+const { draftWilder } = useDraftWilderStore()
+const toolController = draftWilder.ToolController
 const { tools } = useTools()
-
-const handleToolSelect = (toolId: string) => {
-  props.toolController.setTool(toolId)
-}
-
 </script>

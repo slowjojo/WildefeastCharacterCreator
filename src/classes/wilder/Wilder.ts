@@ -1,9 +1,22 @@
 import { v4 as uuidv4 } from 'uuid'
-import { ToolController } from "./components/tool/toolController"
+import { ToolController } from "./components/tool/ToolController"
 import { SpecialtyController } from './components/specialty/specialtyController'
 import { BackgroundController } from './components/background/BackgroundController'
 import { FeastsController } from './components/feast/feastController'
 import type { WilderData } from './wilderData'
+
+export interface IWilder {
+  readonly id: string;
+  readonly name: string;
+  readonly player: string;
+  readonly dead: boolean;
+  readonly ToolController: ToolController;
+  readonly SpecialtyController: SpecialtyController;
+  readonly BackgroundController: BackgroundController;
+  readonly FeastsController: FeastsController;
+  Update(data: WilderData): void;
+}
+
 
 export class Wilder{
 
@@ -32,26 +45,21 @@ public constructor() {
 
     this.FeastsController = new FeastsController(this)
   }
-    public get ID(): string {
-      return this._id
-    }
+    public get id(): string {
+    return this._id
+  }
 
-    public get Name(): string {
-      return this._name
-    }
+  public get name(): string {
+    return this._name
+  }
 
-    public set Name(newName: string) {
-      this._name = newName
-    }
+  public get player(): string {
+    return this._player
+  }
 
-    public get Player(): string {
-      return this._player
-    }
-
-    public get Dead(): boolean {
-      return this._dead
-    }
-
+  public get dead(): boolean {
+    return this._dead
+  }
 
 
 

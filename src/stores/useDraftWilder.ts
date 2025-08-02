@@ -1,8 +1,17 @@
+// src/stores/useDraftWilder.ts
+import { defineStore } from 'pinia'
 import { ref } from 'vue'
-import { Wilder } from '@/class'
+import { Wilder } from '@/classes/wilder/Wilder'
 
-export function useDraftCharacter() {
-  const draft = ref(new Wilder())
-  
-  return { draft }
-}
+export const useDraftWilderStore = defineStore('draftWilder', () => {
+  const draftWilder = ref<Wilder>(new Wilder())
+
+  const resetDraft = () => {
+    draftWilder.value = new Wilder()
+  }
+
+  return {
+    draftWilder,
+    resetDraft
+  }
+})

@@ -97,10 +97,10 @@ const useWilderStore = defineStore('wilder', {
     // Helper method to serialize a Wilder for storage
     serializeWilder(wilder: Wilder): WilderData {
       const data = new WilderData()
-      data.id = wilder.ID
-      data.name = wilder.Name
-      data.player = wilder.Player
-      data.dead = wilder.Dead
+      data.id = wilder.id
+      data.name = wilder.name
+      data.player = wilder.player
+      data.dead = wilder.dead
       data.tool = wilder.ToolController.tool
       data.specialty = wilder.SpecialtyController.specialty
       data.background = wilder.BackgroundController.background

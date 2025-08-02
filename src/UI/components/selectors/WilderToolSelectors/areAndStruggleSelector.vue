@@ -1,95 +1,166 @@
 <template>
-  <div v-if="tool && areAndStruggle.length > 0">
+  <div class="are-struggle-selector" v-if="toolController.hasToolSelected">
     <h3>Choose Your Are and Struggle</h3>
     
-    <div class="selector-group">
-      <label>Select your Are:</label>
-      <select v-model="selectedAre" class="selector">
-        <option disabled value="">-- choose what you ARE --</option>
-        <option v-for="word in areAndStruggle" :key="'are-' + word" :value="word">
-          {{ word }}
-        </option>
-      </select>
+    <div v-if="availableOptions.length > 0" class="selector-container">
+      <div class="selector-group">
+        <label>Select what you ARE:</label>
+        <select 
+          :value="toolController.are || ''"
+          @change="updateAre($event)"
+          class="selector"
+        >
+          <option disabled value="">-- choose what you ARE --</option>
+          <option
+            v-for="option in availableOptions"
+            :key="'are-' + option"
+            :value="option"
+          >
+            {{ option }}
+          </option>
+        </select>
+      </div>
+
+      <div class="selector-group">
+        <label>Select what you STRUGGLE with:</label>
+        <select 
+          :value="toolController.struggle || ''"
+          @change="updateStruggle($event)"
+          class="selector"
+        >
+          <option disabled value="">-- choose what you STRUGGLE with --</option>
+          <option
+            v-for="option in availableOptions"
+            :key="'struggle-' + option"
+            :value="option"
+            :disabled="option === toolController.are"
+          >
+            {{ option }}
+          </option>
+        </select>
+      </div>
     </div>
 
-    <div class="selector-group">
-      <label>Select your Struggle:</label>
-      <select v-model="selectedStruggle" class="selector">
-        <option disabled value="">-- choose what you STRUGGLE with --</option>
-        <option
-          v-for="word in areAndStruggle"
-          :key="'struggle-' + word"
-          :value="word"
-          :disabled="word === selectedAre"
-        >
-          {{ word }}
-        </option>
-      </select>
+    <div v-else class="no-options-message">
+      <p>No options available for this tool</p>
     </div>
+
+    <div v-if="toolController.hasAreAndStruggleSelected" class="selected-summary">
+      <h4>Your Character:</h4>
+      <p><strong>You are:</strong> {{ toolController.are }}</p>
+      <p><strong>You struggle with being:</strong> {{ toolController.struggle }}</p>
+    </div>
+  </div>
+  
+  <div v-else class="no-tool-message">
+    <p>Please select a tool first</p>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, watch, computed } from 'vue'
+import { computed } from 'vue'
+import { useDraftWilderStore } from '@/stores/useDraftWilder'
 import { useTools } from '@/stores/useTools'
-import type { ToolController } from '@/classes/wilder/components/tool/toolController';
 
-const props = defineProps<{
-  toolController: ToolController
-}>()
-
+const { draftWilder } = useDraftWilderStore()
+const toolController = draftWilder.ToolController
 const { getToolById } = useTools()
 
-// Get the current tool reactively
-const tool = computed(() => props.toolController.reactiveTool.value)
-const ToolData = computed(() => tool.value?.id ? getToolById(tool.value.id) : null)
-const areAndStruggle = computed(() => ToolData.value?.are_and_struggle ?? [])
-
-const selectedAre = ref('')
-const selectedStruggle = ref('')
-
-watch([selectedAre, selectedStruggle], ([are, struggle]) => {
-  // Prevent selecting the same thing for both
-  if (are === struggle && struggle !== '') {
-    selectedStruggle.value = ''
-    return
-  }
-
-  // Update the controller when both are selected and different
-  if (are && struggle && are !== struggle) {
-    props.toolController.setAreAndStruggle(are, struggle)
-  }
+const availableOptions = computed(() => {
+  if (!toolController.toolId) return []
+  const toolData = getToolById(toolController.toolId)
+  return toolData?.are_and_struggle ?? []
 })
 
-// Reset selections when tool changes
-watch(() => tool.value?.id, () => {
-  selectedAre.value = ''
-  selectedStruggle.value = ''
-})
+function updateAre(event: Event) {
+  const target = event.target as HTMLSelectElement
+  const newAre = target.value
+  
+  // If the new "are" is the same as current "struggle", clear struggle
+  if (newAre === toolController.struggle) {
+    toolController.setAreAndStruggle(newAre, '')
+  } else {
+    toolController.setAreAndStruggle(newAre, toolController.struggle || '')
+  }
+}
+
+function updateStruggle(event: Event) {
+  const target = event.target as HTMLSelectElement
+  const newStruggle = target.value
+  
+  // If the new "struggle" is the same as current "are", clear are
+  if (newStruggle === toolController.are) {
+    toolController.setAreAndStruggle('', newStruggle)
+  } else {
+    toolController.setAreAndStruggle(toolController.are || '', newStruggle)
+  }
+}
 </script>
 
 <style scoped>
-.selector-group {
+.are-struggle-selector {
+  margin: 16px 0;
+}
+
+.selector-container {
   margin: 12px 0;
+}
+
+.selector-group {
+  margin: 16px 0;
 }
 
 .selector-group label {
   display: block;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
   font-weight: bold;
+  color: #333;
 }
 
 .selector {
   width: 100%;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  padding: 10px;
+  border: 2px solid #e0e0e0;
+  border-radius: 6px;
   font-size: 14px;
+  background: white;
+  transition: border-color 0.2s ease;
 }
 
 .selector:focus {
   outline: none;
   border-color: #2196f3;
   box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.2);
+}
+
+.selector:disabled {
+  background: #f5f5f5;
+  color: #999;
+}
+
+.selected-summary {
+  margin-top: 16px;
+  padding: 12px;
+  background: #f5f5f5;
+  border-radius: 4px;
+}
+
+.selected-summary h4 {
+  margin: 0 0 8px 0;
+  color: #333;
+}
+
+.selected-summary p {
+  margin: 4px 0;
+  color: #555;
+}
+
+.no-options-message,
+.no-tool-message {
+  padding: 16px;
+  background: #f9f9f9;
+  border-radius: 4px;
+  text-align: center;
+  color: #666;
 }
 </style>

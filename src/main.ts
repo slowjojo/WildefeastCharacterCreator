@@ -1,3 +1,4 @@
+// src/main.ts
 import { createApp } from 'vue'
 import './style.css'
 import App from './App.vue'
@@ -27,12 +28,19 @@ app.use(pinia)
 app.use(router)
 app.use(vuetify)
 
-// Updated to match your actual export
+// Updated startup to initialize both stores
 import('./io/Startup')
   .then(module => {
     if (typeof module.startupApp === 'function') {
       return module.startupApp()
     }
+  })
+  .then(() => {
+    // Initialize the draft store after startup
+    import('@/stores/useDraftWilder').then(({ useDraftWilderStore }) => {
+      const draftStore = useDraftWilderStore()
+      // The store initializes automatically with a new Wilder()
+    })
   })
   .catch(err => {
     console.error('Startup initialization failed:', err)
