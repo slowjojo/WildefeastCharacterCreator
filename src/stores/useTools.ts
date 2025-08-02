@@ -1,41 +1,53 @@
+// stores/useTools.ts
+import { defineStore } from 'pinia'
 import { ToolData } from '@/classes/wilder/components/tool/Tool'
-import toolsJson from '@/assets/data/tools.json'
-import { type Ref, ref } from 'vue';
-import { Style } from '@/classes/enums';
-import type { StyleSpread } from '@/interfaces';
+import { Style } from '@/classes/enums'
+import type { StyleSpread } from '@/interfaces'
+import { computed } from 'vue'
 
-const tools: ToolData[] = toolsJson.map(data => new ToolData(data));
-const selectedTool: Ref<ToolData | null> = ref(null);
+const useToolsStore = defineStore('tools', {
+  state: () => ({
+    tools: [] as ToolData[],
+    selectedTool: null as ToolData | null,
+  }),
 
-function getToolById(id: string): ToolData | undefined {
-  return tools.find(tool => tool.id === id);
-}
+  actions: {
+   setTools(tools: ToolData[]) {
+      this.tools = tools
+    },
 
-function getMainStylesById(id:string): Style[] | undefined {
-  const tool = getToolById(id);
-  return tool?.main_styles ?? []
-}
+    getToolById(id: string): ToolData | undefined {
+      return this.tools.find(tool => tool.id === id)
+    },
 
-function getBaseStyles(primary: Style, secondary: Style): StyleSpread {
-  const spread: StyleSpread = {
-    [Style.Mighty]: 1,
-    [Style.Precise]: 1,
-    [Style.Swift]: 1,
-    [Style.Tricky]: 1
+    getMainStylesById(id: string): Style[] | undefined {
+      const tool = this.getToolById(id)
+      return tool?.main_styles ?? []
+    },
+
+    getBaseStyles(primary: Style, secondary: Style): StyleSpread {
+      const spread: StyleSpread = {
+        [Style.Mighty]: 1,
+        [Style.Precise]: 1,
+        [Style.Swift]: 1,
+        [Style.Tricky]: 1
+      }
+      spread[primary] = 3
+      spread[secondary] = 2
+      return spread
+    }
   }
-
-  spread[primary] = 3
-  spread[secondary] = 2
-
-  return spread
-}
+})
 
 export function useTools() {
-    return {
-    tools,
-    selectedTool,
-    getToolById,
-    getMainStylesById,
-    getBaseStyles
-    };
+  const store = useToolsStore()
+  
+  return {
+    tools: computed(() => store.tools),
+    selectedTool: computed(() => store.selectedTool),
+    getToolById: (id: string) => store.getToolById(id),
+    getMainStylesById: (id: string) => store.getMainStylesById(id),
+    getBaseStyles: (primary: Style, secondary: Style) => store.getBaseStyles(primary, secondary),
+    setTools: (tools: ToolData[]) => store.setTools(tools)
+  }
 }

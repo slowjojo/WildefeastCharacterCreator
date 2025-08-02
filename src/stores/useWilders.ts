@@ -1,67 +1,65 @@
-// stores/useWilders.ts - Type-safe version
+// stores/useWilders.ts
 import { defineStore } from 'pinia'
 import { computed } from 'vue'
 import { Wilder, WilderData } from '@/class'
-import localforage from 'localforage'
-
 
 const useWilderStore = defineStore('wilder', {
   state: () => ({
-  draftWilder: null as Wilder | null,
-  savedWilders: [] as Wilder[],
-  selectedWilder: null as Wilder | null,
-} as any),
+    draftWilder: null as Wilder | null,
+    savedWilders: [] as Wilder[],
+    selectedWilder: null as Wilder | null,
+  }),
  
   actions: {
+    // Set wilders from external loader
+    setWilders(wilders: Wilder[]): void {
+      this.savedWilders = wilders
+    },
+
     initializeNewWilder(): void {
       this.draftWilder = new Wilder()
     },
    
     selectWilder(wilderId: string): void {
-      this.selectedWilder = this.savedWilders.find((w: { ID: string }) => w.ID === wilderId) || null
+      this.selectedWilder = this.savedWilders.find(w => w.id === wilderId) || null
     },
    
-    deleteSelectedWilder(): void {
+    async deleteSelectedWilder(): Promise<void> {
       if (!this.selectedWilder) return
      
-      const index = this.savedWilders.findIndex((w: { ID: any }) => w.ID === this.selectedWilder!.ID)
+      const index = this.savedWilders.findIndex(w => w.id === this.selectedWilder!.id)
       if (index !== -1) {
+        // Use the Wilder's delete method
+        await this.selectedWilder.delete()
         this.savedWilders.splice(index, 1)
-        // Also remove from storage
-        localforage.removeItem(`wilder-${this.selectedWilder.ID}`)
         this.selectedWilder = null
       }
     },
    
-    saveDraft(): void {
+    async saveDraft(): Promise<void> {
       if (!this.draftWilder) return
      
-      const index = this.savedWilders.findIndex((w: { ID: any }) => w.ID === this.draftWilder!.ID)
+      const index = this.savedWilders.findIndex(w => w.id === this.draftWilder!.id)
       if (index !== -1) {
         this.savedWilders[index] = this.draftWilder
       } else {
         this.savedWilders.push(this.draftWilder)
       }
      
-      // Save to persistent storage
-      const wilderData = this.serializeWilder(this.draftWilder)
-      localforage.setItem(`wilder-${this.draftWilder.ID}`, wilderData)
+      // Use the Wilder's save method
+      await this.draftWilder.save()
     },
    
     loadWilder(id: string): void {
-      const wilder = this.savedWilders.find((w: { ID: string }) => w.ID === id)
+      const wilder = this.savedWilders.find(w => w.id === id)
       if (wilder) this.draftWilder = wilder
     },
    
-    // Accept either complete or partial data
     updateWilderData(data: WilderData | Partial<WilderData>): void {
       if (!this.draftWilder) return
       
-      // If partial data, we need to merge it properly
       if (this.isPartialWilderData(data)) {
-        // For partial updates, just update the specific properties
-        // This is a simplified approach - you might want more sophisticated merging
-        const currentData = this.serializeWilder(this.draftWilder)
+        const currentData = this.draftWilder.serialize()
         const mergedData = { ...currentData, ...data } as WilderData
         this.draftWilder.Update(mergedData)
       } else {
@@ -69,50 +67,14 @@ const useWilderStore = defineStore('wilder', {
       }
     },
 
-    // Type guard to check if data is partial
     isPartialWilderData(data: WilderData | Partial<WilderData>): data is Partial<WilderData> {
       return (data as WilderData).id === undefined
-    },
-   
-    async loadWilders(): Promise<Wilder[]> {
-      try {
-        const loaded: Wilder[] = []
-       
-        await localforage.iterate((value, key) => {
-          if (key.startsWith('wilder-')) {
-            const wilder = new Wilder()
-            wilder.Update(value as WilderData)
-            loaded.push(wilder)
-          }
-        })
-       
-        this.savedWilders = loaded
-        return loaded
-      } catch (error) {
-        console.error('Failed to load wilders:', error)
-        throw error
-      }
-    },
-
-    // Helper method to serialize a Wilder for storage
-    serializeWilder(wilder: Wilder): WilderData {
-      const data = new WilderData()
-      data.id = wilder.id
-      data.name = wilder.name
-      data.player = wilder.player
-      data.dead = wilder.dead
-      data.tool = wilder.ToolController.tool
-      data.specialty = wilder.SpecialtyController.specialty
-      data.background = wilder.BackgroundController.background
-      data.feasts = wilder.FeastsController.feasts
-      return data
     }
   },
  
   persist: true
 })
 
-// Export the composable that components will use
 export function useWilders() {
   const store = useWilderStore()
  
@@ -122,14 +84,13 @@ export function useWilders() {
     selectedWilder: computed(() => store.selectedWilder),
     draftWilder: computed(() => store.draftWilder),
    
-    // Actions - bound methods to preserve 'this' context
-    loadWilders: () => store.loadWilders(),
+    // Actions
+    setWilders: (wilders: Wilder[]) => store.setWilders(wilders),
     selectWilder: (wilderId: string) => store.selectWilder(wilderId),
     deleteWilder: () => store.deleteSelectedWilder(),
     initializeNewWilder: () => store.initializeNewWilder(),
     saveDraft: () => store.saveDraft(),
     loadWilder: (id: string) => store.loadWilder(id),
-    updateWilderData: (data: WilderData | Partial<WilderData>) => store.updateWilderData(data),
-    serializeWilder: (wilder: Wilder) => store.serializeWilder(wilder)
+    updateWilderData: (data: WilderData | Partial<WilderData>) => store.updateWilderData(data)
   }
 }
