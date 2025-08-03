@@ -1,13 +1,7 @@
-
-import type { RouteRecordRaw } from 'vue-router'
-import Compendium from './index.vue'
-
-const compendiumRoutes: RouteRecordRaw[] = [
+export default [
   {
-    path: '/compendium',
+    path: '/compendium', 
     name: 'Compendium',
-    component: Compendium,
-  },
+    component: () => import('./index.vue')  
+  }
 ]
-
-export default compendiumRoutes

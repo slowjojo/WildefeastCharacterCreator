@@ -1,20 +1,16 @@
-import WilderManagementWrapper from './index.vue'
-import CharacterCreationWrapper from './new/index.vue'
-import Roster from './roster/index.vue'
-
 export default [
   {
     path: '/wilder-management',
-    component: WilderManagementWrapper,
+    component: () => import('./index.vue'),
     children: [
       {
         path: '',
         name: 'Roster',
-        component: Roster
+        component: () => import('./roster/index.vue')
       },
       {
         path: 'new',
-        component: CharacterCreationWrapper
+        component: () => import('./new/index.vue')
       }
     ]
   }

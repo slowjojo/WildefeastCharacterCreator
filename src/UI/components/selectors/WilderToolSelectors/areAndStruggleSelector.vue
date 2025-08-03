@@ -94,7 +94,6 @@ function updateStruggle(event: Event) {
 <style scoped>
 .are-struggle-selector {
   margin: 16px 0;
-  color: black; /* Add this */
 }
 
 .selector-container {
@@ -109,7 +108,6 @@ function updateStruggle(event: Event) {
   display: block;
   margin-bottom: 8px;
   font-weight: bold;
-  color: black; /* Change from #333 to black */
 }
 
 .selector {
@@ -118,7 +116,7 @@ function updateStruggle(event: Event) {
   border: 2px solid #e0e0e0;
   border-radius: 6px;
   font-size: 14px;
-  background: white;
+  background: bisque;
   color: black; /* Add this */
   transition: border-color 0.2s ease;
 }
