@@ -1,3 +1,5 @@
+import type { Style } from "@/classes/enums";
+
 export class techniqueData {
     id:string;
     name: string;
@@ -6,6 +8,7 @@ export class techniqueData {
     cost: string;
     type: string;
     description: string
+    required_style?: Style
 
     constructor (data:  any) {
         this.id = data.id;
@@ -15,6 +18,7 @@ export class techniqueData {
         this.cost = data.cost;
         this.type = data.type;
         this.description = data.description
+        this.required_style = data.required_style as Style;
     }
 
 }

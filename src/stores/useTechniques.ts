@@ -1,5 +1,7 @@
 import { techniqueData } from "@/classes/wilder/components/technique/Technique";
 import techniquesJson from '@/assets/data/techniques.json';
+import { Style } from '@/classes/enums'; // Add this import
+import { useTools } from '@/stores/useTools'; // Add this import
 import { type Ref, ref, computed } from 'vue';
 
 const techniques: techniqueData[] = techniquesJson.map(data => new techniqueData(data));
@@ -28,6 +30,24 @@ function getTechniquesByToolAndTier(toolId: string, tier: string): techniqueData
   );
 }
 
+function getSharedTechniquesByStyle(style: Style): techniqueData[] {
+  return techniques.filter(tech => 
+    tech.tool === 'shared' && 
+    tech.required_style === style &&
+    tech.tier === 'intermediate' // since all shared are intermediate
+  )
+}
+
+function getAvailableSharedTechniques(toolId: string): techniqueData[] {
+  const { getToolById } = useTools()
+  const tool = getToolById(toolId)
+  if (!tool) return []
+ 
+  return tool.main_styles.flatMap(style => 
+    getSharedTechniquesByStyle(style)
+  )
+}
+
 export function useTechniques() {
     return {
         techniques,
@@ -35,6 +55,8 @@ export function useTechniques() {
         getTechniqueById,
         beginnerTechniques,
         getBeginnerTechniquesByTool,
-        getTechniquesByToolAndTier
+        getTechniquesByToolAndTier,
+        getSharedTechniquesByStyle,      // Add this
+        getAvailableSharedTechniques     // Add this
     };
 }
