@@ -44,12 +44,6 @@
     <div v-else class="no-options-message">
       <p>No options available for this tool</p>
     </div>
-
-    <div v-if="toolController.hasAreAndStruggleSelected" class="selected-summary">
-      <h4>Your Character:</h4>
-      <p><strong>You are:</strong> {{ toolController.are }}</p>
-      <p><strong>You struggle with being:</strong> {{ toolController.struggle }}</p>
-    </div>
   </div>
   
   <div v-else class="no-tool-message">
@@ -100,6 +94,7 @@ function updateStruggle(event: Event) {
 <style scoped>
 .are-struggle-selector {
   margin: 16px 0;
+  color: black; /* Add this */
 }
 
 .selector-container {
@@ -114,7 +109,7 @@ function updateStruggle(event: Event) {
   display: block;
   margin-bottom: 8px;
   font-weight: bold;
-  color: #333;
+  color: black; /* Change from #333 to black */
 }
 
 .selector {
@@ -124,6 +119,7 @@ function updateStruggle(event: Event) {
   border-radius: 6px;
   font-size: 14px;
   background: white;
+  color: black; /* Add this */
   transition: border-color 0.2s ease;
 }
 
@@ -147,12 +143,12 @@ function updateStruggle(event: Event) {
 
 .selected-summary h4 {
   margin: 0 0 8px 0;
-  color: #333;
+  color: black; /* Change from #333 to black */
 }
 
 .selected-summary p {
   margin: 4px 0;
-  color: #555;
+  color: black; /* Change from #555 to black */
 }
 
 .no-options-message,
@@ -161,6 +157,6 @@ function updateStruggle(event: Event) {
   background: #f9f9f9;
   border-radius: 4px;
   text-align: center;
-  color: #666;
+  color: black; /* Change from #666 to black */
 }
 </style>

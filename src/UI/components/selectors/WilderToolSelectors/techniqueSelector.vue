@@ -1,34 +1,23 @@
 <template>
   <div class="technique-selector" v-if="toolController.hasToolSelected">
     <h3>Select Beginner Technique</h3>
-    
+   
     <div v-if="availableTechniques.length > 0" class="technique-list">
-      <div
+      <TechniqueCard
         v-for="technique in availableTechniques"
         :key="technique.id"
-        @click="toolController.setBeginnerTechnique(technique.id)"
-        :class="{ 
-          'technique-card': true, 
-          'selected': toolController.beginnerTechnique === technique.id 
-        }"
-      >
-        <div class="technique-name">{{ technique.name }}</div>
-        <div class="technique-cost">{{ technique.cost }}</div>
-        <div class="technique-description">{{ technique.description }}</div>
-      </div>
+        :technique="technique"
+        :selected="toolController.beginnerTechnique === technique.id"
+        @select="handleTechniqueSelect"
+        class="technique-card"
+      />
     </div>
-    
+   
     <div v-else class="no-techniques-message">
       <p>No techniques available for this tool</p>
     </div>
-    
-    <div v-if="toolController.hasTechniqueSelected" class="selected-technique">
-      <h4>Selected Technique:</h4>
-      <p><strong>{{ selectedTechniqueData?.name }}</strong></p>
-      <p>{{ selectedTechniqueData?.description }}</p>
-    </div>
   </div>
-  
+ 
   <div v-else class="no-tool-message">
     <p>Please select a tool first</p>
   </div>
@@ -38,20 +27,22 @@
 import { computed } from 'vue'
 import { useDraftWilderStore } from '@/stores/useDraftWilder'
 import { useTechniques } from '@/stores/useTechniques'
+import TechniqueCard from '../../cards/TechniqueCard.vue'
 
 const { draftWilder } = useDraftWilderStore()
 const toolController = draftWilder.ToolController
-const { getBeginnerTechniquesByTool, getTechniqueById } = useTechniques()
+const { getBeginnerTechniquesByTool } = useTechniques()
 
 const availableTechniques = computed(() => {
   if (!toolController.toolId) return []
   return getBeginnerTechniquesByTool(toolController.toolId)
 })
 
-const selectedTechniqueData = computed(() => {
-  if (!toolController.beginnerTechnique) return null
-  return getTechniqueById(toolController.beginnerTechnique)
-})
+
+
+function handleTechniqueSelect(techniqueId: string) {
+  toolController.setBeginnerTechnique(techniqueId)
+}
 </script>
 
 <style scoped>
@@ -61,47 +52,11 @@ const selectedTechniqueData = computed(() => {
 
 .technique-list {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 12px;
   margin: 12px 0;
 }
 
-.technique-card {
-  padding: 16px;
-  border: 2px solid #e0e0e0;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  background: white;
-}
-
-.technique-card:hover {
-  border-color: #2196f3;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.technique-card.selected {
-  border-color: #2196f3;
-  background: #e3f2fd;
-}
-
-.technique-name {
-  font-weight: bold;
-  font-size: 1.1em;
-  margin-bottom: 4px;
-}
-
-.technique-cost {
-  color: #666;
-  font-size: 0.9em;
-  margin-bottom: 8px;
-}
-
-.technique-description {
-  color: #444;
-  font-size: 0.9em;
-  line-height: 1.4;
-}
 
 .selected-technique {
   margin-top: 16px;

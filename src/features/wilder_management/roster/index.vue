@@ -3,13 +3,7 @@
     <!-- Left Panel -->
     <div class="left-pane">
       <div class="options-container">
-        <div>
-          <WilderRosterButtons
-            :wilders="wilders"
-            :tools="tools"
-            @select="selectWilder"
-          />
-        </div>
+  
       </div>
 
       <div class="button-container">
@@ -21,23 +15,6 @@
 
     <!-- Right Panel -->
     <div class="right-pane">
-      <div v-if="selectedWilder">
-        <h2>{{ selectedWilder.Name }}</h2>
-        <p>
-          <strong>Tool:</strong>
-          {{ getToolName(selectedWilder.ToolController.tool?.id || '') }}
-        </p>
-        <p>
-          <strong>Specialty:</strong>
-          {{ selectedWilder.SpecialtyController.specialty?.id || '—' }}
-        </p>
-        <v-btn color="red" @click="deleteSelectedWilder" style="margin-top: 1rem">
-          Delete Wilder
-        </v-btn>
-      </div>
-      <div v-else>
-        <h2>Select a Wilder</h2>
-      </div>
     </div>
   </div>
 </template>
@@ -45,43 +22,24 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
 import { useRouter } from 'vue-router'
-import WilderRosterButtons from './components/WilderRosterButtons.vue'
 import { useWilders } from '@/stores/useWilders'
-import { useTools } from '@/stores/useTools'
 
 const router = useRouter()
-const { tools } = useTools()
 
 const {
   wilders,
-  selectedWilder,
-  selectWilder,
-  deleteWilder,
-  loadWilders
 } = useWilders()
 
 onMounted(() => {
-  loadWilders()
   console.log('Loaded wilders:', wilders.value)
 })
 
-function getToolName(id: string): string {
-  const tool = tools.find(t => t.id === id)
-  return tool ? tool.name : '—'
-}
 
 function goToCharacterCreator() {
   router.push('/wilder-management/new')
 }
 
-function deleteSelectedWilder() {
-  if (
-    selectedWilder.value &&
-    confirm(`Are you sure you want to delete ${selectedWilder.value.Name}?`)
-  ) {
-    deleteWilder()
-  }
-}
+
 </script>
 
 <style scoped>
