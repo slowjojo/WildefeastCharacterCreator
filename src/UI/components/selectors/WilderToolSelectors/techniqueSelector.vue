@@ -27,7 +27,7 @@
 import { computed } from 'vue'
 import { useDraftWilderStore } from '@/stores/useDraftWilder'
 import { useTechniques } from '@/stores/useTechniques'
-import TechniqueCard from '../../cards/TechniqueCard.vue'
+import TechniqueCard from '@/features/wilder_management/new/pages/tool-page/cards/TechniqueCard.vue'
 
 const { draftWilder } = useDraftWilderStore()
 const toolController = draftWilder.ToolController

@@ -12,7 +12,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import ToolCard from '../../cards/ToolCard.vue';
+import ToolCard from '@/features/wilder_management/new/pages/tool-page/cards/ToolCard.vue';
 import { useDraftWilderStore } from '@/stores/useDraftWilder'
 import { useTools } from '@/stores/useTools';
 

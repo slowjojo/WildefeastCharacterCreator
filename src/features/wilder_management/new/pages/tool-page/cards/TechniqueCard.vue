@@ -10,7 +10,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import type { techniqueData } from '@/classes/wilder/components/technique/Technique'
-import OptionCard from './OptionCard.vue'
+import OptionCard from '@/UI/components/cards/OptionCard.vue';
 
 const props = defineProps<{
   technique: techniqueData

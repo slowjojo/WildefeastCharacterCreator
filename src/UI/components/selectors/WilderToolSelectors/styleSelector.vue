@@ -20,7 +20,7 @@
 
 <script setup lang="ts">
 import { Style } from '@/classes/enums'
-import StyleCard from '../../cards/StyleCard.vue'
+import StyleCard from '@/features/wilder_management/new/pages/tool-page/cards/StyleCard.vue'
 import { useDraftWilderStore } from '@/stores/useDraftWilder'
 
 const { draftWilder } = useDraftWilderStore()
